@@ -15,10 +15,12 @@
 Helper class for fuzz target semantic errors.
 """
 import logging
+import os
 import re
 from typing import Optional
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'fuzz_target_error.log')
 
 
 class SemanticCheckResult:

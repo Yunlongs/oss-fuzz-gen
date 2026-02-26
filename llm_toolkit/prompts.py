@@ -16,10 +16,13 @@ LLM prompt definitions.
 """
 import json
 import logging
+import os
 from abc import abstractmethod
 from typing import Any
 
-logger = logging.getLogger(__name__)
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'llm_prompts.log')
 
 
 class Prompt:

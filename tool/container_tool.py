@@ -13,13 +13,15 @@
 # limitations under the License.
 """A tool for LLM agents to interact within a project's docker container."""
 import logging
+import os
 import subprocess as sp
 
 from experiment import oss_fuzz_checkout
 from experiment.benchmark import Benchmark
 from tool.base_tool import BaseTool
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'container_tool.log')
 
 
 class ProjectContainerTool(BaseTool):

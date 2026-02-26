@@ -42,8 +42,9 @@ from vertexai.preview.language_models import CodeGenerationModel
 
 from llm_toolkit import prompts
 from utils import retryable
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'llm_models.log')
 
 # Model hyper-parameters.
 MAX_TOKENS: int = 2000
@@ -286,12 +287,12 @@ class GPT(LLM):
     try:
       return tiktoken.encoding_for_model(model_name)
     except KeyError:
-      logger.info('Could not get a tiktoken encoding for %s.', model_name)
+      #logger.info('Could not get a tiktoken encoding for %s.', model_name)
       return tiktoken.get_encoding('cl100k_base')
 
   def _get_client(self):
     """Returns the OpenAI client."""
-    return openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+    return openai.OpenAI(base_url=os.getenv('OPENAI_BASE_URL'), api_key=os.getenv('OPENAI_API_KEY'))
 
   # ================================ Prompt ================================ #
   def estimate_token_num(self, text) -> int:
@@ -332,13 +333,31 @@ class GPT(LLM):
         lambda: client.chat.completions.create(messages=self.messages,
                                                model=self.name,
                                                n=self.num_samples,
-                                               temperature=self.temperature),
+                                               temperature=self.temperature,
+                                               extra_body = {"chat_template_kwargs": {"thinking": True}}),
         [openai.OpenAIError])
 
     llm_response = completion.choices[0].message.content
     self.messages.append({'role': 'assistant', 'content': llm_response})
-
+    self.log_token_usage(completion)
     return llm_response
+
+  def log_token_usage(self, response: Any) -> None:
+    """Logs the token usage from the LLM response."""
+    if hasattr(response, 'usage'):
+      usage = response.usage
+      prompt_tokens = getattr(usage, 'prompt_tokens', 0)
+      completion_tokens = getattr(usage, 'completion_tokens', 0)
+      total_tokens = getattr(usage, 'total_tokens', 0)
+      cached_tokens = 0
+      if hasattr(usage, "prompt_tokens_details"):
+        prompt_tokens_details = usage.prompt_tokens_details
+        cached_tokens = getattr(prompt_tokens_details, 'cached_tokens', 0)
+      logger.info('Token usage - prompt: %d, completion: %d, total: %d, cached: %d',
+                  prompt_tokens, completion_tokens,
+                  total_tokens, cached_tokens)
+    else:
+      logger.info('No token usage information available in the response.')
 
   def chat_llm_with_tools(self, client: Any, prompt: Optional[prompts.Prompt],
                           tools) -> Any:
@@ -354,8 +373,9 @@ class GPT(LLM):
 
     result = self.with_retry_on_error(
         lambda: client.responses.create(
-            model=self.name, input=self.messages, tools=tools),
+            model=self.name, input=self.messages, tools=tools, extra_body = {"chat_template_kwargs": {"thinking": True}}),
         [openai.OpenAIError])
+    self.log_token_usage(result)
     return result
 
   def ask_llm(self, prompt: prompts.Prompt) -> str:
@@ -372,8 +392,10 @@ class GPT(LLM):
         lambda: client.chat.completions.create(messages=prompt.get(),
                                                model=self.name,
                                                n=self.num_samples,
-                                               temperature=self.temperature),
+                                               temperature=self.temperature,
+                                               extra_body = {"chat_template_kwargs": {"thinking": True}}),
         [openai.OpenAIError])
+    self.log_token_usage(completion)
     return completion.choices[0].message.content
 
   # ============================== Generation ============================== #
@@ -391,11 +413,13 @@ class GPT(LLM):
         lambda: client.chat.completions.create(messages=prompt.get(),
                                                model=self.name,
                                                n=self.num_samples,
-                                               temperature=self.temperature),
+                                               temperature=self.temperature,
+                                               extra_body = {"chat_template_kwargs": {"thinking": True}}),
         [openai.OpenAIError])
     for index, choice in enumerate(completion.choices):  # type: ignore
       content = choice.message.content
       self._save_output(index, content, response_dir)
+    self.log_token_usage(completion)
 
 
 class GPT4(GPT):
@@ -443,6 +467,10 @@ class GPT4Turbo(GPT):
 
   name = 'gpt-4-turbo'
 
+class DeepSeekV32(GPT):
+  """DeepSeek's v3.2 model."""
+
+  name = 'DeepSeek-V3.2'
 
 class ChatGPT(GPT):
   """OpenAI's GPT model with chat session."""

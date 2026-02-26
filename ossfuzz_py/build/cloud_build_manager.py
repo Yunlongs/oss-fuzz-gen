@@ -36,7 +36,10 @@ from ossfuzz_py.errors import CloudBuildError
 from ossfuzz_py.utils.env_utils import EnvUtils
 from ossfuzz_py.utils.env_vars import EnvVars
 
-logger = logging.getLogger('ossfuzz_sdk.build.cloud_build_manager')
+from logger_config import setup_logger
+
+# Configure module logger
+logger = setup_logger('ossfuzz_sdk.build.cloud_build_manager', 'ossfuzz_cloud_build_manager.log')
 
 
 class BuildStatus(Enum):

@@ -27,7 +27,11 @@ from experimental.jvm import utils
 
 silent_global = False
 
-logger = logging.getLogger(name=__name__)
+from logger_config import setup_logger
+
+# Configure module logger
+logger = setup_logger(__name__, 'jvm_generate_projects.log')
+
 LOG_FMT = ('%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] '
            ': %(funcName)s: %(message)s')
 

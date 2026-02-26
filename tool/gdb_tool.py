@@ -20,8 +20,9 @@ import time
 from experiment.benchmark import Benchmark
 from results import RunResult
 from tool.container_tool import ProjectContainerTool
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'gdb_tool.log')
 
 
 class GDBTool(ProjectContainerTool):

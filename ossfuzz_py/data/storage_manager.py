@@ -34,8 +34,10 @@ from ossfuzz_py.data.storage_adapter import (FileStorageAdapter,
                                              GCSStorageAdapter, StorageAdapter)
 from ossfuzz_py.errors import ConfigurationError, StorageManagerError
 
+from logger_config import setup_logger
+
 # Configure module logger
-logger = logging.getLogger('ossfuzz_sdk.storage_manager')
+logger = setup_logger('ossfuzz_sdk.storage_manager', 'ossfuzz_storage_manager.log')
 
 
 class StorageManager:

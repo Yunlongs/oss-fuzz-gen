@@ -23,6 +23,9 @@ import logging
 import os
 
 from experiment.benchmark import Benchmark
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'update_comp_benchmarks.log')
 
 BENCHMARK_DIR = 'benchmark-sets'
 SOURCE_SET = 'all'

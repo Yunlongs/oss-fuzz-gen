@@ -36,9 +36,10 @@ import yaml
 from ossfuzz_py.core.data_models import FileType
 from ossfuzz_py.errors import BenchmarkError, BenchmarkValidationError
 from ossfuzz_py.utils.file_utils import FileUtils
+from logger_config import setup_logger
 
 # Configure module logger
-logger = logging.getLogger('ossfuzz_sdk.benchmark_manager')
+logger = setup_logger('ossfuzz_sdk.benchmark_manager', 'ossfuzz_benchmark_manager.log')
 
 
 @dataclass(frozen=True)

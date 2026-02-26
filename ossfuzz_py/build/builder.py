@@ -44,9 +44,10 @@ from ossfuzz_py.utils.file_utils import FileUtils
 
 # NOTE: Running-related constants have been moved to LocalRunner and CloudRunner
 # This module focuses only on building logic
+from logger_config import setup_logger
 
 # Configure module logger
-logger = logging.getLogger('ossfuzz_sdk.builder')
+logger = setup_logger('ossfuzz_sdk.builder', 'ossfuzz_builder.log')
 
 
 class Result:

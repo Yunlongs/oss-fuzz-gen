@@ -33,7 +33,9 @@ from datetime import datetime
 from string import Template
 
 # Configure logging to display all messages at or above INFO level
-logging.basicConfig(level=logging.INFO)
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'ci_request_pr_exp.log')
 
 DEFAULT_CLUSTER = 'llm-experiment'
 LARGE_CLUSTER = 'llm-experiment-large'
@@ -264,7 +266,7 @@ def _parse_args(cmd) -> argparse.Namespace:
     args.max_round = 10
 
   if args.additional_args:
-    logging.info("Additional args: %s", args.additional_args)
+    logger.info("Additional args: %s", args.additional_args)
 
   return args
 
@@ -272,7 +274,7 @@ def _parse_args(cmd) -> argparse.Namespace:
 def _remove_existing_job_bucket(gke_job_name: str, bucket_link: str,
                                 bucket_gs_link: str):
   """Removes existing GKE job and gcloud bucket."""
-  logging.info('Deleting GKE job: %s', gke_job_name)
+  logger.info('Deleting GKE job: %s', gke_job_name)
   del_job = sp.run(['kubectl', 'delete', 'job', gke_job_name],
                    stdin=sp.DEVNULL,
                    stdout=sp.PIPE,
@@ -282,17 +284,17 @@ def _remove_existing_job_bucket(gke_job_name: str, bucket_link: str,
     stdout = del_job.stdout.decode('utf-8')
     stderr = del_job.stderr.decode('utf-8')
     if 'Error from server (NotFound)' in stderr:
-      logging.warning(stderr)
+      logger.warning(stderr)
     else:
-      logging.error('Failed to delete GKE job: %s.', gke_job_name)
-      logging.error('STDOUT:\n  %s', stdout)
-      logging.error('STDERR:\n  %s', stderr)
+      logger.error('Failed to delete GKE job: %s.', gke_job_name)
+      logger.error('STDOUT:\n  %s', stdout)
+      logger.error('STDERR:\n  %s', stderr)
       sys.exit(1)
 
   # Wait for 5 seconds to ensure job is deleted and not writing to bucket.
   time.sleep(5)
 
-  logging.info('Deleting gcloud bucket: %s', bucket_gs_link)
+  logger.info('Deleting gcloud bucket: %s', bucket_gs_link)
   del_bucket = sp.run(
       ['gcloud', 'storage', 'rm', '--recursive', bucket_gs_link],
       stdin=sp.DEVNULL,
@@ -300,9 +302,9 @@ def _remove_existing_job_bucket(gke_job_name: str, bucket_link: str,
       stderr=sp.PIPE,
       check=False)
   if del_bucket.returncode:
-    logging.error('Failed to rm gcloud bucket directory:\n  %s', bucket_link)
-    logging.error('STDOUT:\n  %s', del_bucket.stdout.decode('utf-8'))
-    logging.error('STDERR:\n  %s', del_bucket.stderr.decode('utf-8'))
+    logger.error('Failed to rm gcloud bucket directory:\n  %s', bucket_link)
+    logger.error('STDOUT:\n  %s', del_bucket.stdout.decode('utf-8'))
+    logger.error('STDERR:\n  %s', del_bucket.stderr.decode('utf-8'))
 
 
 def _prepare_experiment_info(args: argparse.Namespace) -> tuple[str, str, str]:
@@ -332,10 +334,10 @@ def _prepare_experiment_info(args: argparse.Namespace) -> tuple[str, str, str]:
       f'{BUCKET_GS_LINK_PREFIX}/{datetime.now().strftime("%Y-%m-%d")}-'
       f'{args.pr_id}-{args.name_suffix}-{args.benchmark_set}')
 
-  logging.info(
+  logger.info(
       'FORCE mode enable, will first remove existing GKE job and bucket.')
 
-  logging.info(
+  logger.info(
       'Requesting a GKE experiment named %s:\nPR: %s\nJOB: %s\nREPORT: %s\n'
       'BUCKET: %s\nBUCKET GS: `%s`\n',
       gke_job_name,
@@ -362,7 +364,7 @@ def _get_gke_credential(args: argparse.Namespace):
     ],
            check=False)
   except Exception as e:
-    logging.error('Failed to authenticate gcloud: %s', e)
+    logger.error('Failed to authenticate gcloud: %s', e)
 
 
 def _fill_template(args: argparse.Namespace) -> str:

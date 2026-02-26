@@ -31,8 +31,9 @@ from experiment.fuzz_target_error import SemanticCheckResult
 from experiment.workdir import WorkDirs
 from llm_toolkit import code_fixer, corpus_generator, crash_triager
 from llm_toolkit.crash_triager import TriageResult
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'evaluator.log')
 
 LLM_FIX_LIMIT = int(os.getenv('LLM_FIX_LIMIT', '5'))
 GENERATE_CORPUS = bool(os.getenv('LLM_GENERATE_CORPUS', ''))

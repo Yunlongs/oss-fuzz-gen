@@ -30,9 +30,10 @@ from typing import Any, Dict, List, Optional
 import yaml
 
 from ossfuzz_py.errors import OSSFuzzManagerError
+from logger_config import setup_logger
 
 # Configure module logger
-logger = logging.getLogger('ossfuzz_sdk.ossfuzz_manager')
+logger = setup_logger('ossfuzz_sdk.ossfuzz_manager', 'ossfuzz_ossfuzz_manager.log')
 
 
 class OSSFuzzManager:

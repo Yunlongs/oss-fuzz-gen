@@ -18,6 +18,7 @@ from __future__ import annotations
 import dataclasses
 import json
 import logging
+import os
 import re
 import subprocess
 import xml.etree.ElementTree as ET
@@ -26,7 +27,25 @@ from typing import BinaryIO, List, Optional
 import chardet
 import rust_demangler
 
-logger = logging.getLogger(__name__)
+from logger_config import setup_logger
+
+# Configure module logger
+logger = setup_logger('ossfuzz_sdk.textcov', 'ossfuzz_textcov.log')
+logger.setLevel(logging.DEBUG)
+
+# Configure file handler for logger
+log_file = os.path.join(os.getcwd(), 'ossfuzz_textcov.log')
+file_handler = logging.FileHandler(log_file)
+file_handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+
+# Configure console handler for logger (显示在终端)
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
 
 # No spaces at the beginning, and ends with a ":".
 FUNCTION_PATTERN = re.compile(r'^([^\s].*):$')

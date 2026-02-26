@@ -33,6 +33,9 @@ from report.common import (AccumulatedResult, Benchmark, FileSystem, Project,
                            Results, Sample, Target)
 from report.export import CSVExporter
 from report.parse_logs import LogsParser, RunLogsParser
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'report_web.log')
 
 LOCAL_HOST = '127.0.0.1'
 

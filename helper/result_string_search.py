@@ -29,6 +29,9 @@ import argparse
 import logging
 import os
 from typing import Optional
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'result_string_search.log')
 
 
 def _parse_args() -> argparse.Namespace:

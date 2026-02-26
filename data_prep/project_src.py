@@ -26,8 +26,9 @@ from typing import Dict
 from google.cloud import storage
 
 from experiment import benchmark, oss_fuzz_checkout
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'project_src.log')
 
 SEARCH_IGNORE_DIRS = ['aflplusplus', 'fuzztest', 'honggfuzz', 'libfuzzer']
 SEARCH_EXTS = ['.c', '.cc', '.cpp', '.cxx', '.c++']

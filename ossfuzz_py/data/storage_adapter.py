@@ -41,8 +41,10 @@ from typing import Any, Dict, List, Optional
 # Import consolidated errors
 from ossfuzz_py.errors import QueryError, StorageAdapterError
 
+from logger_config import setup_logger
+
 # Configure module logger
-logger = logging.getLogger('ossfuzz_sdk.storage_adapter')
+logger = setup_logger('ossfuzz_sdk.storage_adapter', 'ossfuzz_storage_adapter.log')
 
 
 class StorageAdapter(ABC):

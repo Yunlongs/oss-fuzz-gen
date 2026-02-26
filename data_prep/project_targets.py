@@ -30,8 +30,9 @@ from google.cloud import storage
 
 from data_prep import introspector, project_src
 from experiment import oss_fuzz_checkout
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'project_targets.log')
 
 OSS_FUZZ_EXP_BUCKET = 'oss-fuzz-llm-public'
 # TODO(dongge): Use tmp dir.

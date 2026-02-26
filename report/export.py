@@ -19,6 +19,9 @@ from abc import abstractmethod
 
 from report.common import Results
 from report.parse_logs import RunLogsParser
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'report_export.log')
 
 
 class BaseExporter:

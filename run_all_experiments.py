@@ -34,8 +34,21 @@ from experiment import benchmark as benchmarklib
 from experiment import evaluator, oss_fuzz_checkout, textcov
 from experiment.workdir import WorkDirs
 from llm_toolkit import models, prompt_builder
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'run_all_experiments.log')
+
+
+def reconfigure_logger_dir(work_dir: str) -> None:
+  """重新配置logger的日志文件目录到work_dir。"""
+  global logger
+  # 移除现有的所有handlers
+  for handler in logger.handlers[:]:
+    handler.close()
+    logger.removeHandler(handler)
+  
+  # 使用新的work_dir重新设置logger
+  logger = setup_logger(__name__, 'run_all_experiments.log', log_dir=work_dir)
 
 # WARN: Avoid large NUM_EXP for local experiments.
 # NUM_EXP controls the number of experiments in parallel, while each experiment
@@ -526,6 +539,10 @@ def main():
   global WORK_DIR
 
   args = parse_args()
+  
+  # 重新配置logger使用work_dir作为日志目录
+  reconfigure_logger_dir(args.work_dir)
+  
   _setup_logging(args.log_level, is_cloud=args.cloud_experiment_name != '')
   logger.info('Starting experiments on PR branch')
 

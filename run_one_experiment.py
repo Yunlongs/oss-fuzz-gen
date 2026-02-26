@@ -41,6 +41,10 @@ from experiment.benchmark import Benchmark
 from experiment.workdir import WorkDirs
 from llm_toolkit import models, output_parser, prompt_builder, prompts
 from results import BenchmarkResult, Result, TrialResult
+from logger_config import setup_logger
+
+# Add logging setup
+logger_module = setup_logger(__name__, 'run_one_experiment.log')
 
 # WARN: Avoid high value for NUM_EVA for local experiments.
 # NUM_EVA controls the number of fuzz targets to evaluate in parallel by each
@@ -110,7 +114,7 @@ def generate_targets(benchmark: Benchmark, model: models.LLM,
                      prompt: prompts.Prompt, work_dirs: WorkDirs,
                      builder: prompt_builder.PromptBuilder) -> list[str]:
   """Generates fuzz target with LLM."""
-  logging.info('Generating targets for %s %s using %s..', benchmark.project,
+  logger_module.info('Generating targets for %s %s using %s..', benchmark.project,
                benchmark.function_signature, model.name)
   model.query_llm(prompt, response_dir=work_dirs.raw_targets)
 
@@ -131,9 +135,9 @@ def generate_targets(benchmark: Benchmark, model: models.LLM,
   if generated_targets:
     targets_relpath = map(os.path.relpath, generated_targets)
     targets_relpath_str = '\n '.join(targets_relpath)
-    logging.info('Generated:\n %s', targets_relpath_str)
+    logger_module.info('Generated:\n %s', targets_relpath_str)
   else:
-    logging.info('Failed to generate targets: %s', generated_targets)
+    logger_module.info('Failed to generate targets: %s', generated_targets)
   return generated_targets
 
 
@@ -221,7 +225,7 @@ def check_targets(
     for i, target_stat in enumerate(
         p.starmap(evaluator.check_target, ai_target_pairs)):
       if target_stat is None:
-        logging.error('This should never happen: Error evaluating target: %s',
+        logger_module.error('This should never happen: Error evaluating target: %s',
                       generated_targets[i])
         target_stat = exp_evaluator.Result()
 
@@ -230,7 +234,7 @@ def check_targets(
   if len(target_stats) > 0:
     return aggregate_results(target_stats, generated_targets)
 
-  logging.info('No targets to check.')
+  logger_module.info('No targets to check.')
   return None
 
 

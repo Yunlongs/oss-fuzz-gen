@@ -22,8 +22,9 @@ from typing import Optional
 
 from data_prep import introspector
 from experiment import benchmark as benchmarklib
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'context_introspector.log')
 
 COMPLEX_TYPES = ['const', 'enum', 'struct', 'union', 'volatile']
 PRIMITIVE_TYPES = [

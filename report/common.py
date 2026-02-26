@@ -29,6 +29,9 @@ import run_one_experiment
 from data_prep import project_src
 from experiment import evaluator
 from experiment.workdir import WorkDirs
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'report_common.log')
 
 MAX_RUN_LOGS_LEN = 16 * 1024
 

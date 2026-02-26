@@ -28,6 +28,8 @@ from fuzz_introspector.analyses import (far_reach_low_coverage_analyser,
 from experiment import benchmark as benchmarklib
 from llm_toolkit import models, output_parser, prompt_builder, prompts
 
+from logger_config import setup_logger
+
 LOG_FMT = ('%(asctime)s.%(msecs)03d %(levelname)s '
            '%(module)s - %(funcName)s: %(message)s')
 
@@ -36,7 +38,9 @@ logging.basicConfig(
     format=LOG_FMT,
     datefmt='%Y-%m-%d %H:%M:%S',
 )
-logger = logging.getLogger(name=__name__)
+
+# Configure module logger
+logger = setup_logger(__name__, 'from_scratch_generate.log')
 
 NUM_SAMPLES: int = 1
 TEMPERATURE: float = 1

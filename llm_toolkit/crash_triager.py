@@ -21,6 +21,9 @@ from experiment import benchmark as benchmarklib
 from llm_toolkit import models
 from llm_toolkit import output_parser as parser
 from llm_toolkit import prompt_builder
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'crash_triager.log')
 
 
 class TriageResult:
@@ -67,14 +70,14 @@ def llm_triage(
     triage_candidates.append([triage_path, triage])
 
   if not triage_candidates:
-    logging.warning('LLM did not generate rawoutput for %s', prompt_path)
+    logger.warning('LLM did not generate rawoutput for %s', prompt_path)
     return TriageResult.NOT_APPLICABLE
 
   # TODO(maoyixie): Use the common vote
   # Currently, we prefer the longest triage.
   preferred_triage_path, preferred_triage = max(triage_candidates,
                                                 key=lambda x: len(x[1]))
-  logging.info('Will use the longest triage: %s',
+  logger.info('Will use the longest triage: %s',
                os.path.relpath(preferred_triage_path))
   preferred_triage_name, _ = os.path.splitext(preferred_triage_path)
   triage_report_path = os.path.join(response_dir,

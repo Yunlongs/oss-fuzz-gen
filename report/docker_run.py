@@ -24,7 +24,9 @@ import subprocess
 import sys
 
 # Configure logging to display all messages at or above INFO level
-logging.basicConfig(level=logging.INFO)
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'docker_run.log')
 
 BENCHMARK_SET = 'comparison'
 FREQUENCY_LABEL = 'daily'
@@ -167,26 +169,26 @@ def _authorize_gcloud():
   # When running on GCP this step is unnecessary.
   google_creds = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', '')
   if google_creds:
-    logging.info("GOOGLE APPLICATION CREDENTIALS set: %s.", google_creds)
+    logger.info("GOOGLE APPLICATION CREDENTIALS set: %s.", google_creds)
     _run_command([
         'gcloud', 'auth', 'activate-service-account',
         'LLM-EVAL@oss-fuzz.iam.gserviceaccount.com', '--key-file', google_creds
     ])
   else:
     # TODO: Set GOOGLE_APPLICATION_CREDENTIALS and ensure cloud build uses it.
-    logging.info("GOOGLE APPLICATION CREDENTIALS is not set.")
+    logger.info("GOOGLE APPLICATION CREDENTIALS is not set.")
 
 
 def _log_common_args(args):
   """Prints args useful for logging"""
-  logging.info("Benchmark set is %s.", args.benchmark_set)
-  logging.info("Frequency label is %s.", args.frequency_label)
-  logging.info("Run timeout is %s.", args.run_timeout)
-  logging.info(
+  logger.info("Benchmark set is %s.", args.benchmark_set)
+  logger.info("Frequency label is %s.", args.frequency_label)
+  logger.info("Run timeout is %s.", args.run_timeout)
+  logger.info(
       "Sub-directory is %s. Please consider using sub-directory to classify"
       " your experiment.", args.sub_dir)
-  logging.info("LLM is %s.", args.model)
-  logging.info("DELAY is %s.", args.delay)
+  logger.info("LLM is %s.", args.model)
+  logger.info("DELAY is %s.", args.delay)
 
 
 def main(cmd=None):
@@ -217,7 +219,7 @@ def run_on_data_from_scratch(cmd=None):
 
   # Launch starter, which set ups a Fuzz Introspector instance, which
   # will be used for creating benchmarks and extract context.
-  logging.info('Running starter script')
+  logger.info('Running starter script')
   subprocess.check_call('/experiment/report/custom_oss_fuzz_fi_starter.sh',
                         shell=True)
 
@@ -324,7 +326,7 @@ def run_on_data_from_scratch(cmd=None):
   with open("/experiment_ended", "w"):
     pass
 
-  logging.info("Shutting down introspector")
+  logger.info("Shutting down introspector")
   try:
     subprocess.run(["curl", "--silent", "http://localhost:8080/api/shutdown"],
                    check=False,
@@ -375,18 +377,18 @@ def run_standard(cmd=None):
   if args.local_introspector:
     os.environ["BENCHMARK_SET"] = args.benchmark_set
     introspector_endpoint = "http://127.0.0.1:8080/api"
-    logging.info("LOCAL_INTROSPECTOR is enabled: %s", introspector_endpoint)
+    logger.info("LOCAL_INTROSPECTOR is enabled: %s", introspector_endpoint)
     _run_command(['bash', 'report/launch_local_introspector.sh'], shell=True)
   else:
     introspector_endpoint = "https://introspector.oss-fuzz.com/api"
-    logging.info("LOCAL_INTROSPECTOR was not specified. Defaulting to %s.",
+    logger.info("LOCAL_INTROSPECTOR was not specified. Defaulting to %s.",
                  introspector_endpoint)
 
-  logging.info("NUM_SAMPLES is %s.", args.num_samples)
+  logger.info("NUM_SAMPLES is %s.", args.num_samples)
 
   if args.llm_fix_limit:
     os.environ["LLM_FIX_LIMIT"] = str(args.llm_fix_limit)
-    logging.info("LLM_FIX_LIMIT is set to %s.", args.llm_fix_limit)
+    logger.info("LLM_FIX_LIMIT is set to %s.", args.llm_fix_limit)
 
   vary_temperature = [0.5, 0.6, 0.7, 0.8, 0.9] if args.vary_temperature else []
 
@@ -464,7 +466,7 @@ def run_standard(cmd=None):
     pass
 
   if args.local_introspector:
-    logging.info("Shutting down introspector")
+    logger.info("Shutting down introspector")
     try:
       subprocess.run(["curl", "--silent", "http://localhost:8080/api/shutdown"],
                      check=False,

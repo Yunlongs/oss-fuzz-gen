@@ -21,6 +21,7 @@
 
 import json
 import logging
+import os
 import re
 import sys
 import traceback
@@ -28,6 +29,9 @@ import traceback
 from google.cloud import storage
 
 from experiment import evaluator, textcov
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'aggregate_coverage_diff.log')
 
 
 def compute_coverage_diff(project: str, coverage_links: list[str]):

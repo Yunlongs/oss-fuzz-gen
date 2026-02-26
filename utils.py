@@ -21,6 +21,10 @@ from typing import Any
 
 import dill
 
+from logger_config import setup_logger
+
+logger = setup_logger(__name__, 'utils.log')
+
 
 def serialize_to_dill(variable: Any, dill_path: str = '') -> str:
   """Serializes |variable| to a dill file under |path_prefix| and returns
@@ -29,7 +33,7 @@ def serialize_to_dill(variable: Any, dill_path: str = '') -> str:
   os.makedirs(path_prefix, exist_ok=True)
   with open(dill_path, 'wb') as f:
     dill.dump(variable, f)
-  logging.info('Serialized %s to %s', variable, dill_path)
+  logger.info('Serialized %s to %s', variable, dill_path)
   return dill_path
 
 
@@ -39,10 +43,10 @@ def deserialize_from_dill(dill_path: Any) -> Any:
   try:
     with open(dill_path, 'rb') as f:
       obj = dill.load(f)
-    logging.info('Deserialized %s to %s', dill_path, obj)
+    logger.info('Deserialized %s to %s', dill_path, obj)
     return obj
   except FileNotFoundError as e:
-    logging.error('Failed to deserialize %s: File does not exist: %s',
+    logger.error('Failed to deserialize %s: File does not exist: %s',
                   dill_path, e)
     return None
 

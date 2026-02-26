@@ -18,6 +18,7 @@ from __future__ import annotations
 import dataclasses
 import json
 import logging
+import os
 import re
 import subprocess
 import xml.etree.ElementTree as ET
@@ -25,8 +26,9 @@ from typing import BinaryIO, List, Optional
 
 import chardet
 import rust_demangler
+from logger_config import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, 'textcov.log')
 
 # No spaces at the beginning, and ends with a ":".
 FUNCTION_PATTERN = re.compile(r'^([^\s].*):$')

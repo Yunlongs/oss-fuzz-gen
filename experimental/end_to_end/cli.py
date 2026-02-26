@@ -32,8 +32,11 @@ from data_prep import introspector
 from experimental.build_fixer import build_fix
 from experimental.build_generator import runner
 from llm_toolkit import models
+from logger_config import setup_logger
 
-logger = logging.getLogger(name=__name__)
+# Configure module logger
+logger = setup_logger(__name__, 'end_to_end_cli.log')
+
 LOG_FMT = ('%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] '
            ': %(funcName)s: %(message)s')
 

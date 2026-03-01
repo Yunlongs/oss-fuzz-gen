@@ -73,8 +73,7 @@ class BaseAgent(ABC):
         '<CHAT WITH TOOLS PROMPT:ROUND %02d>%s</CHAT PROMPT:ROUND %02d>',
         trial,
         prompt.get() if prompt else '',
-        trial,
-        trial=trial)
+        trial)
     response = self.llm.chat_llm_with_tools(client=client,
                                             prompt=prompt,
                                             tools=tools)
@@ -82,8 +81,7 @@ class BaseAgent(ABC):
         '<CHAT WITH TOOLS RESPONSE:ROUND %02d>%s</CHAT RESPONSE:ROUND %02d>',
         trial,
         response,
-        trial,
-        trial=trial)
+        trial)
     return response
 
   def chat_llm(self, cur_round: int, client: Any, prompt: Prompt,
@@ -92,14 +90,12 @@ class BaseAgent(ABC):
     logger.debug('<CHAT PROMPT:ROUND %02d>%s</CHAT PROMPT:ROUND %02d>',
                 cur_round,
                 prompt.gettext(),
-                cur_round,
-                trial=trial)
+                cur_round)
     response = self.llm.chat_llm(client=client, prompt=prompt)
     logger.debug('<CHAT RESPONSE:ROUND %02d>%s</CHAT RESPONSE:ROUND %02d>',
                 cur_round,
                 response,
-                cur_round,
-                trial=trial)
+                cur_round)
     return response
 
   def ask_llm(self, cur_round: int, prompt: Prompt, trial: int) -> str:
@@ -107,14 +103,12 @@ class BaseAgent(ABC):
     logger.info('<ASK PROMPT:ROUND %02d>%s</ASK PROMPT:ROUND %02d>',
                 cur_round,
                 prompt.gettext(),
-                cur_round,
-                trial=trial)
+                cur_round)
     response = self.llm.ask_llm(prompt=prompt)
     logger.info('<ASK RESPONSE:ROUND %02d>%s</ASK RESPONSE:ROUND %02d>',
                 cur_round,
                 response,
-                cur_round,
-                trial=trial)
+                cur_round)
     return response
 
   def _parse_tag(self, response: str, tag: str) -> str:
@@ -179,8 +173,7 @@ class BaseAgent(ABC):
         appended with |extra| information"""
     logger.warning('ROUND %02d Invalid response from LLM: %s',
                    cur_round,
-                   response,
-                   trial=self.trial)
+                   response)
     prompt_text = ('No valid instruction received, Please follow the'
                    'interaction protocols for available tools:\n\n')
     for tool in tools:
@@ -212,7 +205,7 @@ class BaseAgent(ABC):
     """Sleeps for a random duration between min_sec and max_sec. Agents uses
     this to avoid exceeding quota limit (e.g., LLM query frequency)."""
     duration = random.randint(min_sec, max_sec)
-    logger.debug('Sleeping for %d before the next query', duration, trial=trial)
+    logger.debug('Sleeping for %d before the next query', duration)
     time.sleep(duration)
 
   @classmethod
@@ -236,11 +229,11 @@ class BaseAgent(ABC):
   @classmethod
   def _preprocess_fi_setup(cls) -> None:
     """Logic for starting a custom Fuzz Introspector used on cloud builds"""
-    logger.info('Checkign if we should use local FI', trial=0)
+    logger.info('Checkign if we should use local FI')
     if not os.path.isdir('/workspace/data-dir'):
-      logger.info('This does not require a local FI.', trial=0)
+      logger.info('This does not require a local FI.')
       return
-    logger.info('We should use local FI.', trial=0)
+    logger.info('We should use local FI.')
 
     # Clone Fuzz Introspector
     introspector_repo = 'https://github.com/ossf/fuzz-introspector'
@@ -269,7 +262,7 @@ class BaseAgent(ABC):
                   env=fi_environ,
                   cwd=os.path.join(fi_web_dir, 'app'))
 
-    logger.info('Waiting for the webapp to start', trial=0)
+    logger.info('Waiting for the webapp to start')
 
     sec_to_wait = 10
     max_wait_iterations = 10
@@ -282,7 +275,7 @@ class BaseAgent(ABC):
       if idx == max_wait_iterations - 1:
         # Launching FI failed. We can still continue, although context
         # will be missing from runs.
-        logger.info('Failed to start webapp', trial=10)
+        logger.info('Failed to start webapp')
 
     introspector.set_introspector_endpoints('http://127.0.0.1:8080/api')
 
@@ -371,7 +364,7 @@ class ADKBaseAgent(BaseAgent):
 
     self.round = 0
 
-    logger.info('ADK Agent %s created.', self.name, trial=self.trial)
+    logger.info('ADK Agent %s created.', self.name)
 
   def get_xml_representation(self, response: Optional[dict]) -> str:
     """Returns the XML representation of the response."""
@@ -418,7 +411,7 @@ class ADKBaseAgent(BaseAgent):
               self.log_llm_response(self.get_xml_representation(final_response))
           elif event.actions and event.actions.escalate:
             error_message = event.error_message
-            logger.error('Agent escalated: %s', error_message, trial=self.trial)
+            logger.error('Agent escalated: %s', error_message)
 
       if not final_response:
         self.log_llm_response('No valid response from LLM.')
@@ -433,15 +426,13 @@ class ADKBaseAgent(BaseAgent):
     logger.info('<CHAT PROMPT:ROUND %02d>%s</CHAT PROMPT:ROUND %02d>',
                 self.round,
                 promt,
-                self.round,
-                trial=self.trial)
+                self.round)
 
   def log_llm_response(self, response: str) -> None:
     logger.info('<CHAT RESPONSE:ROUND %02d>%s</CHAT RESPONSE:ROUND %02d>',
                 self.round,
                 response,
-                self.round,
-                trial=self.trial)
+                self.round)
 
   def end_llm_chat(self, tool_context: ToolContext) -> None:
     """Ends the LLM chat session."""

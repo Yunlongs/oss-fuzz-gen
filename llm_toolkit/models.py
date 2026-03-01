@@ -163,10 +163,14 @@ class LLM:
   def prompt_type(self) -> type[prompts.Prompt]:
     """Returns the expected prompt type."""
 
+  # Maximum delay between retries: 5 minutes.
+  _max_retry_delay: int = 300
+
   def _delay_for_retry(self, attempt_count: int) -> None:
-    """Sleeps for a while based on the |attempt_count|."""
-    # Exponentially increase from 5 to 80 seconds + some random to jitter.
-    delay = 5 * 2**attempt_count + random.randint(1, 5)
+    """Sleeps for a while based on the |attempt_count|, capped at 5 minutes."""
+    # Exponentially increase with jitter, but cap at _max_retry_delay.
+    delay = min(5 * 2**attempt_count + random.randint(1, 5),
+                self._max_retry_delay)
     logging.warning('Retry in %d seconds...', delay)
     time.sleep(delay)
 
@@ -196,25 +200,27 @@ class LLM:
                           api_errs: list[Type[Exception]]) -> Any:
     """
     Retry when the function returns an expected error with exponential backoff.
+    No limit on retry attempts; delay is capped at 5 minutes.
+    Only stops retrying for non-retryable errors.
     """
-    for attempt in range(1, self._max_attempts + 1):
+    attempt = 0
+    while True:
+      attempt += 1
       try:
         return func()
       except Exception as err:
-        base_url = getattr(self, 'base_url', 'unknown')
+        base_url = os.getenv('OPENAI_BASE_URL', 'N/A')
         model_name = getattr(self, 'name', 'unknown')
         logger.warning(
             'LLM API Error when responding (attempt %d) [model=%s, base_url=%s]: %s',
             attempt, model_name, base_url, err, exc_info=True)
         tb = traceback.extract_tb(err.__traceback__)
-        if (not self._is_retryable_error(err, api_errs, tb) or
-            attempt == self._max_attempts):
+        if not self._is_retryable_error(err, api_errs, tb):
           logger.warning(
-              'LLM API cannot fix error when responding (attempt %d) [model=%s, base_url=%s] %s: %s',
+              'LLM API non-retryable error (attempt %d) [model=%s, base_url=%s] %s: %s',
               attempt, model_name, base_url, err, traceback.format_exc())
           raise err
         self._delay_for_retry(attempt_count=attempt)
-    return None
 
   def _save_output(self, index: int, content: str, response_dir: str) -> None:
     """Saves the raw |content| from the model ouput."""

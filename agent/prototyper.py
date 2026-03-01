@@ -21,7 +21,6 @@ import time
 from datetime import timedelta
 from typing import Optional
 
-import logger
 from agent.base_agent import BaseAgent
 from data_prep import project_targets
 from data_prep.project_context.context_introspector import ContextRetriever
@@ -31,6 +30,7 @@ from llm_toolkit import prompt_builder
 from llm_toolkit.prompts import Prompt
 from results import BuildResult, Result
 from tool.container_tool import ProjectContainerTool
+from logger_config import logger
 
 
 class Prototyper(BaseAgent):
@@ -107,8 +107,7 @@ class Prototyper(BaseAgent):
     build_result_alt = None
     if build_result.build_script_source:
       build_result_alt = copy.deepcopy(build_result)
-      logger.info('First compile fuzz target without modifying build script.',
-                  trial=build_result_alt.trial)
+      logger.info('First compile fuzz target without modifying build script.')
       build_result_alt.build_script_source = ''
       self._validate_fuzz_target_and_build_script_via_compile(
           cur_round, build_result_alt)
@@ -118,8 +117,7 @@ class Prototyper(BaseAgent):
       return build_result_alt, None
 
     # New fuzz target + has new build.sh.
-    logger.info('Compile fuzz target with modified build script.',
-                trial=build_result.trial)
+    logger.info('Compile fuzz target with modified build script.')
     self._validate_fuzz_target_and_build_script_via_compile(
         cur_round, build_result)
 
@@ -145,12 +143,10 @@ class Prototyper(BaseAgent):
                            benchmark.function_name in disassemble_result.stdout)
     logger.debug('ROUND %02d Final fuzz target function referenced: %s',
                  cur_round,
-                 function_referenced,
-                 trial=trial)
+                 function_referenced)
     if not function_referenced:
       logger.debug('ROUND %02d Final fuzz target function not referenced',
-                   cur_round,
-                   trial=trial)
+                   cur_round)
     return function_referenced
 
   def _validate_fuzz_target_and_build_script_via_compile(
@@ -169,28 +165,24 @@ class Prototyper(BaseAgent):
 
     # Recompile.
     logger.info('===== ROUND %02d Recompile =====',
-                cur_round,
-                trial=build_result.trial)
+                cur_round)
     start_time = time.time()
     compile_process = compilation_tool.compile()
     end_time = time.time()
     logger.debug('ROUND %02d compilation time: %s',
                  cur_round,
-                 timedelta(seconds=end_time - start_time),
-                 trial=build_result.trial)
+                 timedelta(seconds=end_time - start_time))
     compile_succeed = compile_process.returncode == 0
     logger.debug('ROUND %02d Fuzz target compiles: %s',
                  cur_round,
-                 compile_succeed,
-                 trial=build_result.trial)
+                 compile_succeed)
 
     # Double-check binary.
     ls_result = compilation_tool.execute(f'ls /out/{benchmark.target_name}')
     binary_exists = ls_result.returncode == 0
     logger.debug('ROUND %02d Final fuzz target binary exists: %s',
                  cur_round,
-                 binary_exists,
-                 trial=build_result.trial)
+                 binary_exists)
 
     # Validate if function-under-test is referenced by the fuzz target.
     function_referenced = self._validate_fuzz_target_references_function(
@@ -215,12 +207,10 @@ class Prototyper(BaseAgent):
       # binary to expected path, and reference function-under-test.
       logger.info(
           'Default /src/build.sh works perfectly, no need for a new '
-          'buid script',
-          trial=build_result.trial)
+          'buid script')
       logger.info('***** %s succeeded in %02d rounds *****',
                   self.name,
-                  cur_round,
-                  trial=build_result.trial)
+                  cur_round)
       return build_result_alt, None
 
     if build_result_ori and build_result_ori.success:
@@ -228,8 +218,7 @@ class Prototyper(BaseAgent):
       # binary to expected path, and reference function-under-test.
       logger.info('***** %s succeeded in %02d rounds *****',
                   self.name,
-                  cur_round,
-                  trial=build_result.trial)
+                  cur_round)
       return build_result_ori, None
 
     # Case 2: Binary exits, meaning not referencing function-under-test.
@@ -325,8 +314,7 @@ class Prototyper(BaseAgent):
       logger.error(
           'The human-written build.sh does not save the fuzz target binary to '
           'expected path /out/%s, indicating incorrect info in benchmark YAML.',
-          build_result.benchmark.target_name,
-          trial=build_result.trial)
+          build_result.benchmark.target_name)
       prompt_text = (
           'The fuzz target compiles successfully with /src/build.bk.sh, but the'
           ' final fuzz target binary was not saved to the expected path at '
@@ -347,8 +335,7 @@ class Prototyper(BaseAgent):
       logger.error(
           'The human-written build.sh does not save the fuzz target binary to '
           'expected path /out/%s, indicating incorrect info in benchmark YAML.',
-          build_result.benchmark.target_name,
-          trial=build_result.trial)
+          build_result.benchmark.target_name)
       prompt_text = (
           'The fuzz target compiles successfully with /src/build.bk.sh, but the'
           ' final fuzz target binary was not saved to the expected path at '
@@ -385,8 +372,7 @@ class Prototyper(BaseAgent):
     if not self._parse_tag(response, 'fuzz target'):
       return prompt
     logger.info('----- ROUND %02d Received conclusion -----',
-                cur_round,
-                trial=build_result.trial)
+                cur_round)
 
     self._update_fuzz_target_and_build_script(response, build_result)
 
@@ -410,7 +396,6 @@ class Prototyper(BaseAgent):
     if response:
       prompt = self._container_handle_bash_commands(response, self.inspect_tool,
                                                     prompt)
-
       # Then build fuzz target.
       prompt = self._container_handle_conclusion(cur_round, response,
                                                  build_result, prompt)
@@ -431,7 +416,7 @@ class Prototyper(BaseAgent):
     # Use keep to avoid deleting files, such as benchmark.yaml
     WorkDirs(self.args.work_dirs.base, keep=True)
     last_result = result_history[-1]
-    logger.info('Executing %s', self.name, trial=last_result.trial)
+    logger.info('Executing %s', self.name)
     benchmark = last_result.benchmark
     self.inspect_tool = ProjectContainerTool(benchmark, name='inspect')
     self.inspect_tool.compile(extra_commands=' && rm -rf /out/* > /dev/null')
@@ -449,13 +434,13 @@ class Prototyper(BaseAgent):
                                  client=client,
                                  prompt=prompt,
                                  trial=last_result.trial)
+        logger.info('Received response from %s: %s', self.name, response)
         prompt = self._container_tool_reaction(cur_round, response,
                                                build_result)
         cur_round += 1
     finally:
       # Cleanup: stop and remove the container
       logger.debug('Stopping and removing the inspect container %s',
-                   self.inspect_tool.container_id,
-                   trial=last_result.trial)
+                   self.inspect_tool.container_id)
       self.inspect_tool.terminate()
     return build_result

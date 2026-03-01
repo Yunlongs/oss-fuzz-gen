@@ -178,7 +178,7 @@ def _query_introspector(api: str, params: dict) -> Optional[requests.Response]:
   """Queries FuzzIntrospector API and returns the json payload,
   returns an empty dict if unable to get data."""
 
-  logger.info('Querying FuzzIntrospector API: %s\n', api)
+  logger.debug('Querying FuzzIntrospector API: %s\n', api)
   for attempt_num in range(1, MAX_RETRY + 1):
     try:
       resp = requests.get(api, params, timeout=TIMEOUT)
@@ -820,6 +820,17 @@ def _group_function_params(param_types: list[str], param_names: list[str],
   } for param_type, param_name in zip(param_types, param_names)]
 
 
+def _select_public_api_functions(project: str) -> OrderedDict:
+  """Selects the top |limit| public API functions from the project."""
+  logger.info('Extracting public API functions.')
+  functions = []
+  for func in query_introspector_all_public_candidates(project):
+    debug_summary = func.get('debug_summary', '')
+    if debug_summary:
+      if len(debug_summary.get('possible-header-files', [])) > 0:
+        functions.append(func)
+  return OrderedDict((func['function_signature'], func) for func in functions)
+
 def _select_top_functions_from_oracle(project: str, limit: int,
                                       target_oracle: str,
                                       target_oracles: list[str]) -> OrderedDict:
@@ -923,8 +934,13 @@ def _select_functions_from_oracles(project: str, limit: int,
   selected_singatures = _combine_functions(list(frlc_targets.keys()),
                                            list(epfr_targets.keys()),
                                            list(ot_targets.keys()), limit)
+  api_targets = _select_public_api_functions(project)
+  all_functions.update(api_targets)
 
-  return [all_functions[func] for func in selected_singatures]
+  extra_api = [sig for sig in api_targets if sig not in selected_singatures]
+  final_signatures = selected_singatures + extra_api
+
+  return [all_functions[func] for func in final_signatures]
 
 
 def _get_harness_intrinsics(

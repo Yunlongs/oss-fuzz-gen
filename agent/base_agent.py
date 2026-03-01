@@ -29,7 +29,6 @@ from google.adk import agents, runners, sessions
 from google.adk.tools import ToolContext
 from google.genai import errors, types
 
-import logger
 import utils
 from data_prep import introspector
 from experiment import benchmark as benchmarklib
@@ -37,6 +36,7 @@ from llm_toolkit.models import LLM, VertexAIModel
 from llm_toolkit.prompts import Prompt
 from results import Result
 from tool.base_tool import BaseTool
+from logger_config import logger
 
 
 class BaseAgent(ABC):
@@ -89,13 +89,13 @@ class BaseAgent(ABC):
   def chat_llm(self, cur_round: int, client: Any, prompt: Prompt,
                trial: int) -> str:
     """Chat with LLM."""
-    logger.info('<CHAT PROMPT:ROUND %02d>%s</CHAT PROMPT:ROUND %02d>',
+    logger.debug('<CHAT PROMPT:ROUND %02d>%s</CHAT PROMPT:ROUND %02d>',
                 cur_round,
                 prompt.gettext(),
                 cur_round,
                 trial=trial)
     response = self.llm.chat_llm(client=client, prompt=prompt)
-    logger.info('<CHAT RESPONSE:ROUND %02d>%s</CHAT RESPONSE:ROUND %02d>',
+    logger.debug('<CHAT RESPONSE:ROUND %02d>%s</CHAT RESPONSE:ROUND %02d>',
                 cur_round,
                 response,
                 cur_round,
@@ -189,6 +189,7 @@ class BaseAgent(ABC):
     # We add any additional information to the prompt.
     if extra:
       prompt.append(extra)
+    logger.info("----- Agent's reaction to invalid tool usage -----\n%s", prompt_text)
     return prompt
 
   def _container_handle_bash_commands(self, response: str, tool: BaseTool,
@@ -199,6 +200,7 @@ class BaseAgent(ABC):
       prompt_text += self._format_bash_execution_result(
           tool.execute(command), previous_prompt=prompt) + '\n'
       prompt.append(prompt_text)
+    logger.info("----- Agent's reaction to container tool's feedback -----\n%s", prompt_text)
     return prompt
 
   def _sleep_random_duration(

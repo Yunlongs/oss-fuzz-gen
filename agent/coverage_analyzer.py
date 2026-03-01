@@ -17,7 +17,6 @@ Use it as a usual module locally, or as script in cloud builds.
 import os
 from typing import Optional
 
-import logger
 from agent.base_agent import BaseAgent
 from experiment.workdir import WorkDirs
 from llm_toolkit import prompt_builder
@@ -25,6 +24,7 @@ from llm_toolkit.prompt_builder import CoverageAnalyzerTemplateBuilder
 from llm_toolkit.prompts import Prompt
 from results import AnalysisResult, CoverageResult, Result, RunResult
 from tool.container_tool import ProjectContainerTool
+from logger_config import logger
 
 INVALID_PRMOT_PATH = os.path.join('prompts', 'agent',
                                   'coverage-analyzer-invalid-response.txt')
@@ -41,8 +41,7 @@ class CoverageAnalyzer(BaseAgent):
     if not isinstance(last_result, RunResult):
       logger.error('The last result in %s is not RunResult: %s',
                    self.name,
-                   results,
-                   trial=self.trial)
+                   results)
       return Prompt()
 
     function_requirements = self.get_function_requirements()
@@ -66,8 +65,7 @@ class CoverageAnalyzer(BaseAgent):
     if not conclusion:
       return prompt
     logger.info('----- ROUND %02d Received conclusion -----',
-                cur_round,
-                trial=self.trial)
+                cur_round)
 
     coverage_result.improve_required = conclusion.strip().lower() == 'true'
     coverage_result.insight = self._parse_tag(response, 'insights')
@@ -84,6 +82,8 @@ class CoverageAnalyzer(BaseAgent):
 
     prompt = self._container_handle_bash_commands(response, self.inspect_tool,
                                                   prompt)
+    logger.info("----- Agent's reaction to container tool's feedback -----\n%s",
+                prompt.get())
     # Only report conclusion when no more bash investigation is required.
     if not prompt.gettext():
       # Then build fuzz target.
@@ -109,7 +109,7 @@ class CoverageAnalyzer(BaseAgent):
     last_result = result_history[-1]
     assert isinstance(last_result, RunResult)
 
-    logger.info('Executing %s', self.name, trial=last_result.trial)
+    logger.info('Executing %s', self.name)
     benchmark = last_result.benchmark
     # TODO(dongge): Use the generated fuzz target and build script here.
     self.inspect_tool = ProjectContainerTool(benchmark, name='inspect')
@@ -123,6 +123,7 @@ class CoverageAnalyzer(BaseAgent):
     cur_round = 1
     coverage_result = CoverageResult()
     prompt = self._initial_prompt(result_history)
+    #logger.info('Initial prompt for %s:\n %s', self.name, prompt.get())
 
     try:
       client = self.llm.get_chat_client(model=self.llm.get_model())
@@ -131,14 +132,15 @@ class CoverageAnalyzer(BaseAgent):
                                  client=client,
                                  prompt=prompt,
                                  trial=last_result.trial)
+
+        logger.info('Received response from %s:\n %s', self.name, response)
         prompt = self._container_tool_reaction(cur_round, response, last_result,
                                                coverage_result)
         cur_round += 1
     finally:
       # Cleanup: stop and remove the container
       logger.debug('Stopping and removing the inspect container %s',
-                   self.inspect_tool.container_id,
-                   trial=last_result.trial)
+                   self.inspect_tool.container_id)
       self.inspect_tool.terminate()
 
     analysis_result = AnalysisResult(

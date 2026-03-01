@@ -22,12 +22,13 @@ import os
 from typing import Optional
 
 log_file_name = "run_all_experiments.log"
+logger = logging.getLogger("my_app")
 
 def setup_logger(
     logger_name: str,
     log_level: int = logging.INFO,
     log_dir: Optional[str] = None
-) -> logging.Logger:
+) :
     """
     配置并返回一个标准化的logger实例。
     
@@ -45,13 +46,12 @@ def setup_logger(
         >>> logger.info("This is a log message")
     """
     # 获取或创建logger
-    logger = logging.getLogger(logger_name)
     logger.setLevel(log_level)
 
     
     # 如果未指定log_dir，使用默认目录
     if log_dir is None:
-        return logger
+        return
     else:
         # 确保指定的目录存在
         os.makedirs(log_dir, exist_ok=True)
@@ -59,7 +59,7 @@ def setup_logger(
     log_file = os.path.join(log_dir, log_file_name)
     
     # 创建标准格式化器
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(pathname)s:%(lineno)d - %(message)s')
     
     # 配置文件handler
     file_handler = logging.FileHandler(log_file)
@@ -72,7 +72,15 @@ def setup_logger(
     console_handler.setLevel(log_level)
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
-    
-    return logger
+    logger.info(f"Logger '{logger_name}' initialized. Logs will be saved to: {log_file}")
 
-logger = setup_logger(__name__, log_level=logging.INFO, log_dir=None)
+def reconfigure_logger_dir(work_dir: str) -> None:
+  """重新配置logger的日志文件目录到work_dir。"""
+  # 移除现有的所有handlers
+  for handler in logger.handlers[:]:
+    handler.close()
+    logger.removeHandler(handler)
+  
+  # 使用新的work_dir重新设置logger
+  work_dir = os.path.abspath(work_dir)
+  setup_logger(__name__, log_level=logging.INFO, log_dir=work_dir)

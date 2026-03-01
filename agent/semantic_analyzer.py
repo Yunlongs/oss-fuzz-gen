@@ -18,11 +18,11 @@ import re
 from collections import defaultdict, namedtuple
 from typing import Optional
 
-import logger
 from agent.base_agent import BaseAgent
 from experiment.fuzz_target_error import SemanticCheckResult
 from llm_toolkit.prompts import Prompt
 from results import AnalysisResult, Result, RunResult
+from logger_config import logger
 
 # Regex for extract function name.
 FUNC_NAME = re.compile(r'(?:^|\s|\b)([\w:]+::)*(\w+)(?:<[^>]*>)?(?=\(|$)')

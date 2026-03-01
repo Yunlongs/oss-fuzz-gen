@@ -614,7 +614,7 @@ class BuilderRunner:
                                       generated_project)
 
     else:
-      logger.info('The project does not have any cache')
+      logger.debug('The project does not have any cache')
 
     # Build the image
     command = [

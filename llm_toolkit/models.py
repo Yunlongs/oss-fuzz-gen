@@ -81,6 +81,7 @@ class LLM:
 
     # Preserve chat history for OpenAI
     self.messages = []
+    self.base_url = os.getenv('OPENAI_BASE_URL')
 
   def cloud_setup(self):
     """Runs Cloud specific-setup."""
@@ -200,14 +201,17 @@ class LLM:
       try:
         return func()
       except Exception as err:
-        logging.warning('LLM API Error when responding (attempt %d): %s',
-                        attempt, err)
+        base_url = getattr(self, 'base_url', 'unknown')
+        model_name = getattr(self, 'name', 'unknown')
+        logger.warning(
+            'LLM API Error when responding (attempt %d) [model=%s, base_url=%s]: %s',
+            attempt, model_name, base_url, err, exc_info=True)
         tb = traceback.extract_tb(err.__traceback__)
         if (not self._is_retryable_error(err, api_errs, tb) or
             attempt == self._max_attempts):
-          logging.warning(
-              'LLM API cannot fix error when responding (attempt %d) %s: %s',
-              attempt, err, traceback.format_exc())
+          logger.warning(
+              'LLM API cannot fix error when responding (attempt %d) [model=%s, base_url=%s] %s: %s',
+              attempt, model_name, base_url, err, traceback.format_exc())
           raise err
         self._delay_for_retry(attempt_count=attempt)
     return None
@@ -291,7 +295,7 @@ class GPT(LLM):
 
   def _get_client(self):
     """Returns the OpenAI client."""
-    return openai.OpenAI(base_url=os.getenv('OPENAI_BASE_URL'), api_key=os.getenv('OPENAI_API_KEY'))
+    return openai.OpenAI(base_url=self.base_url, api_key=os.getenv('OPENAI_API_KEY'))
 
   # ================================ Prompt ================================ #
   def estimate_token_num(self, text) -> int:
@@ -330,7 +334,7 @@ class GPT(LLM):
 
     completion = self.with_retry_on_error(
         lambda: client.chat.completions.create(messages=self.messages,
-                                               model="DeepSeek-V3.2",
+                                               model=self.name,
                                                #n=self.num_samples,
                                                temperature=self.temperature,
                                                tool_choice="none",
@@ -401,7 +405,7 @@ class GPT(LLM):
 
     completion = self.with_retry_on_error(
         lambda: client.chat.completions.create(messages=prompt.get(),
-                                               model=self.name,
+                                               model="DeepSeek-V3.2",
                                                n=self.num_samples,
                                                temperature=self.temperature,
                                                extra_body = {"chat_template_kwargs": {"thinking": True}}

@@ -15,12 +15,13 @@
 import argparse
 from typing import Optional
 
-import logger
 from agent.base_agent import BaseAgent
 from results import AnalysisResult, BuildResult, Result, RunResult, TrialResult
 from stage.analysis_stage import AnalysisStage
 from stage.execution_stage import ExecutionStage
 from stage.writing_stage import WritingStage
+from logger_config import logger
+import logger as trail_logger
 
 
 class Pipeline():
@@ -43,7 +44,7 @@ class Pipeline():
                analysis_stage_agents: Optional[list[BaseAgent]] = None):
     self.args = args
     self.trial = trial
-    self.logger = logger.get_trial_logger(trial=trial)
+    self.logger = trail_logger.get_trial_logger(trial=trial)
     self.logger.debug('Pipeline Initialized')
     self.writing_stage: WritingStage = WritingStage(args, trial,
                                                     writing_stage_agents)
@@ -106,7 +107,7 @@ class Pipeline():
   def _execute_one_cycle(self, result_history: list[Result],
                          cycle_count: int) -> None:
     """Executes the stages once."""
-    self.logger.info('[Cycle %d] Initial result is %s', cycle_count,
+    logger.info('[Cycle %d] Initial result is %s', cycle_count,
                      result_history[-1])
     # Writing stage: We expect a build result that succeeds from this stage,
     # and if it fails then we will return from this cycle and terminate
@@ -117,7 +118,7 @@ class Pipeline():
     self._update_status(result_history=result_history)
     if (not isinstance(result_history[-1], BuildResult) or
         not result_history[-1].success):
-      self.logger.warning('[Cycle %d] Build failure, skipping the rest steps',
+      logger.warning('[Cycle %d] Build failure, skipping the rest steps',
                           cycle_count)
       return
 
@@ -130,7 +131,7 @@ class Pipeline():
     self._update_status(result_history=result_history)
     if (not isinstance(result_history[-1], RunResult) or
         not result_history[-1].log_path):
-      self.logger.warning('[Cycle %d] Run failure, skipping the rest steps',
+      logger.warning('[Cycle %d] Run failure, skipping the rest steps',
                           cycle_count)
       return
 
@@ -143,11 +144,11 @@ class Pipeline():
                                     cycle_count=cycle_count))
     # TODO(maoyi): add the indicator for the success of analysis stage
     if not isinstance(result_history[-1], AnalysisResult):
-      self.logger.warning(
+      logger.warning(
           '[Cycle %d] Analysis failure, skipping the rest steps', cycle_count)
       return
     self._update_status(result_history=result_history)
-    self.logger.info('[Cycle %d] Analysis result %s: %s', cycle_count,
+    logger.info('[Cycle %d] Analysis result %s: %s', cycle_count,
                      result_history[-1].success, result_history[-1])
 
   def execute(self, result_history: list[Result]) -> list[Result]:

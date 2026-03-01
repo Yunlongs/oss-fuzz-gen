@@ -14,7 +14,6 @@
 """An LLM agent to improve a fuzz target's runtime performance.
 Use it as a usual module locally, or as script in cloud builds.
 """
-import logger
 from agent.prototyper import Prototyper
 from llm_toolkit.prompt_builder import (CoverageEnhancerTemplateBuilder,
                                         CrashEnhancerTemplateBuilder,
@@ -22,6 +21,7 @@ from llm_toolkit.prompt_builder import (CoverageEnhancerTemplateBuilder,
                                         JvmFixingBuilder)
 from llm_toolkit.prompts import Prompt, TextPrompt
 from results import AnalysisResult, BuildResult, Result
+from logger_config import logger
 
 
 class Enhancer(Prototyper):
@@ -34,8 +34,7 @@ class Enhancer(Prototyper):
 
     if not isinstance(last_result, AnalysisResult):
       logger.error('The last result in Enhancer is not AnalysisResult: %s',
-                   results,
-                   trial=self.trial)
+                   results)
       return Prompt()
 
     last_build_result = None
@@ -45,8 +44,7 @@ class Enhancer(Prototyper):
         break
     if not last_build_result:
       logger.error('Unable to find the last build result in Enhancer : %s',
-                   results,
-                   trial=self.trial)
+                   results)
       return Prompt()
 
     function_requirements = self.get_function_requirements()
@@ -77,8 +75,7 @@ class Enhancer(Prototyper):
       else:
         logger.error(
             'Last result does not contain either semantic result or '
-            'coverage result',
-            trial=self.trial)
+            'coverage result')
         # TODO(dongge): Give some default initial prompt.
         prompt = TextPrompt(
             'Last result does not contain either semantic result or '

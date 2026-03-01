@@ -247,7 +247,6 @@ def _fuzzing_pipeline(benchmark: Benchmark, model: models.LLM,
   """Runs the predefined 3-stage pipeline for one trial."""
   trial_logger = logger.get_trial_logger(trial=trial, level=logging.DEBUG)
   trial_logger.info('Trial Starts')
-
   # Support custom pipeline.
   if args.custom_pipeline == 'function_based_prototyper':
     p = pipeline.Pipeline(args=args,
@@ -343,6 +342,7 @@ def _fuzzing_pipelines(benchmark: Benchmark, model: models.LLM,
   #  trial_results = p.starmap(_fuzzing_pipeline, task_args)
   trial_results = []
   for trial in range(1, args.num_samples + 1):
+    logger_module.info('Starting trial %d/%d', trial, args.num_samples)
     trial_result = _fuzzing_pipeline(benchmark, model, args, work_dirs, trial)
     trial_results.append(trial_result)
   return BenchmarkResult(benchmark=benchmark,

@@ -403,7 +403,7 @@ def _build_image(project_name: str) -> str:
            stdout=sp.PIPE,
            stderr=sp.PIPE,
            check=True)
-    logger.info('Successfully build project image for %s', project_name)
+    logger.debug('Successfully build project image for %s', project_name)
     return f'gcr.io/oss-fuzz/{project_name}'
   except sp.CalledProcessError as e:
     logger.error('Failed to build project image for %s: %s', project_name,
@@ -426,7 +426,7 @@ def create_ossfuzz_project(benchmark: benchmarklib.Benchmark,
   generated_project_path = os.path.join(OSS_FUZZ_DIR, 'projects',
                                         generated_oss_fuzz_project)
   if os.path.exists(generated_project_path):
-    logger.info('Project %s already exists.', generated_project_path)
+    logger.debug('Project %s already exists.', generated_project_path)
     return generated_project_path
 
   oss_fuzz_project_path = os.path.join(OSS_FUZZ_DIR, 'projects',
@@ -445,7 +445,7 @@ def prepare_project_image(benchmark: benchmarklib.Benchmark,
   create_ossfuzz_project(benchmark, generated_oss_fuzz_project)
 
   if not ENABLE_CACHING:
-    logger.warning('Disabled caching when building image for %s', project)
+    logger.debug('Disabled caching when building image for %s', project)
   elif is_image_cached(project, 'address'):
     logger.info('Will use cached instance.')
     # Rewrite for caching.

@@ -19,7 +19,6 @@ import os
 import subprocess as sp
 from typing import Optional
 
-import logger
 from agent.base_agent import BaseAgent
 from experiment import evaluator as evaluator_lib
 from experiment import oss_fuzz_checkout
@@ -31,6 +30,7 @@ from results import AnalysisResult, CrashResult, Result, RunResult
 from tool.base_tool import BaseTool
 from tool.container_tool import ProjectContainerTool
 from tool.gdb_tool import GDBTool
+from logger_config import logger
 
 MAX_ROUND = 100
 
@@ -62,8 +62,7 @@ class CrashAnalyzer(BaseAgent):
           last_result.run_error, last_result.crash_func)
       return prompt
 
-    logger.error("Expected a RunResult object in results list",
-                 trial=self.trial)
+    logger.error("Expected a RunResult object in results list")
     return prompt_builder.CrashAnalyzerTemplateBuilder(self.llm).build([])
 
   def _format_gdb_execution_result(
@@ -107,8 +106,7 @@ class CrashAnalyzer(BaseAgent):
                                    crash_result: CrashResult) -> None:
     """Parses LLM conclusion, analysis and suggestion."""
     logger.info('----- ROUND %02d Received conclusion -----',
-                cur_round,
-                trial=self.trial)
+                cur_round)
 
     conclusion = self._parse_tag(response, 'conclusion')
     if conclusion == 'False':
@@ -117,15 +115,13 @@ class CrashAnalyzer(BaseAgent):
       crash_result.true_bug = True
     else:
       logger.error('***** Failed to match conclusion in %02d rounds *****',
-                   cur_round,
-                   trial=self.trial)
+                   cur_round)
 
     crash_result.insight = self._parse_tag(response, 'analysis and suggestion')
     if not crash_result.insight:
       logger.error('Round %02d No analysis and suggestion in conclusion: %s',
                    cur_round,
-                   response,
-                   trial=self.trial)
+                   response)
 
   def _container_tool_reaction(self, cur_round: int, response: str,
                                crash_result: CrashResult) -> Optional[Prompt]:
@@ -172,13 +168,12 @@ class CrashAnalyzer(BaseAgent):
     WorkDirs(self.args.work_dirs.base, keep=True)
     last_result = result_history[-1]
     benchmark = last_result.benchmark
-    logger.info('Executing Crash Analyzer', trial=self.trial)
+    logger.info('Executing Crash Analyzer')
     assert isinstance(last_result, RunResult)
 
     if not os.path.exists(last_result.artifact_path):
       logger.error('Artifact path %s does not exist',
-                   last_result.artifact_path,
-                   trial=self.trial)
+                   last_result.artifact_path)
 
     # TODO(dongge): Move these to oss_fuzz_checkout.
     generated_target_name = os.path.basename(benchmark.target_path)
@@ -239,6 +234,7 @@ class CrashAnalyzer(BaseAgent):
                                chat_history={self.name: ''},
                                stacktrace=last_result.run_error)
     cur_round = 1
+    #logger.info('Initial prompt for Crash Analyzer:\n%s', prompt.get())
     try:
       client = self.llm.get_chat_client(model=self.llm.get_model())
       while prompt and cur_round < MAX_ROUND:
@@ -254,8 +250,7 @@ class CrashAnalyzer(BaseAgent):
       # Cleanup: stop the container
       logger.debug('Stopping the crash analyze containers: %s, %s',
                    self.gdb_tool.container_id,
-                   self.bash_tool.container_id,
-                   trial=self.trial)
+                   self.bash_tool.container_id)
       self.gdb_tool.terminate()
       self.bash_tool.terminate()
 

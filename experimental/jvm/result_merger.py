@@ -21,10 +21,9 @@ import logging
 import os
 import shutil
 from typing import Optional
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger(__name__, 'jvm_result_merger.log')
 
 LOG_FMT = ('%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] '
            ': %(funcName)s: %(message)s')

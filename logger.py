@@ -76,7 +76,7 @@ class CustomLoggerAdapter(logging.LoggerAdapter):
     chat_history_path = os.path.join(trial_result_dir, 'log.txt')
     chat_history = '\n'.join(
         f'\n\n\n************************{agent_name} (Cycle {cycle_count})************************\n'
-        f'{chat_history}\n'
+        f'{(chat_history.content if hasattr(chat_history, "content") else chat_history)}\n'
         for agent_name, chat_history in result.chat_history.items())
     self.write_to_file(chat_history_path, chat_history)
 

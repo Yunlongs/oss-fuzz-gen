@@ -21,16 +21,11 @@ import logging
 import os
 from typing import Optional
 
-
-_script_dir = os.path.dirname(os.path.abspath(__file__))
-_root_dir = os.path.dirname(_script_dir)
-_default_log_dir = os.path.join(_root_dir, 'logs')
-os.makedirs(_default_log_dir, exist_ok=True)
+log_file_name = "run_all_experiments.log"
 
 def setup_logger(
     logger_name: str,
-    log_file_name: Optional[str] = None,
-    log_level: int = logging.DEBUG,
+    log_level: int = logging.INFO,
     log_dir: Optional[str] = None
 ) -> logging.Logger:
     """
@@ -52,27 +47,14 @@ def setup_logger(
     # 获取或创建logger
     logger = logging.getLogger(logger_name)
     logger.setLevel(log_level)
-    
-    # 避免重复添加handler
-    if logger.handlers:
-        return logger
+
     
     # 如果未指定log_dir，使用默认目录
     if log_dir is None:
-        log_dir = _default_log_dir
+        return logger
     else:
         # 确保指定的目录存在
         os.makedirs(log_dir, exist_ok=True)
-    
-    if log_file_name is None:
-        # 根据logger名称自动生成日志文件名
-        # 例如：'ossfuzz_sdk.builder' -> 'ossfuzz_builder.log'
-        #      '__main__' -> 'main.log'
-        #      'module_name' -> 'module_name.log'
-        if logger_name == '__main__':
-            log_file_name = 'main.log'
-        else:
-            log_file_name = logger_name.replace('.', '_').replace('ossfuzz_sdk_', 'ossfuzz_') + '.log'
     
     log_file = os.path.join(log_dir, log_file_name)
     
@@ -93,18 +75,4 @@ def setup_logger(
     
     return logger
 
-
-def get_logger(logger_name: str, log_file_name: Optional[str] = None) -> logging.Logger:
-    """
-    获取已配置的logger或创建新的logger。
-    
-    这是setup_logger的简化版本，使用默认配置。
-    
-    Args:
-        logger_name: Logger的名称
-        log_file_name: 可选的日志文件名
-    
-    Returns:
-        配置好的Logger实例
-    """
-    return setup_logger(logger_name, log_file_name)
+logger = setup_logger(__name__, log_level=logging.INFO, log_dir=None)

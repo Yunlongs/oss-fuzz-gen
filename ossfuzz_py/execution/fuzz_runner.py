@@ -45,10 +45,9 @@ from ossfuzz_py.result.results import RunInfo
 from ossfuzz_py.utils.env_utils import EnvUtils
 from ossfuzz_py.utils.work_dir_manager import WorkDirManager
 
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger('ossfuzz_sdk.fuzz_runner', 'ossfuzz_fuzz_runner.log')
 
 
 class FuzzRunOptions(BaseModel):

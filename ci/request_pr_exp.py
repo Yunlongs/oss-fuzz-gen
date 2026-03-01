@@ -33,9 +33,8 @@ from datetime import datetime
 from string import Template
 
 # Configure logging to display all messages at or above INFO level
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'ci_request_pr_exp.log')
 
 DEFAULT_CLUSTER = 'llm-experiment'
 LARGE_CLUSTER = 'llm-experiment-large'

@@ -19,9 +19,8 @@ import subprocess as sp
 from experiment import oss_fuzz_checkout
 from experiment.benchmark import Benchmark
 from tool.base_tool import BaseTool
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'container_tool.log')
 
 
 class ProjectContainerTool(BaseTool):

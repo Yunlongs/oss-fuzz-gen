@@ -20,9 +20,8 @@ import os
 from abc import abstractmethod
 from typing import Any
 
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'llm_prompts.log')
 
 
 class Prompt:

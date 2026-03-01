@@ -22,11 +22,9 @@ import shutil
 
 from ossfuzz_py.core.data_models import FileType
 from ossfuzz_py.utils.env_utils import EnvUtils
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger('ossfuzz_sdk.file_utils', 'ossfuzz_file_utils.log')
-
 
 class FileUtils:
   """

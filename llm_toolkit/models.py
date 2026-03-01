@@ -42,9 +42,8 @@ from vertexai.preview.language_models import CodeGenerationModel
 
 from llm_toolkit import prompts
 from utils import retryable
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'llm_models.log')
 
 # Model hyper-parameters.
 MAX_TOKENS: int = 2000
@@ -331,14 +330,24 @@ class GPT(LLM):
 
     completion = self.with_retry_on_error(
         lambda: client.chat.completions.create(messages=self.messages,
-                                               model=self.name,
-                                               n=self.num_samples,
+                                               model="DeepSeek-V3.2",
+                                               #n=self.num_samples,
                                                temperature=self.temperature,
-                                               extra_body = {"chat_template_kwargs": {"thinking": True}}),
+                                               tool_choice="none",
+                                               extra_body = {"chat_template_kwargs": {"thinking": True}}
+                                               ),
         [openai.OpenAIError])
 
     llm_response = completion.choices[0].message.content
-    self.messages.append({'role': 'assistant', 'content': llm_response})
+    if self.name == "DeepSeek-V3.2":
+      reasoning_content = completion.choices[0].message.reasoning
+      content = completion.choices[0].message.content
+      if not content:
+        llm_response = reasoning_content
+      self.messages.append(completion.choices[0].message)
+
+    else:
+      self.messages.append({'role': 'assistant', 'content': llm_response})
     self.log_token_usage(completion)
     return llm_response
 
@@ -373,7 +382,9 @@ class GPT(LLM):
 
     result = self.with_retry_on_error(
         lambda: client.responses.create(
-            model=self.name, input=self.messages, tools=tools, extra_body = {"chat_template_kwargs": {"thinking": True}}),
+            model=self.name, input=self.messages, tools=tools, tool_choice="auto",
+             extra_body = {"chat_template_kwargs": {"thinking": True}}
+            ),
         [openai.OpenAIError])
     self.log_token_usage(result)
     return result
@@ -393,7 +404,8 @@ class GPT(LLM):
                                                model=self.name,
                                                n=self.num_samples,
                                                temperature=self.temperature,
-                                               extra_body = {"chat_template_kwargs": {"thinking": True}}),
+                                               extra_body = {"chat_template_kwargs": {"thinking": True}}
+                                               ),
         [openai.OpenAIError])
     self.log_token_usage(completion)
     return completion.choices[0].message.content

@@ -33,9 +33,8 @@ from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict, List
 
 from google.cloud import storage
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'parse_training_data.log')
 
 STORAGE_CLIENT = storage.Client()
 FUZZ_TARGET_FIXING_DIR_PATTERN = r'\d+-F\d+'

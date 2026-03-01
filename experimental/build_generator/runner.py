@@ -33,12 +33,11 @@ from experimental.build_generator import (constants, file_utils, llm_agent,
                                           templates)
 from llm_toolkit import models
 from results import Result
-from logger_config import setup_logger
+from logger_config import logger
 
 silent_global = False
 
 # Configure module logger
-logger = setup_logger(__name__, 'build_generator_runner.log')
 
 LOG_FMT = ('%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] '
            ': %(funcName)s: %(message)s')

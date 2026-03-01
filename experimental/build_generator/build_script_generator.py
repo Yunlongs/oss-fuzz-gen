@@ -24,10 +24,8 @@ from typing import Dict, Iterator, List, Optional, Tuple
 
 import constants
 import file_utils as utils
-from logger_config import setup_logger
+from logger_config import logger
 
-# Configure module logger
-logger = setup_logger(__name__, 'build_script_generator.log')
 
 
 ############################################################

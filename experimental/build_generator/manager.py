@@ -41,10 +41,9 @@ FUZZER_PRE_HEADERS = '''#include <stdlib.h>
 
 SECONDS_TO_RUN_HARNESS = 20
 
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger(__name__, 'build_generator_manager.log')
 
 LOG_FMT = ('%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] '
            ': %(funcName)s: %(message)s')

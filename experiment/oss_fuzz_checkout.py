@@ -26,9 +26,8 @@ import uuid
 import yaml
 
 from experiment import benchmark as benchmarklib
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'oss_fuzz_checkout.log')
 
 BUILD_DIR: str = 'build'
 GLOBAL_TEMP_DIR: str = ''

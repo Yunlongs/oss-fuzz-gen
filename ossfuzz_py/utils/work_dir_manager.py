@@ -38,10 +38,9 @@ from typing import Any, Dict, List, Optional, Union
 # Import consolidated errors
 from ossfuzz_py.errors import (WorkDirError, WorkDirPermissionError,
                                WorkDirValidationError)
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger('ossfuzz_sdk.work_dir_manager', 'ossfuzz_work_dir_manager.log')
 
 
 class WorkDirManager:

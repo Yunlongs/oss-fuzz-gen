@@ -27,9 +27,8 @@ import sys
 from typing import Set
 
 import requests
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'target_collector.log')
 
 
 def _extract_introspector_report(project_name, date_str):

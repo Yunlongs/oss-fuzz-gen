@@ -37,9 +37,8 @@ from experiment.workdir import WorkDirs
 from llm_toolkit import code_fixer
 from llm_toolkit.crash_triager import TriageResult
 from llm_toolkit.models import DefaultModel
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'builder_runner.log')
 
 # The directory in the oss-fuzz image
 RUN_TIMEOUT: int = 30

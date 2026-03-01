@@ -32,9 +32,8 @@ from google.cloud import storage
 from data_prep import project_src
 from experiment import benchmark as benchmarklib
 from experiment import oss_fuzz_checkout
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'introspector.log')
 
 T = TypeVar('T', str, list, dict, int)  # Generic type.
 

@@ -26,9 +26,8 @@ from experiment import benchmark as benchmarklib
 from llm_toolkit import models
 from llm_toolkit import output_parser as parser
 from llm_toolkit import prompt_builder
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'code_fixer.log')
 
 ERROR_LINES = 20
 NO_MEMBER_ERROR_REGEX = r"error: no member named '.*' in '([^':]*):?.*'"

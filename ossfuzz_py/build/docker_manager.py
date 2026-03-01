@@ -37,10 +37,9 @@ from typing import Dict, List, Optional
 
 import yaml
 
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger('ossfuzz_sdk.docker_manager', 'ossfuzz_docker_manager.log')
 
 # Import consolidated errors
 from ossfuzz_py.errors import (DockerContainerError, DockerExecutionError,

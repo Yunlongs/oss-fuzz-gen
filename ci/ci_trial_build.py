@@ -22,9 +22,8 @@ import sys
 
 import github  # type: ignore
 import request_pr_exp
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'ci_trial_build.log')
 
 TRIGGER_COMMAND = '/gcbrun'
 TRIAL_BUILD_COMMAND_STR = f'{TRIGGER_COMMAND} exp '

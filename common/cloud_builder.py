@@ -33,9 +33,8 @@ from googleapiclient.discovery import build as cloud_build
 import utils
 from agent.base_agent import BaseAgent
 from results import Result, RunResult
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'cloud_builder.log')
 
 OF_REPO = 'https://github.com/google/oss-fuzz.git'
 OFG_ROOT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))

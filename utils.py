@@ -21,9 +21,8 @@ from typing import Any
 
 import dill
 
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'utils.log')
 
 
 def serialize_to_dill(variable: Any, dill_path: str = '') -> str:

@@ -19,9 +19,8 @@ import os
 from data_prep import introspector
 from experiment import benchmark as benchmarklib
 from tool import base_tool
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'fuzz_introspector_tool.log')
 
 
 class FuzzIntrospectorTool(base_tool.BaseTool):

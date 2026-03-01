@@ -30,9 +30,8 @@ from experiment.fuzz_target_error import SemanticCheckResult
 from llm_toolkit import models, prompts
 from results import (AnalysisResult, BuildResult, CoverageResult,
                      CrashContextResult, CrashResult, RunResult)
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'prompt_builder.log')
 
 DEFAULT_TEMPLATE_DIR: str = os.path.join(os.path.dirname(__file__),
                                          '../prompts/template_xml/')

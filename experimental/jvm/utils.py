@@ -27,10 +27,9 @@ from typing import Optional
 from urllib3.util import parse_url
 
 from experimental.jvm import constants, oss_fuzz_templates
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger(__name__, 'jvm_utils.log')
 
 
 # Project preparation utils

@@ -24,9 +24,8 @@ import subprocess
 import sys
 
 # Configure logging to display all messages at or above INFO level
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'docker_run.log')
 
 BENCHMARK_SET = 'comparison'
 FREQUENCY_LABEL = 'daily'

@@ -22,9 +22,8 @@ import os
 from typing import Any, Dict, List
 
 from report.common import FileSystem, Results
-from logger_config import setup_logger
+from logger_config import logger
 
-logger = setup_logger(__name__, 'upload_summary.log')
 
 
 @dataclasses.dataclass

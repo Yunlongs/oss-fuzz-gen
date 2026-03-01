@@ -34,10 +34,9 @@ from typing import Any, Dict, List, Optional
 from ossfuzz_py import BuildConfigError
 from ossfuzz_py.core.data_models import FuzzingEngine, ProjectConfig, Sanitizer
 
-from logger_config import setup_logger
+from logger_config import logger
 
 # Configure module logger
-logger = setup_logger('ossfuzz_sdk.build_config', 'ossfuzz_build_config.log')
 
 
 class BuildConfig:

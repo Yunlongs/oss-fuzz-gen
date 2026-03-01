@@ -41,10 +41,7 @@ from experiment.benchmark import Benchmark
 from experiment.workdir import WorkDirs
 from llm_toolkit import models, output_parser, prompt_builder, prompts
 from results import BenchmarkResult, Result, TrialResult
-from logger_config import setup_logger
-
-# Add logging setup
-logger_module = setup_logger(__name__, 'run_one_experiment.log')
+from logger_config import logger as logger_module
 
 # WARN: Avoid high value for NUM_EVA for local experiments.
 # NUM_EVA controls the number of fuzz targets to evaluate in parallel by each
@@ -292,10 +289,10 @@ def _fuzzing_pipeline(benchmark: Benchmark, model: models.LLM,
                                                llm=model,
                                                args=args),
                               CrashAnalyzer(trial=trial, llm=model, args=args),
-                              ContextAnalyzer(trial=trial,
-                                              llm=model,
-                                              args=args,
-                                              benchmark=benchmark),
+                              #ContextAnalyzer(trial=trial,
+                              #                llm=model,
+                              #                args=args,
+                              #                benchmark=benchmark),
                           ])
   else:
     writer_agents = []
@@ -339,11 +336,15 @@ def _fuzzing_pipelines(benchmark: Benchmark, model: models.LLM,
                        work_dirs: WorkDirs) -> BenchmarkResult:
   """Runs all trial experiments in their pipelines."""
   # Create a pool of worker processes
-  with pool.ThreadPool(processes=NUM_EVA) as p:
+  #with pool.ThreadPool(processes=NUM_EVA) as p:
     # Initialize thread-local storage in each worker before processing
-    task_args = [(benchmark, model, args, work_dirs, trial)
-                 for trial in range(1, args.num_samples + 1)]
-    trial_results = p.starmap(_fuzzing_pipeline, task_args)
+  #  task_args = [(benchmark, model, args, work_dirs, trial)
+  #               for trial in range(1, args.num_samples + 1)]
+  #  trial_results = p.starmap(_fuzzing_pipeline, task_args)
+  trial_results = []
+  for trial in range(1, args.num_samples + 1):
+    trial_result = _fuzzing_pipeline(benchmark, model, args, work_dirs, trial)
+    trial_results.append(trial_result)
   return BenchmarkResult(benchmark=benchmark,
                          work_dirs=work_dirs,
                          trial_results=trial_results)

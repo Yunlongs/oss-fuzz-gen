@@ -1,0 +1,1730 @@
+functions:
+- name: pcap_findalldevs
+  params:
+  - name: alldevsp
+    type: 'bool '
+  - name: errbuf
+    type: 'bool '
+  return_type: int
+  signature: int pcap_findalldevs(pcap_if_t **, char *)
+- name: pcap_compile_nopcap
+  params:
+  - name: snaplen_arg
+    type: int
+  - name: linktype_arg
+    type: int
+  - name: program
+    type: 'bool '
+  - name: buf
+    type: 'bool '
+  - name: optimize
+    type: int
+  - name: mask
+    type: int
+  return_type: int
+  signature: int pcap_compile_nopcap(int, int, struct bpf_program *, const char *,
+    int, bpf_u_int32)
+- name: pcap_findalldevs_ex
+  params:
+  - name: source
+    type: 'bool '
+  - name: auth
+    type: 'bool '
+  - name: alldevs
+    type: 'bool '
+  - name: errbuf
+    type: 'bool '
+  return_type: int
+  signature: int pcap_findalldevs_ex(const char *, struct pcap_rmtauth *, pcap_if_t
+    **, char *)
+- name: pcap_open
+  params:
+  - name: source
+    type: 'bool '
+  - name: snaplen
+    type: int
+  - name: flags
+    type: int
+  - name: read_timeout
+    type: int
+  - name: auth
+    type: 'bool '
+  - name: errbuf
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_open(const char *, int, int, int, struct pcap_rmtauth *,
+    char *)
+- name: pcap_lookupdev
+  params:
+  - name: errbuf
+    type: 'bool '
+  return_type: void
+  signature: char * pcap_lookupdev(char *)
+- name: gen_geneve
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_geneve(compiler_state_t *, bpf_u_int32, int)
+- name: pcapint_findalldevs_interfaces
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_findalldevs_interfaces(pcap_if_list_t *, char *, DW_TAG_subroutine_typeint
+    *, get_if_flags_func)
+- name: pcap_ether_aton
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: u_char * pcap_ether_aton(const char *)
+- name: pcap_nametoportrange
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_nametoportrange(const char *, int *, int *, int *)
+- name: pcap_setfilter_linux
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_setfilter_linux(pcap_t *, struct bpf_program *)
+- name: pcap_lookupnet
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_lookupnet(const char *, bpf_u_int32 *, bpf_u_int32 *, char *)
+- name: pcapint_platform_finddevs
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_platform_finddevs(pcap_if_list_t *, char *)
+- name: pcap_loop
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_loop(pcap_t *, int, pcap_handler, u_char *)
+- name: pcap_dump_open
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_dumper_t * pcap_dump_open(pcap_t *, const char *)
+- name: netfilter_read_linux
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int netfilter_read_linux(pcap_t *, int, pcap_handler, u_char *)
+- name: pcap_check_header
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_check_header(const uint8_t *, FILE *, u_int, char *, int
+    *)
+- name: bpf_filter
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: u_int bpf_filter(const struct bpf_insn *, const u_char *, u_int, u_int)
+- name: pcapint_add_addr_to_if
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_add_addr_to_if(pcap_if_list_t *, const char *, uint64_t,
+    get_if_flags_func, struct sockaddr *, size_t, struct sockaddr *, size_t, struct
+    sockaddr *, size_t, struct sockaddr *, size_t, char *)
+- name: pcap_dump_fopen
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_dumper_t * pcap_dump_fopen(pcap_t *, FILE *)
+- name: pcapint_add_dev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_if_t * pcapint_add_dev(pcap_if_list_t *, const char *, bpf_u_int32,
+    const char *, char *)
+- name: pcap_ng_next_packet
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_ng_next_packet(pcap_t *, struct pcap_pkthdr *, u_char **)
+- name: pcapint_add_addr_to_dev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_add_addr_to_dev(pcap_if_t *, struct sockaddr *, size_t, struct
+    sockaddr *, size_t, struct sockaddr *, size_t, struct sockaddr *, size_t, char
+    *)
+- name: gen_multicast
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_multicast(compiler_state_t *, int)
+- name: gen_broadcast
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_broadcast(compiler_state_t *, int)
+- name: netfilter_activate
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int netfilter_activate(pcap_t *)
+- name: usb_create
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * usb_create(const char *, char *, int *)
+- name: usb_findalldevs
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int usb_findalldevs(pcap_if_list_t *, char *)
+- name: pcap_create
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_create(const char *, char *)
+- name: pcap_read_linux_mmap_v3
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_read_linux_mmap_v3(pcap_t *, int, pcap_handler, u_char *)
+- name: pcap_dump_open_append
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_dumper_t * pcap_dump_open_append(pcap_t *, const char *)
+- name: gen_ifindex
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_ifindex(compiler_state_t *, int)
+- name: pcap_activate_linux
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_activate_linux(pcap_t *)
+- name: pcapint_find_or_add_if
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_if_t * pcapint_find_or_add_if(pcap_if_list_t *, const char *, uint64_t,
+    get_if_flags_func, char *)
+- name: pcap_open_live
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_open_live(const char *, int, int, int, char *)
+- name: pcapint_add_any_dev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_if_t * pcapint_add_any_dev(pcap_if_list_t *, char *)
+- name: gen_inbound_outbound
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_inbound_outbound(compiler_state_t *, const int)
+- name: pcapint_create_interface
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcapint_create_interface(const char *, char *)
+- name: pcapint_find_or_add_dev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_if_t * pcapint_find_or_add_dev(pcap_if_list_t *, const char *, bpf_u_int32,
+    get_if_flags_func, const char *, char *)
+- name: netfilter_findalldevs
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int netfilter_findalldevs(pcap_if_list_t *, char *)
+- name: pcap_activate
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_activate(pcap_t *)
+- name: pcap_fopen_offline
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_fopen_offline(FILE *, char *)
+- name: pcapint_install_bpf_program
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_install_bpf_program(pcap_t *, struct bpf_program *)
+- name: pcapint_create_common
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: pcap_t * pcapint_create_common(char *, size_t, size_t)
+- name: pcap_list_datalinks
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_list_datalinks(pcap_t *, int **)
+- name: pcapint_get_decuint
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_get_decuint(const char *, char **, unsigned int *)
+- name: pcap_list_tstamp_types
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_list_tstamp_types(pcap_t *, int **)
+- name: pcapint_setnonblock_fd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcapint_setnonblock_fd(pcap_t *, int)
+- name: pcap_statustostr
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const char * pcap_statustostr(int)
+- name: pcapint_getnonblock_fd
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_getnonblock_fd(pcap_t *)
+- name: pcap_inject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int pcap_inject(pcap_t *, const void *, size_t)
+- name: pcap_sendpacket
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_sendpacket(pcap_t *, const u_char *, int)
+- name: pcapint_do_addexit
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_do_addexit(pcap_t *)
+- name: pcap_set_datalink
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_datalink(pcap_t *, int)
+- name: pcap_set_tstamp_precision
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_tstamp_precision(pcap_t *, int)
+- name: pcap_set_tstamp_type
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_tstamp_type(pcap_t *, int)
+- name: pcapint_cleanup_live_common
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcapint_cleanup_live_common(pcap_t *)
+- name: pcap_setnonblock
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_setnonblock(pcap_t *, int, char *)
+- name: pcap_getnonblock
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_getnonblock(pcap_t *, char *)
+- name: pcap_init
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_init(unsigned int, char *)
+- name: pcapint_parsesrcstr_ex
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_parsesrcstr_ex(const char *, int *, char *, char *, char
+    *, char *, unsigned char *, char *)
+- name: pcapint_createsrcstr_ex
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_createsrcstr_ex(char *, int, const char *, const char *,
+    const char *, const char *, unsigned char, char *)
+- name: pcap_parsesrcstr
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_parsesrcstr(const char *, int *, char *, char *, char *, char
+    *)
+- name: pcap_createsrcstr
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_createsrcstr(char *, int, const char *, const char *, const
+    char *, char *)
+- name: pcap_set_buffer_size
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_buffer_size(pcap_t *, int)
+- name: pcap_freealldevs
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_freealldevs(pcap_if_t *)
+- name: pcap_dump
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_dump(u_char *, const struct pcap_pkthdr *, const u_char *)
+- name: pcap_set_snaplen
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_snaplen(pcap_t *, int)
+- name: pcap_set_promisc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_promisc(pcap_t *, int)
+- name: pcap_set_timeout
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_timeout(pcap_t *, int)
+- name: pcap_set_immediate_mode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_immediate_mode(pcap_t *, int)
+- name: pcap_set_rfmon
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_rfmon(pcap_t *, int)
+- name: pcap_set_protocol_linux
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_set_protocol_linux(pcap_t *, int)
+- name: bpf_validate
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int bpf_validate(const struct bpf_insn *, int)
+- name: pcap_tstamp_type_name_to_val
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_tstamp_type_name_to_val(const char *)
+- name: pcap_datalink_name_to_val
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_datalink_name_to_val(const char *)
+- name: pcap_dump_close
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_dump_close(pcap_dumper_t *)
+- name: pcapint_find_dev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_if_t * pcapint_find_dev(pcap_if_list_t *, const char *)
+- name: pcapint_validate_filter
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcapint_validate_filter(const struct bpf_insn *, int)
+- name: pcapint_check_activated
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_check_activated(pcap_t *)
+- name: pcap_next
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const u_char * pcap_next(pcap_t *, struct pcap_pkthdr *)
+- name: pcap_dump_flush
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_dump_flush(pcap_dumper_t *)
+- name: pcap_setdirection
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_setdirection(pcap_t *, pcap_direction_t)
+- name: pcapint_remove_from_pcaps_to_close
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcapint_remove_from_pcaps_to_close(pcap_t *)
+- name: pcap_dump_ftell64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: int64_t pcap_dump_ftell64(pcap_dumper_t *)
+- name: pcap_dump_ftell
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: long pcap_dump_ftell(pcap_dumper_t *)
+- name: pcap_tstamp_type_val_to_description
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const char * pcap_tstamp_type_val_to_description(int)
+- name: pcap_tstamp_type_val_to_name
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const char * pcap_tstamp_type_val_to_name(int)
+- name: pcap_dispatch
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_dispatch(pcap_t *, int, pcap_handler, u_char *)
+- name: pcap_bufsize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_bufsize(pcap_t *)
+- name: pcap_minor_version
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_minor_version(pcap_t *)
+- name: pcap_major_version
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_major_version(pcap_t *)
+- name: pcap_is_swapped
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_is_swapped(pcap_t *)
+- name: pcap_datalink_ext
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_datalink_ext(pcap_t *)
+- name: pcapint_add_to_pcaps_to_close
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcapint_add_to_pcaps_to_close(pcap_t *)
+- name: pcapint_breakloop_common
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcapint_breakloop_common(pcap_t *)
+- name: pcap_free_datalinks
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_free_datalinks(int *)
+- name: pcap_breakloop
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_breakloop(pcap_t *)
+- name: pcap_free_tstamp_types
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_free_tstamp_types(int *)
+- name: pcap_geterr
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char * pcap_geterr(pcap_t *)
+- name: pcap_get_required_select_timeout
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const struct timeval * pcap_get_required_select_timeout(pcap_t *)
+- name: pcap_get_selectable_fd
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_get_selectable_fd(pcap_t *)
+- name: pcap_fileno
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_fileno(pcap_t *)
+- name: pcap_file
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: FILE * pcap_file(pcap_t *)
+- name: pcap_get_tstamp_precision
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_get_tstamp_precision(pcap_t *)
+- name: pcap_can_set_rfmon
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_can_set_rfmon(pcap_t *)
+- name: pcap_dump_file
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: FILE * pcap_dump_file(pcap_dumper_t *)
+- name: pcapint_open_offline_common
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: pcap_t * pcapint_open_offline_common(char *, size_t, size_t)
+- name: incoming_isochronous_transfer_completed_len
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: u_int incoming_isochronous_transfer_completed_len(struct pcap_pkthdr
+    *, const u_char *)
+- name: pcapint_adjust_snapshot
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: bpf_u_int32 pcapint_adjust_snapshot(bpf_u_int32, bpf_u_int32)
+- name: pcapint_sf_cleanup
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcapint_sf_cleanup(pcap_t *)
+- name: is_isochronous_transfer_completion
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int is_isochronous_transfer_completion(const pcap_usb_header_mmapped
+    *)
+- name: pcapint_oneshot
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcapint_oneshot(u_char *, const struct pcap_pkthdr *, const u_char
+    *)
+- name: u_int_sum
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: u_int u_int_sum(u_int, u_int)
+- name: iso_pseudo_header_len
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t iso_pseudo_header_len(const pcap_usb_header_mmapped *)
+- name: gen_greater
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_greater(compiler_state_t *, int)
+- name: pcap_open_dead
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: pcap_t * pcap_open_dead(int, int)
+- name: pcap_open_dead_with_tstamp_precision
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: pcap_t * pcap_open_dead_with_tstamp_precision(int, int, u_int)
+- name: pcap_setfilter
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_setfilter(pcap_t *, struct bpf_program *)
+- name: gen_atmmulti_abbrev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_atmmulti_abbrev(compiler_state_t *, int)
+- name: pcap_open_offline_with_tstamp_precision
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_open_offline_with_tstamp_precision(const char *, u_int,
+    char *)
+- name: gen_scode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_scode(compiler_state_t *, const char *, struct qual)
+- name: pcap_offline_filter
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_offline_filter(const struct bpf_program *, const struct pcap_pkthdr
+    *, const u_char *)
+- name: pcap_close
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_close(pcap_t *)
+- name: pcap_compile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pcap_compile(pcap_t *, struct bpf_program *, const char *, int, bpf_u_int32)
+- name: icode_to_fcode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct bpf_insn * icode_to_fcode(struct icode *, struct block *, u_int
+    *, char *)
+- name: pcapint_offline_read
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_offline_read(pcap_t *, int, pcap_handler, u_char *)
+- name: gen_relation
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_relation(compiler_state_t *, int, struct arth *, struct
+    arth *, int)
+- name: gen_less
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_less(compiler_state_t *, int)
+- name: pcap_snapshot
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_snapshot(pcap_t *)
+- name: pcap_datalink
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_datalink(pcap_t *)
+- name: gen_mcode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_mcode(compiler_state_t *, const char *, const char
+    *, bpf_u_int32, struct qual)
+- name: sdup
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char * sdup(compiler_state_t *, const char *)
+- name: pcap_parse
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_parse(void *, compiler_state_t *)
+- name: pcap_fopen_offline_with_tstamp_precision
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_fopen_offline_with_tstamp_precision(FILE *, u_int, char
+    *)
+- name: gen_ncode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_ncode(compiler_state_t *, const char *, bpf_u_int32,
+    struct qual)
+- name: pcapint_filter_with_aux_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: u_int pcapint_filter_with_aux_data(const struct bpf_insn *, const u_char
+    *, u_int, u_int, const struct pcap_bpf_aux_data *)
+- name: pcap_datalink_val_to_description_or_dlt
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const char * pcap_datalink_val_to_description_or_dlt(int)
+- name: stoulen
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: stoulen_ret stoulen(const char *, const size_t, bpf_u_int32 *, compiler_state_t
+    *)
+- name: gen_ecode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_ecode(compiler_state_t *, const char *, struct qual)
+- name: gen_acode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_acode(compiler_state_t *, const char *, struct qual)
+- name: gen_byteop
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_byteop(compiler_state_t *, int, int, bpf_u_int32)
+- name: gen_neg
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct arth * gen_neg(compiler_state_t *, struct arth *)
+- name: finish_parse
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int finish_parse(compiler_state_t *, struct block *)
+- name: gen_mtp2type_abbrev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_mtp2type_abbrev(compiler_state_t *, int)
+- name: pcap_next_ex
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_next_ex(pcap_t *, struct pcap_pkthdr **, const u_char **)
+- name: gen_vlan
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_vlan(compiler_state_t *, bpf_u_int32, int)
+- name: gen_atmtype_abbrev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_atmtype_abbrev(compiler_state_t *, int)
+- name: gen_mcode6
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_mcode6(compiler_state_t *, const char *, bpf_u_int32,
+    struct qual)
+- name: bpf_optimize
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int bpf_optimize(struct icode *, char *)
+- name: gen_load
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct arth * gen_load(compiler_state_t *, int, struct arth *, bpf_u_int32)
+- name: gen_proto_abbrev
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_proto_abbrev(compiler_state_t *, int)
+- name: gen_vxlan
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_vxlan(compiler_state_t *, bpf_u_int32, int)
+- name: gen_mpls
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_mpls(compiler_state_t *, bpf_u_int32, int)
+- name: gen_pppoes
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_pppoes(compiler_state_t *, bpf_u_int32, int)
+- name: gen_pppoed
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_pppoed(compiler_state_t *)
+- name: gen_llc_i
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_llc_i(compiler_state_t *)
+- name: gen_llc_u_subtype
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_llc_u_subtype(compiler_state_t *, bpf_u_int32)
+- name: gen_llc_s_subtype
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_llc_s_subtype(compiler_state_t *, bpf_u_int32)
+- name: gen_llc_u
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_llc_u(compiler_state_t *)
+- name: gen_llc_s
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_llc_s(compiler_state_t *)
+- name: gen_llc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_llc(compiler_state_t *)
+- name: gen_p80211_type
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_p80211_type(compiler_state_t *, bpf_u_int32, bpf_u_int32)
+- name: gen_p80211_fcdir
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_p80211_fcdir(compiler_state_t *, bpf_u_int32)
+- name: gen_pf_ifname
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_pf_ifname(compiler_state_t *, const char *)
+- name: gen_pf_ruleset
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_pf_ruleset(compiler_state_t *, char *)
+- name: gen_mtp3field_code
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_mtp3field_code(compiler_state_t *, int, bpf_u_int32,
+    int, int)
+- name: gen_atmfield_code
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_atmfield_code(compiler_state_t *, int, bpf_u_int32,
+    int, int)
+- name: gen_atm_vci
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: short
+  return_type: void
+  signature: struct block * gen_atm_vci(compiler_state_t *, const uint16_t)
+- name: gen_atm_vpi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  return_type: void
+  signature: struct block * gen_atm_vpi(compiler_state_t *, const uint8_t)
+- name: gen_pf_action
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_pf_action(compiler_state_t *, int)
+- name: gen_pf_reason
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_pf_reason(compiler_state_t *, int)
+- name: gen_pf_srnr
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_pf_srnr(compiler_state_t *, int)
+- name: gen_pf_rnr
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct block * gen_pf_rnr(compiler_state_t *, int)
+- name: pcap_open_offline
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pcap_t * pcap_open_offline(const char *, char *)
+- name: gen_arth
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct arth * gen_arth(compiler_state_t *, int, struct arth *, struct
+    arth *)
+- name: pcapint_filter
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: u_int pcapint_filter(const struct bpf_insn *, const u_char *, u_int,
+    u_int)
+- name: gen_loadi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct arth * gen_loadi(compiler_state_t *, bpf_u_int32)
+- name: gen_loadlen
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct arth * gen_loadlen(compiler_state_t *)
+- name: gen_and
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_and(struct block *, struct block *)
+- name: gen_or
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_or(struct block *, struct block *)
+- name: F
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: bpf_u_int32 F(opt_state_t *, int, bpf_u_int32, bpf_u_int32)
+- name: EXTRACT_BE_U_4
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t EXTRACT_BE_U_4(const void *)
+- name: EXTRACT_BE_U_2
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: short
+  signature: uint16_t EXTRACT_BE_U_2(const void *)
+- name: pcapint_strcasecmp
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcapint_strcasecmp(const char *, const char *)
+- name: pcap_datalink_val_to_description
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const char * pcap_datalink_val_to_description(int)
+- name: pcap_datalink_val_to_name
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const char * pcap_datalink_val_to_name(int)
+- name: gen_not
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct block * gen_not(struct block *)
+- name: pcap_freecode
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pcap_freecode(struct bpf_program *)
+- name: sappend
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void sappend(struct slist *, struct slist *)
+- name: pcap_stats
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pcap_stats(pcap_t *, struct pcap_stat *)
+language: c++
+project: libpcap
+target_name: fuzz_filter
+target_path: /src/libpcap/testprogs/fuzz/fuzz_filter.c

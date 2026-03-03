@@ -1,0 +1,2586 @@
+functions:
+- name: tjDecompress
+  params:
+  - name: handle
+    type: 'bool '
+  - name: jpegBuf
+    type: 'bool '
+  - name: jpegSize
+    type: size_t
+  - name: dstBuf
+    type: 'bool '
+  - name: width
+    type: int
+  - name: pitch
+    type: int
+  - name: height
+    type: int
+  - name: pixelSize
+    type: int
+  - name: flags
+    type: int
+  return_type: int
+  signature: int tjDecompress(tjhandle, unsigned char *, unsigned long, unsigned char
+    *, int, int, int, int, int)
+- name: tjCompress
+  params:
+  - name: handle
+    type: 'bool '
+  - name: srcBuf
+    type: 'bool '
+  - name: width
+    type: int
+  - name: pitch
+    type: int
+  - name: height
+    type: int
+  - name: pixelSize
+    type: int
+  - name: jpegBuf
+    type: 'bool '
+  - name: jpegSize
+    type: 'bool '
+  - name: jpegSubsamp
+    type: int
+  - name: jpegQual
+    type: int
+  - name: flags
+    type: int
+  return_type: int
+  signature: int tjCompress(tjhandle, unsigned char *, int, int, int, int, unsigned
+    char *, unsigned long *, int, int, int)
+- name: tj3SaveImage16
+  params:
+  - name: handle
+    type: 'bool '
+  - name: filename
+    type: 'bool '
+  - name: buffer
+    type: 'bool '
+  - name: width
+    type: int
+  - name: pitch
+    type: int
+  - name: height
+    type: int
+  - name: pixelFormat
+    type: int
+  return_type: int
+  signature: int tj3SaveImage16(tjhandle, const char *, const J16SAMPLE *, int, int,
+    int, int)
+- name: tjEncodeYUV
+  params:
+  - name: handle
+    type: 'bool '
+  - name: srcBuf
+    type: 'bool '
+  - name: width
+    type: int
+  - name: pitch
+    type: int
+  - name: height
+    type: int
+  - name: pixelSize
+    type: int
+  - name: dstBuf
+    type: 'bool '
+  - name: subsamp
+    type: int
+  - name: flags
+    type: int
+  return_type: int
+  signature: int tjEncodeYUV(tjhandle, unsigned char *, int, int, int, int, unsigned
+    char *, int, int)
+- name: tjDecompressToYUV
+  params:
+  - name: handle
+    type: 'bool '
+  - name: jpegBuf
+    type: 'bool '
+  - name: jpegSize
+    type: size_t
+  - name: dstBuf
+    type: 'bool '
+  - name: flags
+    type: int
+  return_type: int
+  signature: int tjDecompressToYUV(tjhandle, unsigned char *, unsigned long, unsigned
+    char *, int)
+- name: start_input_ppm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void start_input_ppm(j_compress_ptr, cjpeg_source_ptr)
+- name: tj3EncodeYUV8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3EncodeYUV8(tjhandle, const unsigned char *, int, int, int, int,
+    unsigned char *, int)
+- name: realize_virt_arrays
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void realize_virt_arrays(j_common_ptr)
+- name: tj3DecompressToYUVPlanes8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tj3DecompressToYUVPlanes8(tjhandle, const unsigned char *, size_t,
+    unsigned char **, int *)
+- name: tjDecompressToYUVPlanes
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjDecompressToYUVPlanes(tjhandle, const unsigned char *, unsigned
+    long, unsigned char **, int, int *, int, int)
+- name: tjCompress2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjCompress2(tjhandle, const unsigned char *, int, int, int, int,
+    unsigned char **, unsigned long *, int, int, int)
+- name: read_markers
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int read_markers(j_decompress_ptr)
+- name: tj3DecompressToYUV8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3DecompressToYUV8(tjhandle, const unsigned char *, size_t, unsigned
+    char *, int)
+- name: jinit_master_decompress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_master_decompress(j_decompress_ptr)
+- name: tj3Decompress16
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3Decompress16(tjhandle, const unsigned char *, size_t, J16SAMPLE
+    *, int, int)
+- name: encode_mcu_huff
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean encode_mcu_huff(j_compress_ptr, JBLOCKROW *)
+- name: tjCompressFromYUVPlanes
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjCompressFromYUVPlanes(tjhandle, const unsigned char **, int, const
+    int *, int, int, unsigned char **, unsigned long *, int, int)
+- name: tj3DecodeYUVPlanes8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3DecodeYUVPlanes8(tjhandle, const const unsigned char **, const
+    int *, unsigned char *, int, int, int, int)
+- name: tj3DecodeYUV8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3DecodeYUV8(tjhandle, const unsigned char *, int, unsigned char
+    *, int, int, int, int)
+- name: tj3CompressFromYUVPlanes8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tj3CompressFromYUVPlanes8(tjhandle, const const unsigned char **,
+    int, const int *, int, unsigned char **, size_t *)
+- name: tjEncodeYUV2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjEncodeYUV2(tjhandle, unsigned char *, int, int, int, int, unsigned
+    char *, int, int)
+- name: tjCompressFromYUV
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjCompressFromYUV(tjhandle, const unsigned char *, int, int, int,
+    int, unsigned char **, unsigned long *, int, int)
+- name: encode_one_block
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean encode_one_block(working_state *, JCOEFPTR, int, c_derived_tbl
+    *, c_derived_tbl *)
+- name: start_input_gif
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void start_input_gif(j_compress_ptr, cjpeg_source_ptr)
+- name: jpeg_start_decompress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jpeg_start_decompress(j_decompress_ptr)
+- name: tjTransform
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjTransform(tjhandle, const unsigned char *, unsigned long, int,
+    unsigned char **, unsigned long *, tjtransform *, int)
+- name: tj3Transform
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tj3Transform(tjhandle, const unsigned char *, size_t, int, unsigned
+    char **, size_t *, const tjtransform *)
+- name: decompress_smooth_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int decompress_smooth_data(j_decompress_ptr, J12SAMPIMAGE)
+- name: tjDecodeYUV
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjDecodeYUV(tjhandle, const unsigned char *, int, int, unsigned char
+    *, int, int, int, int, int)
+- name: master_selection
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void master_selection(j_decompress_ptr)
+- name: finish_pass1
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void finish_pass1(j_decompress_ptr)
+- name: tj3CompressFromYUV8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tj3CompressFromYUV8(tjhandle, const unsigned char *, int, int, int,
+    unsigned char **, size_t *)
+- name: decode_mcu
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean decode_mcu(j_decompress_ptr, JBLOCKROW *)
+- name: tjEncodeYUVPlanes
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjEncodeYUVPlanes(tjhandle, const unsigned char *, int, int, int,
+    int, unsigned char **, int *, int, int)
+- name: tjSaveImage
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjSaveImage(const char *, unsigned char *, int, int, int, int, int)
+- name: tjDecodeYUVPlanes
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjDecodeYUVPlanes(tjhandle, const unsigned char **, const int *,
+    int, unsigned char *, int, int, int, int, int)
+- name: tjDecompress2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjDecompress2(tjhandle, const unsigned char *, unsigned long, unsigned
+    char *, int, int, int, int, int)
+- name: tjDecompressToYUV2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjDecompressToYUV2(tjhandle, const unsigned char *, unsigned long,
+    unsigned char *, int, int, int, int)
+- name: tjEncodeYUV3
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjEncodeYUV3(tjhandle, const unsigned char *, int, int, int, int,
+    unsigned char *, int, int, int)
+- name: tj3SaveImage8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3SaveImage16(tjhandle, const char *, const J16SAMPLE *, int, int,
+    int, int)
+- name: tjLoadImage
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: unsigned char * tjLoadImage(const char *, int *, int, int *, int *, int)
+- name: tj3LoadImage12
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: unsigned short * tj3LoadImage16(tjhandle, const char *, int *, int, int
+    *, int *)
+- name: tjDecompressHeader
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tjDecompressHeader(tjhandle, unsigned char *, unsigned long, int
+    *, int *)
+- name: tjDecompressHeader2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tjDecompressHeader2(tjhandle, unsigned char *, unsigned long, int
+    *, int *, int *)
+- name: tjDecompressHeader3
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tjDecompressHeader3(tjhandle, const unsigned char *, unsigned long,
+    int *, int *, int *, int *)
+- name: jinit_write_bmp
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: djpeg_dest_ptr jinit_write_bmp(j_decompress_ptr, boolean, boolean)
+- name: jinit_write_ppm
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: djpeg_dest_ptr j16init_write_ppm(j_decompress_ptr)
+- name: TJBUFSIZEYUV
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: unsigned long TJBUFSIZEYUV(int, int, int)
+- name: tjBufSizeYUV
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: unsigned long tjBufSizeYUV(int, int, int)
+- name: tjBufSizeYUV2
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: unsigned long tjBufSizeYUV2(int, int, int, int)
+- name: tjPlaneSizeYUV
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: unsigned long tjPlaneSizeYUV(int, int, int, int, int)
+- name: tj3YUVPlaneSize
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: size_t tj3YUVPlaneSize(int, int, int, int, int)
+- name: jtransform_parse_crop_spec
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jtransform_parse_crop_spec(jpeg_transform_info *, const char
+    *)
+- name: tjDestroy
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tjDestroy(tjhandle)
+- name: jpeg_make_c_derived_tbl
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_make_c_derived_tbl(j_compress_ptr, boolean, int, c_derived_tbl
+    **)
+- name: jpeg_gen_optimal_table
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_gen_optimal_table(j_compress_ptr, JHUFF_TBL *, long *)
+- name: jpeg_idct_islow
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_islow(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_ifast
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_ifast(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_4x4
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_4x4(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: tjBufSize
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: unsigned long tjBufSize(int, int, int)
+- name: jpeg_idct_2x2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_2x2(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: progress_monitor
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void progress_monitor(j_common_ptr)
+- name: tj3GetICCProfile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tj3GetICCProfile(tjhandle, unsigned char **, size_t *)
+- name: jpeg12_write_raw_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg12_write_raw_data(j_compress_ptr, J12SAMPIMAGE, JDIMENSION)
+- name: jpeg_idct_float
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_float(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg12_read_raw_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg12_read_raw_data(j_decompress_ptr, J12SAMPIMAGE, JDIMENSION)
+- name: tjGetScalingFactors
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: tjscalingfactor * tjGetScalingFactors(int *)
+- name: TJBUFSIZE
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: unsigned long TJBUFSIZE(int, int)
+- name: jpeg_new_colormap
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_new_colormap(j_decompress_ptr)
+- name: jpeg_write_tables
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_write_tables(j_compress_ptr)
+- name: tj3GetScalingFactors
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: tjscalingfactor * tj3GetScalingFactors(int *)
+- name: tjFree
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void tjFree(unsigned char *)
+- name: tjAlloc
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: unsigned char * tjAlloc(int)
+- name: jpeg_stdio_src
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_stdio_src(j_decompress_ptr, FILE *)
+- name: jpeg_idct_16x16
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_16x16(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_15x15
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_15x15(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_13x13
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_13x13(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_14x14
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_14x14(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_12x12
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_12x12(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_10x10
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_10x10(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_11x11
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_11x11(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_9x9
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_9x9(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_7x7
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_7x7(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_5x5
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_5x5(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_idct_3x3
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_3x3(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_fdct_islow
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_fdct_islow(DCTELEM *)
+- name: jpeg_fdct_ifast
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_fdct_ifast(DCTELEM *)
+- name: jpeg_fdct_float
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_fdct_float(float *)
+- name: jpeg_open_backing_store
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void jpeg_open_backing_store(j_common_ptr, backing_store_ptr, long)
+- name: jpeg_mem_available
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: size_t jpeg_mem_available(j_common_ptr, size_t, size_t, size_t)
+- name: jpeg_fill_bit_buffer
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: boolean jpeg_fill_bit_buffer(bitread_working_state *, bit_buf_type, int,
+    int)
+- name: jpeg_resync_to_restart
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: boolean jpeg_resync_to_restart(j_decompress_ptr, int)
+- name: jpeg_make_d_derived_tbl
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_make_d_derived_tbl(j_decompress_ptr, boolean, int, d_derived_tbl
+    **)
+- name: jpeg_huff_decode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int jpeg_huff_decode(bitread_working_state *, bit_buf_type, int, d_derived_tbl
+    *, int)
+- name: jpeg_idct_6x6
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_6x6(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jcopy_sample_rows
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j16copy_sample_rows(J16SAMPARRAY, int, J16SAMPARRAY, int, int, JDIMENSION)
+- name: jpeg_idct_1x1
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_idct_1x1(j_decompress_ptr, jpeg_component_info *, JCOEFPTR,
+    JSAMPARRAY, JDIMENSION)
+- name: jpeg_free_large
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void jpeg_free_large(j_common_ptr, void *, size_t)
+- name: jpeg_free_small
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void jpeg_free_small(j_common_ptr, void *, size_t)
+- name: jpeg_get_large
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void * jpeg_get_large(j_common_ptr, size_t)
+- name: tj3EncodeYUVPlanes8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tj3EncodeYUVPlanes8(tjhandle, const unsigned char *, int, int, int,
+    int, unsigned char **, int *)
+- name: jtransform_execute_transform
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jtransform_execute_transform(j_decompress_ptr, j_compress_ptr, jvirt_barray_ptr
+    *, jpeg_transform_info *)
+- name: jinit_c_master_control
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_c_master_control(j_compress_ptr, boolean)
+- name: jpeg_crop_scanline
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_crop_scanline(j_decompress_ptr, JDIMENSION *, JDIMENSION *)
+- name: j16init_color_converter
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j16init_color_converter(j_compress_ptr)
+- name: j16init_upsampler
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j16init_upsampler(j_decompress_ptr)
+- name: j12init_color_deconverter
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_color_deconverter(j_decompress_ptr)
+- name: tj3DecompressHeader
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int tj3DecompressHeader(tjhandle, const unsigned char *, size_t)
+- name: tj3Init
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: tjhandle tj3Init(int)
+- name: jinit_forward_dct
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_forward_dct(j_compress_ptr)
+- name: j16init_downsampler
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j16init_downsampler(j_compress_ptr)
+- name: jtransform_request_workspace
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jtransform_request_workspace(j_decompress_ptr, jpeg_transform_info
+    *)
+- name: jinit_merged_upsampler
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_merged_upsampler(j_decompress_ptr)
+- name: tj3Set
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3Set(tjhandle, int, int)
+- name: jpeg12_skip_scanlines
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg12_skip_scanlines(j_decompress_ptr, JDIMENSION)
+- name: jpeg_skip_scanlines
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg_skip_scanlines(j_decompress_ptr, JDIMENSION)
+- name: jpeg_calc_output_dimensions
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_calc_output_dimensions(j_decompress_ptr)
+- name: read_scan_script
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean read_scan_script(j_compress_ptr, char *)
+- name: jpeg12_crop_scanline
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg12_crop_scanline(j_decompress_ptr, JDIMENSION *, JDIMENSION
+    *)
+- name: jpeg_CreateDecompress
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void jpeg_CreateDecompress(j_decompress_ptr, int, size_t)
+- name: read_quant_tables
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: boolean read_quant_tables(j_compress_ptr, char *, boolean)
+- name: j16init_color_deconverter
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j16init_color_deconverter(j_decompress_ptr)
+- name: jpeg_CreateCompress
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void jpeg_CreateCompress(j_compress_ptr, int, size_t)
+- name: jcopy_markers_execute
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jcopy_markers_execute(j_decompress_ptr, j_compress_ptr, JCOPY_OPTION)
+- name: jinit_memory_mgr
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_memory_mgr(j_common_ptr)
+- name: tj3Get
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3Get(tjhandle, int)
+- name: tj3YUVBufSize
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: size_t tj3YUVBufSize(int, int, int, int)
+- name: tj3SetCroppingRegion
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int tj3SetCroppingRegion(tjhandle, tjregion)
+- name: jcopy_markers_setup
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jcopy_markers_setup(j_decompress_ptr, JCOPY_OPTION)
+- name: jpeg_finish_compress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_finish_compress(j_compress_ptr)
+- name: jpeg_read_header
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int jpeg_read_header(j_decompress_ptr, boolean)
+- name: jpeg_core_output_dimensions
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_core_output_dimensions(j_decompress_ptr)
+- name: jpeg_start_output
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: boolean jpeg_start_output(j_decompress_ptr, int)
+- name: jpeg_finish_decompress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jpeg_finish_decompress(j_decompress_ptr)
+- name: tj3Destroy
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void tj3Destroy(tjhandle)
+- name: tjPlaneWidth
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjPlaneWidth(int, int, int)
+- name: tjPlaneHeight
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tjPlaneHeight(int, int, int)
+- name: set_quant_slots
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean set_quant_slots(j_compress_ptr, char *)
+- name: jinit_c_prep_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_c_prep_controller(j_compress_ptr, boolean)
+- name: j16init_c_prep_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j16init_c_prep_controller(j_compress_ptr, boolean)
+- name: jpeg_consume_input
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int jpeg_consume_input(j_decompress_ptr)
+- name: jpeg_write_raw_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg_write_raw_data(j_compress_ptr, JSAMPIMAGE, JDIMENSION)
+- name: tj3YUVPlaneWidth
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3YUVPlaneWidth(int, int, int)
+- name: tj3YUVPlaneHeight
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int tj3YUVPlaneHeight(int, int, int)
+- name: jpeg_read_raw_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg_read_raw_data(j_decompress_ptr, JSAMPIMAGE, JDIMENSION)
+- name: tj3JPEGBufSize
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: size_t tj3JPEGBufSize(int, int, int)
+- name: tj3SetScalingFactor
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int tj3SetScalingFactor(tjhandle, tjscalingfactor)
+- name: j12init_d_coef_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j12init_d_coef_controller(j_decompress_ptr, boolean)
+- name: jinit_d_coef_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_d_coef_controller(j_decompress_ptr, boolean)
+- name: jpeg_finish_output
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jpeg_finish_output(j_decompress_ptr)
+- name: jinit_c_coef_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_c_coef_controller(j_compress_ptr, boolean)
+- name: j12init_c_coef_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j12init_c_coef_controller(j_compress_ptr, boolean)
+- name: jpeg_write_marker
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_write_marker(j_compress_ptr, int, const JOCTET *, unsigned
+    int)
+- name: jpeg_read_scanlines
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg_read_scanlines(j_decompress_ptr, JSAMPARRAY, JDIMENSION)
+- name: jpeg16_read_scanlines
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg16_read_scanlines(j_decompress_ptr, J16SAMPARRAY, JDIMENSION)
+- name: end_progress_monitor
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void end_progress_monitor(j_common_ptr)
+- name: jpeg_abort_decompress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_abort_decompress(j_decompress_ptr)
+- name: jpeg_abort_compress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_abort_compress(j_compress_ptr)
+- name: jpeg_write_m_header
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_write_m_header(j_compress_ptr, int, unsigned int)
+- name: jpeg_suppress_tables
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_suppress_tables(j_compress_ptr, boolean)
+- name: jpeg_abort
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_abort(j_common_ptr)
+- name: jpeg_destroy_decompress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_destroy_decompress(j_decompress_ptr)
+- name: jpeg_destroy_compress
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_destroy_compress(j_compress_ptr)
+- name: jtransform_perfect_transform
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: boolean jtransform_perfect_transform(JDIMENSION, JDIMENSION, int, int,
+    JXFORM_CODE)
+- name: jpeg_stdio_dest
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_stdio_dest(j_compress_ptr, FILE *)
+- name: j12init_inverse_dct
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j12init_inverse_dct(j_decompress_ptr)
+- name: jinit_inverse_dct
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_inverse_dct(j_decompress_ptr)
+- name: j16init_read_ppm
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cjpeg_source_ptr j16init_read_ppm(j_compress_ptr)
+- name: jpeg_has_multiple_scans
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jpeg_has_multiple_scans(j_decompress_ptr)
+- name: jpeg_input_complete
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jpeg_input_complete(j_decompress_ptr)
+- name: j12init_forward_dct
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j12init_forward_dct(j_compress_ptr)
+- name: start_iMCU_row
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void start_iMCU_row(j_compress_ptr)
+- name: jinit_huff_encoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_huff_encoder(j_compress_ptr)
+- name: j16init_read_gif
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cjpeg_source_ptr j16init_read_gif(j_compress_ptr)
+- name: jinit_read_gif
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cjpeg_source_ptr jinit_read_gif(j_compress_ptr)
+- name: jinit_phuff_encoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_phuff_encoder(j_compress_ptr)
+- name: jpeg_destroy
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_destroy(j_common_ptr)
+- name: start_progress_monitor
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void start_progress_monitor(j_common_ptr, cd_progress_ptr)
+- name: jpeg_write_m_byte
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_write_m_byte(j_compress_ptr, int)
+- name: jinit_input_controller
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_input_controller(j_decompress_ptr)
+- name: jpeg_alloc_quant_table
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: JQUANT_TBL * jpeg_alloc_quant_table(j_common_ptr)
+- name: jpeg_alloc_huff_table
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: JHUFF_TBL * jpeg_alloc_huff_table(j_common_ptr)
+- name: tj3Free
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void tj3Free(void *)
+- name: tj3Alloc
+  params:
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void * tj3Alloc(size_t)
+- name: j12init_merged_upsampler
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j12init_merged_upsampler(j_decompress_ptr)
+- name: jpeg_set_marker_processor
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_set_marker_processor(j_decompress_ptr, int, jpeg_marker_parser_method)
+- name: jpeg_save_markers
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_save_markers(j_decompress_ptr, int, unsigned int)
+- name: jpeg12_write_scanlines
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg16_write_scanlines(j_compress_ptr, J16SAMPARRAY, JDIMENSION)
+- name: set_sample_factors
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean set_sample_factors(j_compress_ptr, char *)
+- name: keymatch
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: boolean keymatch(char *, const char *, int)
+- name: jpeg_write_coefficients
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_write_coefficients(j_compress_ptr, jvirt_barray_ptr *)
+- name: j12init_1pass_quantizer
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j12init_1pass_quantizer(j_decompress_ptr)
+- name: jinit_1pass_quantizer
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_1pass_quantizer(j_decompress_ptr)
+- name: jpeg_enable_lossless
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_enable_lossless(j_compress_ptr, int, int)
+- name: jpeg_mem_src
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void jpeg_mem_src(j_decompress_ptr, const unsigned char *, unsigned long)
+- name: jpeg_mem_dest
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_mem_dest(j_compress_ptr, unsigned char **, unsigned long *)
+- name: tj3TransformBufSize
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t tj3TransformBufSize(tjhandle, const tjtransform *)
+- name: j12init_2pass_quantizer
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j12init_2pass_quantizer(j_decompress_ptr)
+- name: jinit_2pass_quantizer
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_2pass_quantizer(j_decompress_ptr)
+- name: j12init_c_diff_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j16init_c_diff_controller(j_compress_ptr, boolean)
+- name: jpeg_add_quant_table
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_add_quant_table(j_compress_ptr, int, const unsigned int *,
+    int, boolean)
+- name: set_quality_ratings
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: boolean set_quality_ratings(j_compress_ptr, char *, boolean)
+- name: jpeg_start_compress
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_start_compress(j_compress_ptr, boolean)
+- name: jinit_c_diff_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_c_diff_controller(j_compress_ptr, boolean)
+- name: jpeg_simple_progression
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_simple_progression(j_compress_ptr)
+- name: jpeg_write_icc_profile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_write_icc_profile(j_compress_ptr, const JOCTET *, unsigned
+    int)
+- name: jinit_read_targa
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cjpeg_source_ptr jinit_read_targa(j_compress_ptr)
+- name: jpeg_set_colorspace
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_set_colorspace(j_compress_ptr, J_COLOR_SPACE)
+- name: j12init_c_main_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j16init_c_main_controller(j_compress_ptr, boolean)
+- name: jpeg_default_colorspace
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_default_colorspace(j_compress_ptr)
+- name: jpeg_copy_critical_parameters
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_copy_critical_parameters(j_decompress_ptr, j_compress_ptr)
+- name: tj3SetICCProfile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int tj3SetICCProfile(tjhandle, unsigned char *, size_t)
+- name: jpeg_read_icc_profile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: boolean jpeg_read_icc_profile(j_decompress_ptr, JOCTET **, unsigned int
+    *)
+- name: jpeg_read_coefficients
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: jvirt_barray_ptr * jpeg_read_coefficients(j_decompress_ptr)
+- name: jpeg_set_defaults
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_set_defaults(j_compress_ptr)
+- name: tj3Compress12
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int tj3Compress16(tjhandle, const J16SAMPLE *, int, int, int, int, unsigned
+    char **, size_t *)
+- name: jinit_compress_master
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_compress_master(j_compress_ptr)
+- name: jpeg_set_quality
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_set_quality(j_compress_ptr, int, boolean)
+- name: jpeg_set_linear_quality
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_set_linear_quality(j_compress_ptr, int, boolean)
+- name: jpeg_default_qtables
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jpeg_default_qtables(j_compress_ptr, boolean)
+- name: jinit_huff_decoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_huff_decoder(j_decompress_ptr)
+- name: jpeg_write_scanlines
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: JDIMENSION jpeg_write_scanlines(j_compress_ptr, JSAMPARRAY, JDIMENSION)
+- name: jinit_d_main_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_d_main_controller(j_decompress_ptr, boolean)
+- name: j16init_d_main_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j16init_d_main_controller(j_decompress_ptr, boolean)
+- name: jinit_c_main_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_c_main_controller(j_compress_ptr, boolean)
+- name: jinit_d_diff_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_d_diff_controller(j_decompress_ptr, boolean)
+- name: j16init_d_diff_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j16init_d_diff_controller(j_decompress_ptr, boolean)
+- name: jinit_d_post_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jinit_d_post_controller(j_decompress_ptr, boolean)
+- name: jinit_arith_decoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_arith_decoder(j_decompress_ptr)
+- name: jinit_marker_reader
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_marker_reader(j_decompress_ptr)
+- name: jinit_phuff_decoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_phuff_decoder(j_decompress_ptr)
+- name: j16init_d_post_controller
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void j16init_d_post_controller(j_decompress_ptr, boolean)
+- name: jinit_lossless_compressor
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_lossless_compressor(j_compress_ptr)
+- name: j16init_lossless_compressor
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j16init_lossless_compressor(j_compress_ptr)
+- name: jpeg_quality_scaling
+  params:
+  - name: ''
+    type: int
+  return_type: int
+  signature: int jpeg_quality_scaling(int)
+- name: jinit_read_bmp
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cjpeg_source_ptr jinit_read_bmp(j_compress_ptr, boolean)
+- name: set_wraparound_pointers
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void set_wraparound_pointers(j_decompress_ptr)
+- name: jinit_arith_encoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_arith_encoder(j_compress_ptr)
+- name: jinit_lhuff_encoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_lhuff_encoder(j_compress_ptr)
+- name: jinit_lhuff_decoder
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_lhuff_decoder(j_decompress_ptr)
+- name: jcopy_block_row
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void jcopy_block_row(JBLOCKROW, JBLOCKROW, JDIMENSION)
+- name: jzero_far
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void jzero_far(void *, size_t)
+- name: jround_up
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: long jround_up(long, long)
+- name: jpeg_get_small
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void * jpeg_get_small(j_common_ptr, size_t)
+- name: jdiv_round_up
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: long jdiv_round_up(long, long)
+- name: jinit_marker_writer
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_marker_writer(j_compress_ptr)
+- name: jinit_lossless_decompressor
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jinit_lossless_decompressor(j_decompress_ptr)
+- name: j16init_lossless_decompressor
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void j16init_lossless_decompressor(j_decompress_ptr)
+- name: jpeg_mem_term
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void jpeg_mem_term(j_common_ptr)
+- name: jpeg_mem_init
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: long jpeg_mem_init(j_common_ptr)
+language: c
+project: libjpeg-turbo
+target_name: cjpeg_fuzzer_2_1_x
+target_path: /src/libjpeg-turbo.2.1.x/fuzz/cjpeg.cc

@@ -82,8 +82,7 @@ class CoverageAnalyzer(BaseAgent):
 
     prompt = self._container_handle_bash_commands(response, self.inspect_tool,
                                                   prompt)
-    logger.info("----- Agent's reaction to container tool's feedback -----\n%s",
-                prompt.get())
+
     # Only report conclusion when no more bash investigation is required.
     if not prompt.gettext():
       # Then build fuzz target.

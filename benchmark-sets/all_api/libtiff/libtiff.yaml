@@ -1,0 +1,1665 @@
+functions:
+- name: TIFFForceStrileArrayWriting
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFForceStrileArrayWriting(TIFF *)
+- name: TIFFReadFromUserBuffer
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int TIFFReadFromUserBuffer(TIFF *, uint32_t, void *, tmsize_t, void *,
+    tmsize_t)
+- name: TIFFOpen
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFF * TIFFOpen(const char *, const char *)
+- name: TIFFWriteScanline
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: short
+  return_type: int
+  signature: int TIFFWriteScanline(TIFF *, void *, uint32_t, uint16_t)
+- name: TIFFFlush
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFlush(TIFF *)
+- name: TIFFReadEXIFDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int TIFFReadEXIFDirectory(TIFF *, toff_t)
+- name: TIFFWriteRawTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFWriteRawTile(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFWriteRawStrip
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFWriteRawStrip(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFReadGPSDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int TIFFReadGPSDirectory(TIFF *, toff_t)
+- name: TIFFCheckpointDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFCheckpointDirectory(TIFF *)
+- name: TIFFFdOpen
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFF * TIFFFdOpen(int, const char *, const char *)
+- name: TIFFReadCustomDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFReadCustomDirectory(TIFF *, toff_t, const TIFFFieldArray *)
+- name: TIFFWriteCheck
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFWriteCheck(TIFF *, int, const char *)
+- name: TIFFWriteDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFWriteDirectory(TIFF *)
+- name: TIFFOpenExt
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFF * TIFFOpenExt(const char *, const char *, TIFFOpenOptions *)
+- name: TIFFWriteCustomDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFWriteCustomDirectory(TIFF *, uint64_t *)
+- name: TIFFFdOpenExt
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFF * TIFFFdOpenExt(int, const char *, const char *, TIFFOpenOptions
+    *)
+- name: TIFFRewriteDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFRewriteDirectory(TIFF *)
+- name: TIFFWriteEncodedStrip
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFWriteEncodedStrip(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFSetDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFSetDirectory(TIFF *, tdir_t)
+- name: TIFFSetSubDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int TIFFSetSubDirectory(TIFF *, uint64_t)
+- name: TIFFWriteEncodedTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFWriteEncodedTile(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFWriteTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: short
+  return_type: size_t
+  signature: tmsize_t TIFFWriteTile(TIFF *, void *, uint32_t, uint32_t, uint32_t,
+    uint16_t)
+- name: TIFFReadRGBATile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFReadRGBATile(TIFF *, uint32_t, uint32_t, uint32_t *)
+- name: TIFFReadRGBATileExt
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFReadRGBATileExt(TIFF *, uint32_t, uint32_t, uint32_t *, int)
+- name: TIFFReadRGBAStrip
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFReadRGBAStrip(TIFF *, uint32_t, uint32_t *)
+- name: TIFFReadRawTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFReadRawTile(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFReadRawStrip
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFReadRawStrip(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFReadRGBAStripExt
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFReadRGBAStripExt(TIFF *, uint32_t, uint32_t *, int)
+- name: TIFFRawStripSize
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: tmsize_t TIFFRawStripSize(TIFF *, uint32_t)
+- name: TIFFRawStripSize64
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: uint64_t TIFFRawStripSize64(TIFF *, uint32_t)
+- name: TIFFUnlinkDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFUnlinkDirectory(TIFF *, tdir_t)
+- name: TIFFWriteBufferSetup
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int TIFFWriteBufferSetup(TIFF *, void *, tmsize_t)
+- name: TIFFVTileSize
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: tmsize_t TIFFVTileSize(TIFF *, uint32_t)
+- name: TIFFCreateGPSDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFCreateGPSDirectory(TIFF *)
+- name: TIFFCreateEXIFDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFCreateEXIFDirectory(TIFF *)
+- name: TIFFCreateCustomDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFCreateCustomDirectory(TIFF *, const TIFFFieldArray *)
+- name: TIFFMergeFieldInfo
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFMergeFieldInfo(TIFF *, const TIFFFieldInfo *, uint32_t)
+- name: TIFFFieldSetGetCountSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFieldSetGetCountSize(const TIFFField *)
+- name: TIFFUnsetField
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFUnsetField(TIFF *, uint32_t)
+- name: TIFFRegisterCODEC
+  params:
+  - name: ''
+    type: short
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFCodec * TIFFRegisterCODEC(uint16_t, const char *, TIFFInitMethod)
+- name: TIFFFieldWithName
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const TIFFField * TIFFFieldWithName(TIFF *, const char *)
+- name: TIFFRasterScanlineSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: tmsize_t TIFFRasterScanlineSize(TIFF *)
+- name: TIFFUnRegisterCODEC
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFUnRegisterCODEC(TIFFCodec *)
+- name: TIFFRasterScanlineSize64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFRasterScanlineSize64(TIFF *)
+- name: TIFFDeferStrileArrayWriting
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFDeferStrileArrayWriting(TIFF *)
+- name: TIFFOpenOptionsFree
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFOpenOptionsFree(TIFFOpenOptions *)
+- name: TIFFWarningExt
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFWarningExt(thandle_t, const char *, const char *, void)
+- name: TIFFWarning
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFWarning(const char *, const char *, void)
+- name: TIFFOpenOptionsSetWarningHandlerExtR
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFOpenOptionsSetWarningHandlerExtR(TIFFOpenOptions *, TIFFErrorHandlerExtR,
+    void *)
+- name: TIFFDefaultTileSize
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFDefaultTileSize(TIFF *, uint32_t *, uint32_t *)
+- name: TIFFSetMode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFSetMode(TIFF *, int)
+- name: TIFFSetClientdata
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: thandle_t TIFFSetClientdata(TIFF *, thandle_t)
+- name: TIFFSetFileno
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFSetFileno(TIFF *, int)
+- name: TIFFSetFileName
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char * TIFFSetFileName(TIFF *, const char *)
+- name: TIFFSetWriteOffset
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFSetWriteOffset(TIFF *, toff_t)
+- name: TIFFOpenOptionsSetWarnAboutUnknownTags
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void TIFFOpenOptionsSetWarnAboutUnknownTags(TIFFOpenOptions *, int)
+- name: TIFFOpenOptionsSetMaxCumulatedMemAlloc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFOpenOptionsSetMaxCumulatedMemAlloc(TIFFOpenOptions *, tmsize_t)
+- name: TIFFOpenOptionsSetMaxSingleMemAlloc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFOpenOptionsSetMaxSingleMemAlloc(TIFFOpenOptions *, tmsize_t)
+- name: TIFFDefaultStripSize
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: uint32_t TIFFDefaultStripSize(TIFF *, uint32_t)
+- name: TIFFSwabDouble
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFSwabDouble(double *)
+- name: TIFFSwabFloat
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFSwabFloat(float *)
+- name: TIFFSetTagExtender
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFExtendProc TIFFSetTagExtender(TIFFExtendProc)
+- name: TIFFSetWarningHandlerExt
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFErrorHandlerExt TIFFSetWarningHandlerExt(TIFFErrorHandlerExt)
+- name: TIFFGetUnmapFileProc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFUnmapFileProc TIFFGetUnmapFileProc(TIFF *)
+- name: TIFFIsBigEndian
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFIsBigEndian(TIFF *)
+- name: TIFFLastDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFLastDirectory(TIFF *)
+- name: TIFFCurrentDirOffset
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFCurrentDirOffset(TIFF *)
+- name: TIFFFieldWriteCount
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFieldWriteCount(const TIFFField *)
+- name: TIFFFieldReadCount
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFieldReadCount(const TIFFField *)
+- name: TIFFFieldPassCount
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFieldPassCount(const TIFFField *)
+- name: TIFFFieldDataType
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: TIFFDataType TIFFFieldDataType(const TIFFField *)
+- name: TIFFFieldName
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char * TIFFFieldName(const TIFFField *)
+- name: TIFFGetMapFileProc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFMapFileProc TIFFGetMapFileProc(TIFF *)
+- name: TIFFGetSizeProc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFSizeProc TIFFGetSizeProc(TIFF *)
+- name: TIFFGetCloseProc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFCloseProc TIFFGetCloseProc(TIFF *)
+- name: TIFFGetSeekProc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFSeekProc TIFFGetSeekProc(TIFF *)
+- name: TIFFGetWriteProc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFReadWriteProc TIFFGetWriteProc(TIFF *)
+- name: TIFFGetReadProc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFReadWriteProc TIFFGetReadProc(TIFF *)
+- name: TIFFIsBigTIFF
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFIsBigTIFF(TIFF *)
+- name: TIFFIsMSB2LSB
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFIsMSB2LSB(TIFF *)
+- name: TIFFIsUpSampled
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFIsUpSampled(TIFF *)
+- name: TIFFIsByteSwapped
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFIsByteSwapped(TIFF *)
+- name: TIFFCurrentTile
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t TIFFCurrentTile(TIFF *)
+- name: TIFFCurrentStrip
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t TIFFCurrentStrip(TIFF *)
+- name: TIFFCurrentDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: tdir_t TIFFCurrentDirectory(TIFF *)
+- name: TIFFCurrentRow
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t TIFFCurrentRow(TIFF *)
+- name: TIFFGetMode
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFGetMode(TIFF *)
+- name: TIFFClientdata
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: thandle_t TIFFClientdata(TIFF *)
+- name: TIFFFileno
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFileno(TIFF *)
+- name: TIFFInitJPEG
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitJPEG(TIFF *, int)
+- name: TIFFCheckTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: short
+  return_type: int
+  signature: int TIFFCheckTile(TIFF *, uint32_t, uint32_t, uint32_t, uint16_t)
+- name: TIFFInitCCITTFax3
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitCCITTFax3(TIFF *, int)
+- name: TIFFReadEncodedTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFReadEncodedTile(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFInitJBIG
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitJBIG(TIFF *, int)
+- name: TIFFInitCCITTFax4
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitCCITTFax4(TIFF *, int)
+- name: TIFFInitSGILog
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitSGILog(TIFF *, int)
+- name: TIFFInitPixarLog
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitPixarLog(TIFF *, int)
+- name: TIFFInitZIP
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitZIP(TIFF *, int)
+- name: TIFFPredictorInit
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFPredictorInit(TIFF *)
+- name: TIFFInitOJPEG
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitOJPEG(TIFF *, int)
+- name: TIFFInitCCITTRLEW
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitCCITTRLEW(TIFF *, int)
+- name: TIFFInitCCITTRLE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitCCITTRLE(TIFF *, int)
+- name: TIFFInitLZMA
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitLZMA(TIFF *, int)
+- name: TIFFInitLZW
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitLZW(TIFF *, int)
+- name: TIFFComputeTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: short
+  return_type: int
+  signature: uint32_t TIFFComputeTile(TIFF *, uint32_t, uint32_t, uint32_t, uint16_t)
+- name: TIFFReadEncodedStrip
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: tmsize_t TIFFReadEncodedStrip(TIFF *, uint32_t, void *, tmsize_t)
+- name: TIFFReadTile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: short
+  return_type: size_t
+  signature: tmsize_t TIFFReadTile(TIFF *, void *, uint32_t, uint32_t, uint32_t, uint16_t)
+- name: TIFFVStripSize
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: tmsize_t TIFFVStripSize(TIFF *, uint32_t)
+- name: TIFFTileRowSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: tmsize_t TIFFTileRowSize(TIFF *)
+- name: TIFFXYZToRGB
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  - name: ''
+    type: float
+  - name: ''
+    type: float
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFXYZToRGB(TIFFCIELabToRGB *, float, float, float, uint32_t *,
+    uint32_t *, uint32_t *)
+- name: TIFFYCbCrtoRGB
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFYCbCrtoRGB(TIFFYCbCrToRGB *, uint32_t, int32_t, int32_t, uint32_t
+    *, uint32_t *, uint32_t *)
+- name: TIFFSetCompressionScheme
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFSetCompressionScheme(TIFF *, int)
+- name: TIFFCIELabToXYZ
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFCIELabToXYZ(TIFFCIELabToRGB *, uint32_t, int32_t, int32_t, float
+    *, float *, float *)
+- name: TIFFPredictorCleanup
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFPredictorCleanup(TIFF *)
+- name: TIFFCIELab16ToXYZ
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFCIELab16ToXYZ(TIFFCIELabToRGB *, uint32_t, int32_t, int32_t,
+    float *, float *, float *)
+- name: TIFFSwabArrayOfTriples
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFSwabArrayOfTriples(uint8_t *, tmsize_t)
+- name: TIFFInitPackBits
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitPackBits(TIFF *, int)
+- name: TIFFInitDumpMode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitDumpMode(TIFF *, int)
+- name: TIFFInitNeXT
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitNeXT(TIFF *, int)
+- name: TIFFInitThunderScan
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFInitThunderScan(TIFF *, int)
+- name: TIFFGetBitRevTable
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const unsigned char * TIFFGetBitRevTable(int)
+- name: TIFFNumberOfDirectories
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: tdir_t TIFFNumberOfDirectories(TIFF *)
+- name: TIFFCreateDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFCreateDirectory(TIFF *)
+- name: TIFFSetupStrips
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFSetupStrips(TIFF *)
+- name: TIFFJPEGIsFullStripRequired
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFJPEGIsFullStripRequired(TIFF *)
+- name: TIFFFlushData
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFlushData(TIFF *)
+- name: TIFFFlushData1
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFlushData1(TIFF *)
+- name: TIFFAppendToStrip
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int TIFFAppendToStrip(TIFF *, uint32_t, uint8_t *, tmsize_t)
+- name: TIFFReadBufferSetup
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int TIFFReadBufferSetup(TIFF *, void *, tmsize_t)
+- name: TIFFHashSetRemove
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool TIFFHashSetRemove(TIFFHashSet *, const void *)
+- name: TIFFClampDoubleToUInt32
+  params:
+  - name: ''
+    type: double
+  return_type: int
+  signature: uint32_t TIFFClampDoubleToUInt32(double)
+- name: TIFFSwabArrayOfFloat
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFSwabArrayOfFloat(float *, tmsize_t)
+- name: TIFFFieldTag
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t TIFFFieldTag(const TIFFField *)
+- name: TIFFVGetFieldDefaulted
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFVGetFieldDefaulted(TIFF *, uint32_t, struct __va_list_tag *)
+- name: TIFFRGBAImageGet
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFRGBAImageGet(TIFFRGBAImage *, uint32_t *, uint32_t, uint32_t)
+- name: TIFFHashSetInsert
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool TIFFHashSetInsert(TIFFHashSet *, void *)
+- name: TIFFFetchDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: short
+  signature: uint16_t TIFFFetchDirectory(TIFF *, uint64_t, TIFFDirEntry **, uint64_t
+    *)
+- name: TIFFWarningExtR
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFWarningExtR(TIFF *, const char *, const char *, void)
+- name: TIFFClientOpenExt
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFF * TIFFClientOpenExt(const char *, const char *, thandle_t, TIFFReadWriteProc,
+    TIFFReadWriteProc, TIFFSeekProc, TIFFCloseProc, TIFFSizeProc, TIFFMapFileProc,
+    TIFFUnmapFileProc, TIFFOpenOptions *)
+- name: TIFFFieldWithTag
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: const TIFFField * TIFFFieldWithTag(TIFF *, uint32_t)
+- name: TIFFCleanup
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFCleanup(TIFF *)
+- name: TIFFTileRowSize64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFTileRowSize64(TIFF *)
+- name: TIFFRGBAImageBegin
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFRGBAImageBegin(TIFFRGBAImage *, TIFF *, int, char *)
+- name: TIFFHashSetNew
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFHashSet * TIFFHashSetNew(TIFFHashSetHashFunc, TIFFHashSetEqualFunc,
+    TIFFHashSetFreeEltFunc)
+- name: TIFFNumberOfStrips
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t TIFFNumberOfStrips(TIFF *)
+- name: TIFFDefaultDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFDefaultDirectory(TIFF *)
+- name: TIFFIsCODECConfigured
+  params:
+  - name: ''
+    type: short
+  return_type: int
+  signature: int TIFFIsCODECConfigured(uint16_t)
+- name: TIFFFindCODEC
+  params:
+  - name: ''
+    type: short
+  return_type: void
+  signature: const TIFFCodec * TIFFFindCODEC(uint16_t)
+- name: TIFFHashSetLookup
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void * TIFFHashSetLookup(TIFFHashSet *, const void *)
+- name: TIFFReadDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFReadDirectory(TIFF *)
+- name: TIFFFieldSetGetSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFieldSetGetSize(const TIFFField *)
+- name: TIFFFindField
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: const TIFFField * TIFFFindField(TIFF *, uint32_t, TIFFDataType)
+- name: TIFFScanlineSize64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFScanlineSize64(TIFF *)
+- name: TIFFRGBAImageOK
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFRGBAImageOK(TIFF *, char *)
+- name: TIFFReadScanline
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: short
+  return_type: int
+  signature: int TIFFReadScanline(TIFF *, void *, uint32_t, uint16_t)
+- name: TIFFNumberOfTiles
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: uint32_t TIFFNumberOfTiles(TIFF *)
+- name: TIFFClientOpen
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFF * TIFFClientOpen(const char *, const char *, thandle_t, TIFFReadWriteProc,
+    TIFFReadWriteProc, TIFFSeekProc, TIFFCloseProc, TIFFSizeProc, TIFFMapFileProc,
+    TIFFUnmapFileProc)
+- name: TIFFClose
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFClose(TIFF *)
+- name: TIFFReadRGBAImage
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFReadRGBAImage(TIFF *, uint32_t, uint32_t, uint32_t *, int)
+- name: TIFFReadRGBAImageOriented
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFReadRGBAImageOriented(TIFF *, uint32_t, uint32_t, uint32_t *,
+    int, int)
+- name: TIFFGetStrileOffset
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: uint64_t TIFFGetStrileOffset(TIFF *, uint32_t)
+- name: TIFFGetStrileByteCount
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: uint64_t TIFFGetStrileByteCount(TIFF *, uint32_t)
+- name: TIFFGetStrileByteCountWithErr
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFGetStrileByteCountWithErr(TIFF *, uint32_t, int *)
+- name: TIFFGetStrileOffsetWithErr
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFGetStrileOffsetWithErr(TIFF *, uint32_t, int *)
+- name: TIFFStripSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: tmsize_t TIFFStripSize(TIFF *)
+- name: TIFFStripSize64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFStripSize64(TIFF *)
+- name: TIFFVStripSize64
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: uint64_t TIFFVStripSize64(TIFF *, uint32_t)
+- name: TIFFTileSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: tmsize_t TIFFTileSize(TIFF *)
+- name: TIFFTileSize64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: uint64_t TIFFTileSize64(TIFF *)
+- name: TIFFVTileSize64
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: uint64_t TIFFVTileSize64(TIFF *, uint32_t)
+- name: TIFFScanlineSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: tmsize_t TIFFScanlineSize(TIFF *)
+- name: TIFFGetFieldDefaulted
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFGetFieldDefaulted(TIFF *, uint32_t, void)
+- name: TIFFSetField
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFSetField(TIFF *, uint32_t, void)
+- name: TIFFFreeDirectory
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFFreeDirectory(TIFF *)
+- name: TIFFVSetField
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFVSetField(TIFF *, uint32_t, struct __va_list_tag *)
+- name: TIFFDataWidth
+  params:
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFDataWidth(TIFFDataType)
+- name: TIFFYCbCrToRGBInit
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFYCbCrToRGBInit(TIFFYCbCrToRGB *, float *, float *)
+- name: TIFFGetField
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int TIFFGetField(TIFF *, uint32_t, void)
+- name: TIFFRGBAImageEnd
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFRGBAImageEnd(TIFFRGBAImage *)
+- name: TIFFVGetField
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFVGetField(TIFF *, uint32_t, struct __va_list_tag *)
+- name: TIFFHashSetDestroy
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFHashSetDestroy(TIFFHashSet *)
+- name: TIFFCIELabToRGBInit
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFCIELabToRGBInit(TIFFCIELabToRGB *, const TIFFDisplay *, float
+    *)
+- name: TIFFHashSetSize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFHashSetSize(const TIFFHashSet *)
+- name: TIFFReverseBits
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFReverseBits(uint8_t *, tmsize_t)
+- name: TIFFSwabArrayOfDouble
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFSwabArrayOfDouble(double *, tmsize_t)
+- name: TIFFSwabArrayOfLong8
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFSwabArrayOfLong8(uint64_t *, tmsize_t)
+- name: TIFFSwabArrayOfLong
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFSwabArrayOfLong(uint32_t *, tmsize_t)
+- name: TIFFSwabArrayOfShort
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void TIFFSwabArrayOfShort(uint16_t *, tmsize_t)
+- name: TIFFSwabLong8
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFSwabLong8(uint64_t *)
+- name: TIFFSwabLong
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFSwabLong(uint32_t *)
+- name: TIFFSwabShort
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void TIFFSwabShort(uint16_t *)
+- name: TIFFSetWarningHandler
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: TIFFErrorHandler TIFFSetWarningHandler(TIFFErrorHandler)
+- name: TIFFFieldIsAnonymous
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFFieldIsAnonymous(const TIFFField *)
+- name: TIFFIsTiled
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int TIFFIsTiled(TIFF *)
+- name: TIFFFileName
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char * TIFFFileName(TIFF *)
+language: c++
+project: libtiff
+target_name: tiff_read_rgba_fuzzer
+target_path: /src/libtiff/contrib/oss-fuzz/tiff_read_rgba_fuzzer.cc

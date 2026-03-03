@@ -1,0 +1,838 @@
+functions:
+- name: gzsetparams
+  params:
+  - name: file
+    type: 'bool '
+  - name: level
+    type: int
+  - name: strategy
+    type: int
+  return_type: int
+  signature: int gzsetparams(gzFile, int, int)
+- name: gzputc
+  params:
+  - name: file
+    type: 'bool '
+  - name: c
+    type: int
+  return_type: int
+  signature: int gzputc(gzFile, int)
+- name: gzputs
+  params:
+  - name: file
+    type: 'bool '
+  - name: s
+    type: 'bool '
+  return_type: int
+  signature: int gzputs(gzFile, const char *)
+- name: gzprintf
+  params:
+  - name: file
+    type: 'bool '
+  - name: format
+    type: 'bool '
+  return_type: int
+  signature: int gzprintf(gzFile, const char *, void)
+- name: gzfwrite
+  params:
+  - name: buf
+    type: 'bool '
+  - name: size
+    type: size_t
+  - name: nitems
+    type: size_t
+  - name: file
+    type: 'bool '
+  return_type: size_t
+  signature: z_size_t gzfwrite(voidpc, z_size_t, z_size_t, gzFile)
+- name: crc_word_big
+  params:
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: z_word_t crc_word_big(z_word_t)
+- name: deflatePrime
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int deflatePrime(z_streamp, int, int)
+- name: inflateUndermine
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflateUndermine(z_streamp, int)
+- name: deflateUsed
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflateUsed(z_streamp, int *)
+- name: gzdopen
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: gzFile gzdopen(int, const char *)
+- name: deflateGetDictionary
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflateGetDictionary(z_streamp, Bytef *, uInt *)
+- name: compress_z
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int compress_z(Bytef *, z_size_t *, const Bytef *, z_size_t)
+- name: gzopen64
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: gzFile gzopen64(const char *, const char *)
+- name: deflatePending
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflatePending(z_streamp, unsigned int *, int *)
+- name: inflateGetHeader
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateGetHeader(z_streamp, gz_headerp)
+- name: inflateCopy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateCopy(z_streamp, z_streamp)
+- name: uncompress_z
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int uncompress_z(Bytef *, z_size_t *, const Bytef *, z_size_t)
+- name: adler32_combine64
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong adler32_combine64(uLong, uLong, off64_t)
+- name: deflateTune
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int deflateTune(z_streamp, int, int, int, int)
+- name: inflateValidate
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflateValidate(z_streamp, int)
+- name: deflateSetHeader
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflateSetHeader(z_streamp, gz_headerp)
+- name: inflateMark
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: long inflateMark(z_streamp)
+- name: inflateSyncPoint
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateSyncPoint(z_streamp)
+- name: byte_swap
+  params:
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: z_word_t byte_swap(z_word_t)
+- name: compress
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int compress(Bytef *, uLongf *, const Bytef *, uLong)
+- name: deflate_slow
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: block_state deflate_slow(deflate_state *, int)
+- name: inflateCodesUsed
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: unsigned long inflateCodesUsed(z_streamp)
+- name: deflateCopy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflateCopy(z_streamp, z_streamp)
+- name: inflatePrime
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflatePrime(z_streamp, int, int)
+- name: _tr_tally
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int _tr_tally(deflate_state *, unsigned int, unsigned int)
+- name: inflateGetDictionary
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateGetDictionary(z_streamp, Bytef *, uInt *)
+- name: zcalloc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: voidpf zcalloc(voidpf, unsigned int, unsigned int)
+- name: zcfree
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void zcfree(voidpf, voidpf)
+- name: deflateBound_z
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: z_size_t deflateBound_z(z_streamp, z_size_t)
+- name: deflate
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int deflate(z_streamp, int)
+- name: crc32_z
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong crc32_z(uLong, const unsigned char *, z_size_t)
+- name: gzseek64
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: off64_t gzseek64(gzFile, off64_t, int)
+- name: gzwrite
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int gzwrite(gzFile, voidpc, unsigned int)
+- name: inflateReset2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflateReset2(z_streamp, int)
+- name: gzread
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int gzread(gzFile, voidp, unsigned int)
+- name: gzungetc
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzungetc(int, gzFile)
+- name: gzfread
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: z_size_t gzfread(voidp, z_size_t, z_size_t, gzFile)
+- name: inflateSetDictionary
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflateSetDictionary(z_streamp, const Bytef *, uInt)
+- name: crc32_combine_gen64
+  params:
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong crc32_combine_gen64(off64_t)
+- name: crc32_combine_op
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong crc32_combine_op(uLong, uLong, uLong)
+- name: deflateSetDictionary
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int deflateSetDictionary(z_streamp, const Bytef *, uInt)
+- name: gzvprintf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzvprintf(gzFile, const char *, struct __va_list_tag *)
+- name: inflate
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflate(z_streamp, int)
+- name: deflateInit2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int deflateInit2_(z_streamp, int, int, int, int, int, const char *, int)
+- name: gzoffset64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: off64_t gzoffset64(gzFile)
+- name: inflateSync
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateSync(z_streamp)
+- name: inflateInit2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflateInit2_(z_streamp, int, const char *, int)
+- name: gzbuffer
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int gzbuffer(gzFile, unsigned int)
+- name: gzclose_w
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzclose_w(gzFile)
+- name: deflateParams
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int deflateParams(z_streamp, int, int)
+- name: gzeof
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzeof(gzFile)
+- name: gztell64
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: off64_t gztell64(gzFile)
+- name: inflateEnd
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateEnd(z_streamp)
+- name: gzrewind
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzrewind(gzFile)
+- name: gzclearerr
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void gzclearerr(gzFile)
+- name: gzgets
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: char * gzgets(gzFile, char *, int)
+- name: deflateResetKeep
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflateResetKeep(z_streamp)
+- name: gzflush
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int gzflush(gzFile, int)
+- name: gzgetc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzgetc(gzFile)
+- name: uncompress2_z
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int uncompress2_z(Bytef *, z_size_t *, const Bytef *, z_size_t *)
+- name: compress2_z
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: int
+  signature: int compress2_z(Bytef *, z_size_t *, const Bytef *, z_size_t, int)
+- name: inflate_table
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflate_table(codetype, unsigned short *, unsigned int, code **,
+    unsigned int *, unsigned short *)
+- name: gzclose
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzclose(gzFile)
+- name: compress2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: int
+  signature: int compress2(Bytef *, uLongf *, const Bytef *, uLong, int)
+- name: gzgetc_
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzgetc_(gzFile)
+- name: uncompress
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: int uncompress(Bytef *, uLongf *, const Bytef *, uLong)
+- name: uncompress2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int uncompress2(Bytef *, uLongf *, const Bytef *, uLong *)
+- name: deflateInit_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int deflateInit_(z_streamp, int, const char *, int)
+- name: gzdirect
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzdirect(gzFile)
+- name: deflateReset
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflateReset(z_streamp)
+- name: gzseek
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: off_t gzseek(gzFile, off_t, int)
+- name: gzopen
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: gzFile gzopen(const char *, const char *)
+- name: inflateInit_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int inflateInit_(z_streamp, const char *, int)
+- name: deflateBound
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong deflateBound(z_streamp, uLong)
+- name: gzclose_r
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gzclose_r(gzFile)
+- name: crc32
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: uLong crc32(uLong, const unsigned char *, uInt)
+- name: deflateEnd
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int deflateEnd(z_streamp)
+- name: crc32_combine
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong crc32_combine(uLong, uLong, off_t)
+- name: crc32_combine64
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong crc32_combine64(uLong, uLong, off64_t)
+- name: adler32
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: size_t
+  signature: uLong adler32(uLong, const Bytef *, uInt)
+- name: inflateReset
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateReset(z_streamp)
+- name: adler32_z
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong adler32_z(uLong, const Bytef *, z_size_t)
+- name: crc32_combine_gen
+  params:
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong crc32_combine_gen(off_t)
+- name: inflateResetKeep
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int inflateResetKeep(z_streamp)
+- name: gzoffset
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: off_t gzoffset(gzFile)
+- name: adler32_combine
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong adler32_combine(uLong, uLong, off_t)
+- name: gztell
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: off_t gztell(gzFile)
+- name: compressBound
+  params:
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: uLong compressBound(uLong)
+- name: inflate_fixed
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void inflate_fixed(struct inflate_state *)
+- name: compressBound_z
+  params:
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: z_size_t compressBound_z(z_size_t)
+language: c++
+project: zlib
+target_name: checksum_fuzzer
+target_path: /src/checksum_fuzzer.c

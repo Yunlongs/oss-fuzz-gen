@@ -1,0 +1,392 @@
+functions:
+- name: vp9_loopfilter_job
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void vp9_loopfilter_job(LFWorkerData *, VP9LfSync *)
+- name: vpx_highbd_convolve8_avg_sse2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void vpx_highbd_convolve8_avg_sse2(const uint16_t *, ptrdiff_t, uint16_t
+    *, ptrdiff_t, const InterpKernel *, int, int, int, int, int, int, int)
+- name: vpx_highbd_convolve8_sse2
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void vpx_highbd_convolve8_sse2(const uint16_t *, ptrdiff_t, uint16_t
+    *, ptrdiff_t, const InterpKernel *, int, int, int, int, int, int, int)
+- name: vp9_loop_filter_frame
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void vp9_loop_filter_frame(YV12_BUFFER_CONFIG *, VP9_COMMON *, MACROBLOCKD
+    *, int, int, int)
+- name: vp8_post_proc_frame
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int vp8_post_proc_frame(VP8_COMMON *, YV12_BUFFER_CONFIG *, vp8_ppflags_t
+    *)
+- name: vpx_img_wrap
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: vpx_image_t * vpx_img_wrap(vpx_image_t *, vpx_img_fmt_t, unsigned int,
+    unsigned int, unsigned int, unsigned char *)
+- name: vpx_codec_enc_init_multi_ver
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_enc_init_multi_ver(vpx_codec_ctx_t *, vpx_codec_iface_t
+    *, const vpx_codec_enc_cfg_t *, int, vpx_codec_flags_t, const vpx_rational_t *,
+    int)
+- name: vpx_codec_set_frame_buffer_functions
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_set_frame_buffer_functions(vpx_codec_ctx_t
+    *, vpx_get_frame_buffer_cb_fn_t, vpx_release_frame_buffer_cb_fn_t, void *)
+- name: vpx_codec_get_stream_info
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_get_stream_info(vpx_codec_ctx_t *, vpx_codec_stream_info_t
+    *)
+- name: vpx_codec_enc_config_set
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_enc_config_set(vpx_codec_ctx_t *, const vpx_codec_enc_cfg_t
+    *)
+- name: vpx_codec_get_global_headers
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: vpx_fixed_buf_t * vpx_codec_get_global_headers(vpx_codec_ctx_t *)
+- name: vpx_codec_get_preview_frame
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const vpx_image_t * vpx_codec_get_preview_frame(vpx_codec_ctx_t *)
+- name: vpx_codec_register_put_slice_cb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_register_put_slice_cb(vpx_codec_ctx_t *, vpx_codec_put_slice_cb_fn_t,
+    void *)
+- name: vpx_codec_register_put_frame_cb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_register_put_frame_cb(vpx_codec_ctx_t *, vpx_codec_put_frame_cb_fn_t,
+    void *)
+- name: vpx_codec_set_cx_data_buf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_set_cx_data_buf(vpx_codec_ctx_t *, const vpx_fixed_buf_t
+    *, unsigned int, unsigned int)
+- name: vpx_img_flip
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void vpx_img_flip(vpx_image_t *)
+- name: vpx_codec_err_to_string
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: const char * vpx_codec_err_to_string(vpx_codec_err_t)
+- name: vpx_codec_get_caps
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: vpx_codec_caps_t vpx_codec_get_caps(vpx_codec_iface_t *)
+- name: vpx_codec_iface_name
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char * vpx_codec_iface_name(vpx_codec_iface_t *)
+- name: vpx_codec_get_cx_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const vpx_codec_cx_pkt_t * vpx_codec_get_cx_data(vpx_codec_ctx_t *, vpx_codec_iter_t
+    *)
+- name: vpx_codec_encode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_encode(vpx_codec_ctx_t *, const vpx_image_t
+    *, vpx_codec_pts_t, unsigned long, vpx_enc_frame_flags_t, vpx_enc_deadline_t)
+- name: vpx_img_set_rect
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int vpx_img_set_rect(vpx_image_t *, unsigned int, unsigned int, unsigned
+    int, unsigned int)
+- name: vpx_codec_enc_init_ver
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_enc_init_ver(vpx_codec_ctx_t *, vpx_codec_iface_t
+    *, const vpx_codec_enc_cfg_t *, vpx_codec_flags_t, int)
+- name: vpx_codec_dec_init_ver
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_dec_init_ver(vpx_codec_ctx_t *, vpx_codec_iface_t
+    *, const vpx_codec_dec_cfg_t *, vpx_codec_flags_t, int)
+- name: vpx_codec_enc_config_default
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_enc_config_default(vpx_codec_iface_t *, vpx_codec_enc_cfg_t
+    *, unsigned int)
+- name: vpx_codec_destroy
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_destroy(vpx_codec_ctx_t *)
+- name: vpx_codec_get_frame
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: vpx_image_t * vpx_codec_get_frame(vpx_codec_ctx_t *, vpx_codec_iter_t
+    *)
+- name: vpx_codec_control_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_control_(vpx_codec_ctx_t *, int, void)
+- name: vpx_codec_decode
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_decode(vpx_codec_ctx_t *, const uint8_t *,
+    unsigned int, void *, long)
+- name: vpx_codec_peek_stream_info
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: vpx_codec_err_t vpx_codec_peek_stream_info(vpx_codec_iface_t *, const
+    uint8_t *, unsigned int, vpx_codec_stream_info_t *)
+- name: vpx_img_alloc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: vpx_image_t * vpx_img_alloc(vpx_image_t *, vpx_img_fmt_t, unsigned int,
+    unsigned int, unsigned int)
+- name: vpx_img_free
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void vpx_img_free(vpx_image_t *)
+language: c++
+project: libvpx
+target_name: vpx_dec_fuzzer_vp8
+target_path: /src/libvpx/examples/vpx_dec_fuzzer.cc

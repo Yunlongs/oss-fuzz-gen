@@ -86,7 +86,7 @@ class CrashAnalyzer(BaseAgent):
     stdout = self.llm.truncate_prompt(processed_stdout,
                                       previous_prompt_text).strip()
     stderr = self.llm.truncate_prompt(process.stderr,
-                                      stdout + previous_prompt_text).strip()
+                                      stdout + str(previous_prompt_text)).strip()
     return (f'<gdb command>\n{gdb_command.strip()}\n</gdb command>\n'
             f'<gdb output>\n{stdout}\n</gdb output>\n'
             f'<stderr>\n{stderr}\n</stderr>\n')
@@ -100,6 +100,7 @@ class CrashAnalyzer(BaseAgent):
       prompt_text += self._format_gdb_execution_result(
           command, process, previous_prompt=prompt) + '\n'
       prompt.append(prompt_text)
+    logger.info("----- Agent's reaction to GDB tool's feedback -----\n%s",prompt_text)
     return prompt
 
   def _container_handle_conclusion(self, cur_round: int, response: str,

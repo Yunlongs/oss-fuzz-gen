@@ -493,6 +493,8 @@ class DeepSeekV32(GPT):
   """DeepSeek's v3.2 model."""
 
   name = 'DeepSeek-V3.2'
+  MAX_INPUT_TOKEN = 128000
+
 
 class ChatGPT(GPT):
   """OpenAI's GPT model with chat session."""

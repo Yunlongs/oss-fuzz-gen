@@ -825,6 +825,12 @@ def _select_public_api_functions(project: str) -> OrderedDict:
   logger.info('Extracting public API functions.')
   functions = []
   for func in query_introspector_all_public_candidates(project):
+    funcname = func.get('function_name', None)
+    if not funcname:
+      continue
+    if funcname.startswith('_'):
+      continue
+
     debug_summary = func.get('debug_summary', '')
     if debug_summary:
       if len(debug_summary.get('possible-header-files', [])) > 0:
@@ -908,14 +914,14 @@ def _select_functions_from_oracles(project: str, limit: int,
                                                    target_oracles)
   # FRLC is the primary oracle. If it does not exist, follow oracle order and
   # deduplicate.
-  if not frlc_targets:
-    for target_oracle in target_oracles:
-      tmp_functions = _select_top_functions_from_oracle(project, limit,
-                                                        target_oracle,
-                                                        target_oracles)
-      all_functions.update(tmp_functions)
+  #if not frlc_targets:
+  ##  for target_oracle in target_oracles:
+  #    tmp_functions = _select_top_functions_from_oracle(project, limit,
+  #                                                      target_oracle,
+  #                                                      target_oracles)
+  #    all_functions.update(tmp_functions)
 
-    return list(all_functions.values())[:limit]
+  #  return list(all_functions.values())[:limit]
 
   # Selection rule: Prioritize on far-reach-low-coverage, but include one of
   # optimal-targets, easy-params-far-reach if any.

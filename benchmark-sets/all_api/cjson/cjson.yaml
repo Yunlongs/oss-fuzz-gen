@@ -1,553 +1,564 @@
-"functions":
-- "name": "cJSON_AddNullToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddNullToObject(const cJSON *, const const char *)"
-- "name": "cJSON_AddItemToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_AddItemToObject(cJSON *, const char *, cJSON *)"
-- "name": "cJSON_AddBoolToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddBoolToObject(const cJSON *, const const char *, const cJSON_bool)"
-- "name": "cJSON_PrintPreallocated"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  - "name": ""
-    "type": "int"
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_PrintPreallocated(cJSON *, char *, const int, const cJSON_bool)"
-- "name": "cJSON_Compare"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_Compare(const const cJSON *, const const cJSON *, const cJSON_bool)"
-- "name": "cJSON_AddArrayToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddArrayToObject(const cJSON *, const const char *)"
-- "name": "cJSON_AddObjectToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddObjectToObject(const cJSON *, const const char *)"
-- "name": "cJSON_DeleteItemFromObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "void cJSON_DeleteItemFromObject(cJSON *, const char *)"
-- "name": "cJSON_Duplicate_rec"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "size_t"
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_Duplicate_rec(const cJSON *, size_t, cJSON_bool)"
-- "name": "cJSON_AddFalseToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddFalseToObject(const cJSON *, const const char *)"
-- "name": "cJSON_DetachItemFromObjectCaseSensitive"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_DetachItemFromObjectCaseSensitive(cJSON *, const char *)"
-- "name": "cJSON_ReplaceItemInArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_ReplaceItemInArray(cJSON *, int, cJSON *)"
-- "name": "cJSON_AddItemToObjectCS"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_AddItemToObjectCS(cJSON *, const char *, cJSON *)"
-- "name": "cJSON_DeleteItemFromObjectCaseSensitive"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "void cJSON_DeleteItemFromObjectCaseSensitive(cJSON *, const char *)"
-- "name": "cJSON_AddStringToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddStringToObject(const cJSON *, const const char *, const const char *)"
-- "name": "cJSON_AddItemReferenceToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_AddItemReferenceToObject(cJSON *, const char *, cJSON *)"
-- "name": "cJSON_CreateIntArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateIntArray(const int *, int)"
-- "name": "cJSON_AddTrueToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddTrueToObject(const cJSON *, const const char *)"
-- "name": "cJSON_ReplaceItemInObjectCaseSensitive"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_ReplaceItemInObjectCaseSensitive(cJSON *, const char *, cJSON *)"
-- "name": "cJSON_CreateStringArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateStringArray(const const char **, int)"
-- "name": "cJSON_Parse"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_Parse(const char *)"
-- "name": "cJSON_CreateFloatArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateFloatArray(const float *, int)"
-- "name": "cJSON_AddRawToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddRawToObject(const cJSON *, const const char *, const const char *)"
-- "name": "cJSON_DeleteItemFromArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "void cJSON_DeleteItemFromArray(cJSON *, int)"
-- "name": "cJSON_DetachItemFromObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_DetachItemFromObject(cJSON *, const char *)"
-- "name": "cJSON_ReplaceItemInObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_ReplaceItemInObject(cJSON *, const char *, cJSON *)"
-- "name": "cJSON_ParseWithLength"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "size_t"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_ParseWithLength(const char *, size_t)"
-- "name": "cJSON_AddNumberToObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "double"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_AddNumberToObject(const cJSON *, const const char *, const double)"
-- "name": "cJSON_Duplicate"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_Duplicate(const cJSON *, cJSON_bool)"
-- "name": "cJSON_CreateDoubleArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateDoubleArray(const double *, int)"
-- "name": "cJSON_HasObjectItem"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_HasObjectItem(const cJSON *, const char *)"
-- "name": "cJSON_GetObjectItemCaseSensitive"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_GetObjectItemCaseSensitive(const const cJSON *, const const char *)"
-- "name": "cJSON_GetObjectItem"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_GetObjectItem(const const cJSON *, const const char *)"
-- "name": "cJSON_CreateRaw"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateRaw(const char *)"
-- "name": "cJSON_SetValuestring"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "char * cJSON_SetValuestring(cJSON *, const char *)"
-- "name": "cJSON_ReplaceItemViaPointer"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_ReplaceItemViaPointer(const cJSON *, const cJSON *, cJSON *)"
-- "name": "cJSON_InsertItemInArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_InsertItemInArray(cJSON *, int, cJSON *)"
-- "name": "cJSON_AddItemReferenceToArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_AddItemReferenceToArray(cJSON *, cJSON *)"
-- "name": "cJSON_DetachItemFromArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_DetachItemFromArray(cJSON *, int)"
-- "name": "cJSON_AddItemToArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_AddItemToArray(cJSON *, cJSON *)"
-- "name": "cJSON_DetachItemViaPointer"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_DetachItemViaPointer(cJSON *, const cJSON *)"
-- "name": "cJSON_CreateNumber"
-  "params":
-  - "name": ""
-    "type": "double"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateNumber(double)"
-- "name": "cJSON_CreateArrayReference"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateArrayReference(const cJSON *)"
-- "name": "cJSON_CreateObjectReference"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateObjectReference(const cJSON *)"
-- "name": "cJSON_GetArrayItem"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_GetArrayItem(const cJSON *, int)"
-- "name": "cJSON_CreateBool"
-  "params":
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_CreateBool(cJSON_bool)"
-- "name": "cJSON_InitHooks"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "void cJSON_InitHooks(cJSON_Hooks *)"
-- "name": "cJSON_GetNumberValue"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "double"
-  "signature": "double cJSON_GetNumberValue(const const cJSON *)"
-- "name": "cJSON_GetStringValue"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "char * cJSON_GetStringValue(const const cJSON *)"
-- "name": "cJSON_SetNumberHelper"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "double"
-  "return_type": "double"
-  "signature": "double cJSON_SetNumberHelper(cJSON *, double)"
-- "name": "cJSON_GetArraySize"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "int cJSON_GetArraySize(const cJSON *)"
-- "name": "cJSON_IsRaw"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsRaw(const const cJSON *)"
-- "name": "cJSON_IsObject"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsObject(const const cJSON *)"
-- "name": "cJSON_IsArray"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsArray(const const cJSON *)"
-- "name": "cJSON_IsNull"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsNull(const const cJSON *)"
-- "name": "cJSON_IsBool"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsBool(const const cJSON *)"
-- "name": "cJSON_IsTrue"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsTrue(const const cJSON *)"
-- "name": "cJSON_IsFalse"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsFalse(const const cJSON *)"
-- "name": "cJSON_IsInvalid"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsInvalid(const const cJSON *)"
-- "name": "cJSON_IsNumber"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsNumber(const const cJSON *)"
-- "name": "cJSON_IsString"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "int"
-  "signature": "cJSON_bool cJSON_IsString(const const cJSON *)"
-- "name": "cJSON_free"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "void cJSON_free(void *)"
-- "name": "cJSON_malloc"
-  "params":
-  - "name": ""
-    "type": "size_t"
-  "return_type": "void"
-  "signature": "void * cJSON_malloc(size_t)"
-- "name": "cJSON_PrintBuffered"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "char * cJSON_PrintBuffered(const cJSON *, int, cJSON_bool)"
-- "name": "cJSON_ParseWithOpts"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_ParseWithOpts(const char *, const char **, cJSON_bool)"
-- "name": "cJSON_ParseWithLengthOpts"
-  "params":
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "size_t"
-  - "name": ""
-    "type": "bool "
-  - "name": ""
-    "type": "int"
-  "return_type": "void"
-  "signature": "cJSON * cJSON_ParseWithLengthOpts(const char *, size_t, const char **, cJSON_bool)"
-- "name": "cJSON_Minify"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "void cJSON_Minify(char *)"
-- "name": "cJSON_PrintUnformatted"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "char * cJSON_PrintUnformatted(const cJSON *)"
-- "name": "cJSON_Print"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "char * cJSON_Print(const cJSON *)"
-- "name": "cJSON_Delete"
-  "params":
-  - "name": ""
-    "type": "bool "
-  "return_type": "void"
-  "signature": "void cJSON_Delete(cJSON *)"
-"language": "c++"
-"project": "cjson"
-"target_name": "cjson_read_fuzzer"
-"target_path": "/src/cjson/fuzzing/cjson_read_fuzzer.c"
+functions:
+- name: cJSON_PrintPreallocated
+  params:
+  - name: item
+    type: 'bool '
+  - name: buffer
+    type: 'bool '
+  - name: length
+    type: int
+  - name: format
+    type: int
+  return_type: int
+  signature: cJSON_bool cJSON_PrintPreallocated(cJSON *, char *, const int, const
+    cJSON_bool)
+- name: cJSON_Compare
+  params:
+  - name: a
+    type: 'bool '
+  - name: b
+    type: 'bool '
+  - name: case_sensitive
+    type: int
+  return_type: int
+  signature: cJSON_bool cJSON_Compare(const const cJSON *, const const cJSON *, const
+    cJSON_bool)
+- name: cJSON_Parse
+  params:
+  - name: value
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_Parse(const char *)
+- name: cJSON_ReplaceItemInObjectCaseSensitive
+  params:
+  - name: object
+    type: 'bool '
+  - name: string
+    type: 'bool '
+  - name: newitem
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_ReplaceItemInObjectCaseSensitive(cJSON *, const char
+    *, cJSON *)
+- name: cJSON_ParseWithLength
+  params:
+  - name: value
+    type: 'bool '
+  - name: buffer_length
+    type: size_t
+  return_type: void
+  signature: cJSON * cJSON_ParseWithLength(const char *, size_t)
+- name: cJSON_AddNullToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_AddNullToObject(const cJSON *, const const char *)
+- name: cJSON_AddItemToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_AddItemToObject(cJSON *, const char *, cJSON *)
+- name: cJSON_AddBoolToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_AddBoolToObject(const cJSON *, const const char *, const
+    cJSON_bool)
+- name: cJSON_AddArrayToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_AddArrayToObject(const cJSON *, const const char *)
+- name: cJSON_AddObjectToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_AddObjectToObject(const cJSON *, const const char *)
+- name: cJSON_DeleteItemFromObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void cJSON_DeleteItemFromObject(cJSON *, const char *)
+- name: cJSON_Duplicate_rec
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_Duplicate_rec(const cJSON *, size_t, cJSON_bool)
+- name: cJSON_AddFalseToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_AddFalseToObject(const cJSON *, const const char *)
+- name: cJSON_DetachItemFromObjectCaseSensitive
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_DetachItemFromObjectCaseSensitive(cJSON *, const char *)
+- name: cJSON_ReplaceItemInArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_ReplaceItemInArray(cJSON *, int, cJSON *)
+- name: cJSON_AddItemToObjectCS
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_AddItemToObjectCS(cJSON *, const char *, cJSON *)
+- name: cJSON_DeleteItemFromObjectCaseSensitive
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void cJSON_DeleteItemFromObjectCaseSensitive(cJSON *, const char *)
+- name: cJSON_AddStringToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_AddStringToObject(const cJSON *, const const char *, const
+    const char *)
+- name: cJSON_AddItemReferenceToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_AddItemReferenceToObject(cJSON *, const char *, cJSON
+    *)
+- name: cJSON_CreateIntArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_CreateIntArray(const int *, int)
+- name: cJSON_AddTrueToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_AddTrueToObject(const cJSON *, const const char *)
+- name: cJSON_CreateStringArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_CreateStringArray(const const char **, int)
+- name: cJSON_CreateFloatArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_CreateFloatArray(const float *, int)
+- name: cJSON_AddRawToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_AddRawToObject(const cJSON *, const const char *, const
+    const char *)
+- name: cJSON_DeleteItemFromArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void cJSON_DeleteItemFromArray(cJSON *, int)
+- name: cJSON_DetachItemFromObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_DetachItemFromObject(cJSON *, const char *)
+- name: cJSON_ReplaceItemInObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_ReplaceItemInObject(cJSON *, const char *, cJSON *)
+- name: cJSON_AddNumberToObject
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: void
+  signature: cJSON * cJSON_AddNumberToObject(const cJSON *, const const char *, const
+    double)
+- name: cJSON_Duplicate
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_Duplicate(const cJSON *, cJSON_bool)
+- name: cJSON_CreateDoubleArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_CreateDoubleArray(const double *, int)
+- name: cJSON_HasObjectItem
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_HasObjectItem(const cJSON *, const char *)
+- name: cJSON_GetObjectItemCaseSensitive
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_GetObjectItemCaseSensitive(const const cJSON *, const const
+    char *)
+- name: cJSON_GetObjectItem
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_GetObjectItem(const const cJSON *, const const char *)
+- name: cJSON_CreateRaw
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_CreateRaw(const char *)
+- name: cJSON_SetValuestring
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char * cJSON_SetValuestring(cJSON *, const char *)
+- name: cJSON_ReplaceItemViaPointer
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_ReplaceItemViaPointer(const cJSON *, const cJSON *,
+    cJSON *)
+- name: cJSON_InsertItemInArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_InsertItemInArray(cJSON *, int, cJSON *)
+- name: cJSON_AddItemReferenceToArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_AddItemReferenceToArray(cJSON *, cJSON *)
+- name: cJSON_DetachItemFromArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_DetachItemFromArray(cJSON *, int)
+- name: cJSON_AddItemToArray
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_AddItemToArray(cJSON *, cJSON *)
+- name: cJSON_DetachItemViaPointer
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_DetachItemViaPointer(cJSON *, const cJSON *)
+- name: cJSON_CreateNumber
+  params:
+  - name: ''
+    type: double
+  return_type: void
+  signature: cJSON * cJSON_CreateNumber(double)
+- name: cJSON_CreateArrayReference
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_CreateArrayReference(const cJSON *)
+- name: cJSON_CreateObjectReference
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: cJSON * cJSON_CreateObjectReference(const cJSON *)
+- name: cJSON_GetArrayItem
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_GetArrayItem(const cJSON *, int)
+- name: cJSON_CreateBool
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_CreateBool(cJSON_bool)
+- name: cJSON_InitHooks
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void cJSON_InitHooks(cJSON_Hooks *)
+- name: cJSON_GetNumberValue
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: double
+  signature: double cJSON_GetNumberValue(const const cJSON *)
+- name: cJSON_GetStringValue
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char * cJSON_GetStringValue(const const cJSON *)
+- name: cJSON_SetNumberHelper
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: double
+  signature: double cJSON_SetNumberHelper(cJSON *, double)
+- name: cJSON_GetArraySize
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int cJSON_GetArraySize(const cJSON *)
+- name: cJSON_IsRaw
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsRaw(const const cJSON *)
+- name: cJSON_IsObject
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsObject(const const cJSON *)
+- name: cJSON_IsArray
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsArray(const const cJSON *)
+- name: cJSON_IsNull
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsNull(const const cJSON *)
+- name: cJSON_IsBool
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsBool(const const cJSON *)
+- name: cJSON_IsTrue
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsTrue(const const cJSON *)
+- name: cJSON_IsFalse
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsFalse(const const cJSON *)
+- name: cJSON_IsInvalid
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsInvalid(const const cJSON *)
+- name: cJSON_IsNumber
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsNumber(const const cJSON *)
+- name: cJSON_IsString
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cJSON_bool cJSON_IsString(const const cJSON *)
+- name: cJSON_free
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void cJSON_free(void *)
+- name: cJSON_malloc
+  params:
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void * cJSON_malloc(size_t)
+- name: cJSON_PrintBuffered
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: char * cJSON_PrintBuffered(const cJSON *, int, cJSON_bool)
+- name: cJSON_ParseWithOpts
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_ParseWithOpts(const char *, const char **, cJSON_bool)
+- name: cJSON_ParseWithLengthOpts
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: cJSON * cJSON_ParseWithLengthOpts(const char *, size_t, const char **,
+    cJSON_bool)
+- name: cJSON_Minify
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void cJSON_Minify(char *)
+- name: cJSON_PrintUnformatted
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char * cJSON_PrintUnformatted(const cJSON *)
+- name: cJSON_Print
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char * cJSON_Print(const cJSON *)
+- name: cJSON_Delete
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void cJSON_Delete(cJSON *)
+language: c++
+project: cjson
+target_name: cjson_read_fuzzer
+target_path: /src/cjson/fuzzing/cjson_read_fuzzer.c

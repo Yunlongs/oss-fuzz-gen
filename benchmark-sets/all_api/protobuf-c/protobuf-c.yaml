@@ -1,0 +1,503 @@
+functions:
+- name: protobuf_c_message_check
+  params:
+  - name: message
+    type: 'bool '
+  return_type: int
+  signature: protobuf_c_boolean protobuf_c_message_check(const ProtobufCMessage *)
+- name: protobuf_c_buffer_simple_append
+  params:
+  - name: buffer
+    type: 'bool '
+  - name: len
+    type: size_t
+  - name: data
+    type: 'bool '
+  return_type: void
+  signature: void protobuf_c_buffer_simple_append(ProtobufCBuffer *, size_t, const
+    uint8_t *)
+- name: protobuf_c_service_descriptor_get_method_by_name
+  params:
+  - name: desc
+    type: 'bool '
+  - name: name
+    type: 'bool '
+  return_type: void
+  signature: const ProtobufCMethodDescriptor * protobuf_c_service_descriptor_get_method_by_name(const
+    ProtobufCServiceDescriptor *, const char *)
+- name: protobuf_c_message_descriptor_get_field
+  params:
+  - name: desc
+    type: 'bool '
+  - name: value
+    type: int
+  return_type: void
+  signature: const ProtobufCFieldDescriptor * protobuf_c_message_descriptor_get_field(const
+    ProtobufCMessageDescriptor *, unsigned int)
+- name: protobuf_c_message_pack_to_buffer
+  params:
+  - name: message
+    type: 'bool '
+  - name: buffer
+    type: 'bool '
+  return_type: size_t
+  signature: size_t protobuf_c_message_pack_to_buffer(const ProtobufCMessage *, ProtobufCBuffer
+    *)
+- name: foo__test_mess_required_uint64__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredUInt64 * foo__test_mess_required_uint64__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_fixed64__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredFixed64 * foo__test_mess_required_fixed64__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__default_optional_values__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__DefaultOptionalValues * foo__default_optional_values__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_int64__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredInt64 * foo__test_mess_required_int64__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_required_fields_bitmap__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestRequiredFieldsBitmap * foo__test_required_fields_bitmap__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_sint32__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredSInt32 * foo__test_mess_required_sint32__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_sub_mess__pack_to_buffer
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t foo__test_mess_sub_mess__pack_to_buffer(const Foo__TestMessSubMess
+    *, ProtobufCBuffer *)
+- name: foo__test_mess_required_bool__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredBool * foo__test_mess_required_bool__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__empty_mess__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__EmptyMess * foo__empty_mess__unpack(ProtobufCAllocator *, size_t,
+    const uint8_t *)
+- name: foo__test_mess_required_float__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredFloat * foo__test_mess_required_float__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_message_check__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessageCheck * foo__test_message_check__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__alloc_values__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__AllocValues * foo__alloc_values__unpack(ProtobufCAllocator *, size_t,
+    const uint8_t *)
+- name: foo__test_mess_oneof__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessOneof * foo__test_mess_oneof__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__lower_case__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__LowerCase * foo__lower_case__unpack(ProtobufCAllocator *, size_t,
+    const uint8_t *)
+- name: foo__test_mess_required_enum_small__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredEnumSmall * foo__test_mess_required_enum_small__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_packed__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessPacked * foo__test_mess_packed__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_message__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredMessage * foo__test_mess_required_message__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_uint32__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredUInt32 * foo__test_mess_required_uint32__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMess * foo__test_mess__unpack(ProtobufCAllocator *, size_t,
+    const uint8_t *)
+- name: foo__test_field_flags__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestFieldFlags * foo__test_field_flags__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: required_field_pack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t required_field_pack(const ProtobufCFieldDescriptor *, const void
+    *, uint8_t *)
+- name: foo__test_mess_required_enum__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredEnum * foo__test_mess_required_enum__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_int32__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredInt32 * foo__test_mess_required_int32__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_fixed32__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredFixed32 * foo__test_mess_required_fixed32__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_sub_mess__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessSubMess * foo__test_mess_sub_mess__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_bytes__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredBytes * foo__test_mess_required_bytes__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_string__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredString * foo__test_mess_required_string__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_sint64__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredSInt64 * foo__test_mess_required_sint64__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_double__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredDouble * foo__test_mess_required_double__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_sfixed32__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredSFixed32 * foo__test_mess_required_sfixed32__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__default_required_values__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__DefaultRequiredValues * foo__default_required_values__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: foo__test_mess_required_sfixed64__unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Foo__TestMessRequiredSFixed64 * foo__test_mess_required_sfixed64__unpack(ProtobufCAllocator
+    *, size_t, const uint8_t *)
+- name: protobuf_c_message_pack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t protobuf_c_message_pack(const ProtobufCMessage *, uint8_t *)
+- name: protobuf_c_message_get_packed_size
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t protobuf_c_message_get_packed_size(const ProtobufCMessage *)
+- name: protobuf_c_enum_descriptor_get_value
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: const ProtobufCEnumValue * protobuf_c_enum_descriptor_get_value(const
+    ProtobufCEnumDescriptor *, int)
+- name: protobuf_c_message_descriptor_get_field_by_name
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const ProtobufCFieldDescriptor * protobuf_c_message_descriptor_get_field_by_name(const
+    ProtobufCMessageDescriptor *, const char *)
+- name: protobuf_c_enum_descriptor_get_value_by_name
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const ProtobufCEnumValue * protobuf_c_enum_descriptor_get_value_by_name(const
+    ProtobufCEnumDescriptor *, const char *)
+- name: protobuf_c_service_invoke_internal
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void protobuf_c_service_invoke_internal(ProtobufCService *, unsigned
+    int, const ProtobufCMessage *, ProtobufCClosure, void *)
+- name: protobuf_c_service_generated_init
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void protobuf_c_service_generated_init(ProtobufCService *, const ProtobufCServiceDescriptor
+    *, ProtobufCServiceDestroy)
+- name: protobuf_c_service_destroy
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void protobuf_c_service_destroy(ProtobufCService *)
+- name: protobuf_c_message_unpack
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: ProtobufCMessage * protobuf_c_message_unpack(const ProtobufCMessageDescriptor
+    *, ProtobufCAllocator *, size_t, const uint8_t *)
+- name: protobuf_c_message_free_unpacked
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void protobuf_c_message_free_unpacked(ProtobufCMessage *, ProtobufCAllocator
+    *)
+- name: protobuf_c_message_init
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void protobuf_c_message_init(const ProtobufCMessageDescriptor *, void
+    *)
+language: c
+project: protobuf-c
+target_name: fuzzer
+target_path: /src/protobuf-c-fuzzers/fuzzer.cpp

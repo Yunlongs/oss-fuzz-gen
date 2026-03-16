@@ -1,0 +1,1326 @@
+functions:
+- name: _Z10clFlush_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clFlush_fn(int)
+- name: _Z10cl_contextPi
+  params:
+  - name: param0
+    type: int*
+  return_type: unknown
+  signature: cl_context(int*)
+- name: _Z10cl_programPi
+  params:
+  - name: param0
+    type: int*
+  return_type: unknown
+  signature: cl_program(int*)
+- name: _Z10cl_samplerPi
+  params:
+  - name: param0
+    type: int*
+  return_type: unknown
+  signature: cl_sampler(int*)
+- name: _Z10cvIplDepthi
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: cvIplDepth(int)
+- name: _Z11CL_API_CALLPKc
+  params:
+  - name: param0
+    type: char const*
+  return_type: unknown
+  signature: CL_API_CALL(char const*)
+- name: _Z11CL_API_CALLiPKc
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: char const*
+  return_type: unknown
+  signature: CL_API_CALL(int, char const*)
+- name: _Z11clFinish_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clFinish_fn(int)
+- name: _Z12CGImageToMatiRib
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int&
+  - name: param2
+    type: bool
+  return_type: unknown
+  signature: CGImageToMat(int, int&, bool)
+- name: _Z12NSImageToMatPKiRib
+  params:
+  - name: param0
+    type: int const*
+  - name: param1
+    type: int&
+  - name: param2
+    type: bool
+  return_type: unknown
+  signature: NSImageToMat(int const*, int&, bool)
+- name: _Z12UIImageToMatPKiRib
+  params:
+  - name: param0
+    type: int const*
+  - name: param1
+    type: int&
+  - name: param2
+    type: bool
+  return_type: unknown
+  signature: UIImageToMat(int const*, int&, bool)
+- name: _Z16clCreateImage_fniiPKiS0_PvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: int const*
+  - name: param4
+    type: void*
+  - name: param5
+    type: int*
+  return_type: unknown
+  signature: clCreateImage_fn(int, int, int const*, int const*, void*, int*)
+- name: _Z16clEnqueueTask_fniiiPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clEnqueueTask_fn(int, int, int, int const*, int*)
+- name: _Z16clLinkProgram_fniiPKiPKciS0_PFviPvES3_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: char const*
+  - name: param4
+    type: int
+  - name: param5
+    type: int const*
+  - name: param6
+    type: void (*)(int, void*)
+  - name: param7
+    type: void*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clLinkProgram_fn(int, int, int const*, char const*, int, int const*, void (*)(int, void*), void*, int*)
+- name: _Z16clRetainEvent_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainEvent_fn(int)
+- name: _Z16cl_command_queuePi
+  params:
+  - name: param0
+    type: int*
+  return_type: unknown
+  signature: cl_command_queue(int*)
+- name: _Z17clBuildProgram_fniiPKiPKcPFviPvES3_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: char const*
+  - name: param4
+    type: void (*)(int, void*)
+  - name: param5
+    type: void*
+  return_type: unknown
+  signature: clBuildProgram_fn(int, int, int const*, char const*, void (*)(int, void*), void*)
+- name: _Z17clCreateBuffer_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clCreateBuffer_fn(int, int, int, void*, int*)
+- name: _Z17clCreateKernel_fniPKcPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: char const*
+  - name: param2
+    type: int*
+  return_type: unknown
+  signature: clCreateKernel_fn(int, char const*, int*)
+- name: _Z17clGetDeviceIDs_fniiiPiS_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetDeviceIDs_fn(int, int, int, int*, int*)
+- name: _Z17clGetEventInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetEventInfo_fn(int, int, int, void*, int*)
+- name: _Z17clGetImageInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetImageInfo_fn(int, int, int, void*, int*)
+- name: _Z17clReleaseEvent_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseEvent_fn(int)
+- name: _Z17clRetainDevice_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainDevice_fn(int)
+- name: _Z17clRetainKernel_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainKernel_fn(int)
+- name: _Z17clSetKernelArg_fniiiPKv
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void const*
+  return_type: unknown
+  signature: clSetKernelArg_fn(int, int, int, void const*)
+- name: _Z18clCreateContext_fnPKiiS0_PFvPKcPKviPvES5_Pi
+  params:
+  - name: param0
+    type: int const*
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: void (*)(char const*, void const*, int, void*)
+  - name: param4
+    type: void*
+  - name: param5
+    type: int*
+  return_type: unknown
+  signature: clCreateContext_fn(int const*, int, int const*, void (*)(char const*, void const*, int, void*), void*, int*)
+- name: _Z18clCreateImage2D_fniiPKiiiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: int
+  - name: param6
+    type: void*
+  - name: param7
+    type: int*
+  return_type: unknown
+  signature: clCreateImage2D_fn(int, int, int const*, int, int, int, void*, int*)
+- name: _Z18clCreateImage3D_fniiPKiiiiiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: int
+  - name: param6
+    type: int
+  - name: param7
+    type: int
+  - name: param8
+    type: void*
+  - name: param9
+    type: int*
+  return_type: unknown
+  signature: clCreateImage3D_fn(int, int, int const*, int, int, int, int, int, void*, int*)
+- name: _Z18clCreateSampler_fniiiiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clCreateSampler_fn(int, int, int, int, int*)
+- name: _Z18clEnqueueMarker_fniPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int*
+  return_type: unknown
+  signature: clEnqueueMarker_fn(int, int*)
+- name: _Z18clGetDeviceInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetDeviceInfo_fn(int, int, int, void*, int*)
+- name: _Z18clGetKernelInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetKernelInfo_fn(int, int, int, void*, int*)
+- name: _Z18clReleaseDevice_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseDevice_fn(int)
+- name: _Z18clReleaseKernel_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseKernel_fn(int)
+- name: _Z18clRetainContext_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainContext_fn(int)
+- name: _Z18clRetainProgram_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainProgram_fn(int)
+- name: _Z18clRetainSampler_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainSampler_fn(int)
+- name: _Z18clWaitForEvents_fniPKi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int const*
+  return_type: unknown
+  signature: clWaitForEvents_fn(int, int const*)
+- name: _Z19clCompileProgram_fniiPKiPKciS0_PS2_PFviPvES4_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: char const*
+  - name: param4
+    type: int
+  - name: param5
+    type: int const*
+  - name: param6
+    type: char const**
+  - name: param7
+    type: void (*)(int, void*)
+  - name: param8
+    type: void*
+  return_type: unknown
+  signature: clCompileProgram_fn(int, int, int const*, char const*, int, int const*, char const**, void (*)(int, void*), void*)
+- name: _Z19clEnqueueBarrier_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clEnqueueBarrier_fn(int)
+- name: _Z19clGetContextInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetContextInfo_fn(int, int, int, void*, int*)
+- name: _Z19clGetPlatformIDs_fniPiS_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int*
+  - name: param2
+    type: int*
+  return_type: unknown
+  signature: clGetPlatformIDs_fn(int, int*, int*)
+- name: _Z19clGetProgramInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetProgramInfo_fn(int, int, int, void*, int*)
+- name: _Z19clGetSamplerInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetSamplerInfo_fn(int, int, int, void*, int*)
+- name: _Z19clReleaseContext_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseContext_fn(int)
+- name: _Z19clReleaseProgram_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseProgram_fn(int)
+- name: _Z19clReleaseSampler_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseSampler_fn(int)
+- name: _Z19clUnloadCompiler_fnv
+  params: []
+  return_type: unknown
+  signature: clUnloadCompiler_fn()
+- name: _Z20clCreateSubBuffer_fniiiPKvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void const*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clCreateSubBuffer_fn(int, int, int, void const*, int*)
+- name: _Z20clCreateUserEvent_fniPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int*
+  return_type: unknown
+  signature: clCreateUserEvent_fn(int, int*)
+- name: _Z20clEnqueueMapImage_fniiiiPKiS0_PiS1_iS0_S1_S1_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int*
+  - name: param7
+    type: int*
+  - name: param8
+    type: int
+  - name: param9
+    type: int const*
+  - name: param10
+    type: int*
+  - name: param11
+    type: int*
+  return_type: unknown
+  signature: clEnqueueMapImage_fn(int, int, int, int, int const*, int const*, int*, int*, int, int const*, int*, int*)
+- name: _Z20clGetPlatformInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetPlatformInfo_fn(int, int, int, void*, int*)
+- name: _Z20clRetainMemObject_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainMemObject_fn(int)
+- name: _Z21clCreateSubDevices_fniPKiiPiS1_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int const*
+  - name: param2
+    type: int
+  - name: param3
+    type: int*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clCreateSubDevices_fn(int, int const*, int, int*, int*)
+- name: _Z21clEnqueueCopyImage_fniiiPKiS0_S0_iS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueCopyImage_fn(int, int, int, int const*, int const*, int const*, int, int const*, int*)
+- name: _Z21clEnqueueFillImage_fniiPKvPKiS2_iS2_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: void const*
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int
+  - name: param6
+    type: int const*
+  - name: param7
+    type: int*
+  return_type: unknown
+  signature: clEnqueueFillImage_fn(int, int, void const*, int const*, int const*, int, int const*, int*)
+- name: _Z21clEnqueueMapBuffer_fniiiiiiiPKiPiS1_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: int
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  - name: param9
+    type: int*
+  return_type: unknown
+  signature: clEnqueueMapBuffer_fn(int, int, int, int, int, int, int, int const*, int*, int*)
+- name: _Z21clEnqueueReadImage_fniiiPKiS0_iiPviS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int
+  - name: param6
+    type: int
+  - name: param7
+    type: void*
+  - name: param8
+    type: int
+  - name: param9
+    type: int const*
+  - name: param10
+    type: int*
+  return_type: unknown
+  signature: clEnqueueReadImage_fn(int, int, int, int const*, int const*, int, int, void*, int, int const*, int*)
+- name: _Z21clGetKernelArgInfo_fniiiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: void*
+  - name: param5
+    type: int*
+  return_type: unknown
+  signature: clGetKernelArgInfo_fn(int, int, int, int, void*, int*)
+- name: _Z21clGetMemObjectInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetMemObjectInfo_fn(int, int, int, void*, int*)
+- name: _Z21clReleaseMemObject_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseMemObject_fn(int)
+- name: _Z21clSetEventCallback_fniiPFviiPvES_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: void (*)(int, int, void*)
+  - name: param3
+    type: void*
+  return_type: unknown
+  signature: clSetEventCallback_fn(int, int, void (*)(int, int, void*), void*)
+- name: _Z22clEnqueueCopyBuffer_fniiiiiiiPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: int
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueCopyBuffer_fn(int, int, int, int, int, int, int, int const*, int*)
+- name: _Z22clEnqueueFillBuffer_fniiPKviiiiPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: void const*
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: int
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueFillBuffer_fn(int, int, void const*, int, int, int, int, int const*, int*)
+- name: _Z22clEnqueueReadBuffer_fniiiiiPviPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: void*
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueReadBuffer_fn(int, int, int, int, int, void*, int, int const*, int*)
+- name: _Z22clEnqueueWriteImage_fniiiPKiS0_iiPKviS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int
+  - name: param6
+    type: int
+  - name: param7
+    type: void const*
+  - name: param8
+    type: int
+  - name: param9
+    type: int const*
+  - name: param10
+    type: int*
+  return_type: unknown
+  signature: clEnqueueWriteImage_fn(int, int, int, int const*, int const*, int, int, void const*, int, int const*, int*)
+- name: _Z23clCreateCommandQueue_fniiiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int*
+  return_type: unknown
+  signature: clCreateCommandQueue_fn(int, int, int, int*)
+- name: _Z23clEnqueueWriteBuffer_fniiiiiPKviPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: void const*
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueWriteBuffer_fn(int, int, int, int, int, void const*, int, int const*, int*)
+- name: _Z23clRetainCommandQueue_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clRetainCommandQueue_fn(int)
+- name: _Z23clSetUserEventStatus_fnii
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  return_type: unknown
+  signature: clSetUserEventStatus_fn(int, int)
+- name: _Z24clEnqueueNativeKernel_fniPFvPvES_iiPKiPPKviS3_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: void (*)(void*)
+  - name: param2
+    type: void*
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: int const*
+  - name: param6
+    type: void const**
+  - name: param7
+    type: int
+  - name: param8
+    type: int const*
+  - name: param9
+    type: int*
+  return_type: unknown
+  signature: clEnqueueNativeKernel_fn(int, void (*)(void*), void*, int, int, int const*, void const**, int, int const*, int*)
+- name: _Z24clGetCommandQueueInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetCommandQueueInfo_fn(int, int, int, void*, int*)
+- name: _Z24clGetProgramBuildInfo_fniiiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: void*
+  - name: param5
+    type: int*
+  return_type: unknown
+  signature: clGetProgramBuildInfo_fn(int, int, int, int, void*, int*)
+- name: _Z24clReleaseCommandQueue_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clReleaseCommandQueue_fn(int)
+- name: _Z25clEnqueueNDRangeKernel_fniiiPKiS0_S0_iS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueNDRangeKernel_fn(int, int, int, int const*, int const*, int const*, int, int const*, int*)
+- name: _Z25clEnqueueWaitForEvents_fniiPKi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  return_type: unknown
+  signature: clEnqueueWaitForEvents_fn(int, int, int const*)
+- name: _Z26clCreateContextFromType_fnPKiiPFvPKcPKviPvES5_Pi
+  params:
+  - name: param0
+    type: int const*
+  - name: param1
+    type: int
+  - name: param2
+    type: void (*)(char const*, void const*, int, void*)
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clCreateContextFromType_fn(int const*, int, void (*)(char const*, void const*, int, void*), void*, int*)
+- name: _Z26clEnqueueCopyBufferRect_fniiiPKiS0_S0_iiiiiS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int
+  - name: param7
+    type: int
+  - name: param8
+    type: int
+  - name: param9
+    type: int
+  - name: param10
+    type: int
+  - name: param11
+    type: int const*
+  - name: param12
+    type: int*
+  return_type: unknown
+  signature: clEnqueueCopyBufferRect_fn(int, int, int, int const*, int const*, int const*, int, int, int, int, int, int const*,
+    int*)
+- name: _Z26clEnqueueReadBufferRect_fniiiPKiS0_S0_iiiiPviS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int
+  - name: param7
+    type: int
+  - name: param8
+    type: int
+  - name: param9
+    type: int
+  - name: param10
+    type: void*
+  - name: param11
+    type: int
+  - name: param12
+    type: int const*
+  - name: param13
+    type: int*
+  return_type: unknown
+  signature: clEnqueueReadBufferRect_fn(int, int, int, int const*, int const*, int const*, int, int, int, int, void*, int,
+    int const*, int*)
+- name: _Z26clEnqueueUnmapMemObject_fniiPviPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: void*
+  - name: param3
+    type: int
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int*
+  return_type: unknown
+  signature: clEnqueueUnmapMemObject_fn(int, int, void*, int, int const*, int*)
+- name: _Z26clGetEventProfilingInfo_fniiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: void*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clGetEventProfilingInfo_fn(int, int, int, void*, int*)
+- name: _Z27clCreateKernelsInProgram_fniiPiS_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int*
+  - name: param3
+    type: int*
+  return_type: unknown
+  signature: clCreateKernelsInProgram_fn(int, int, int*, int*)
+- name: _Z27clEnqueueWriteBufferRect_fniiiPKiS0_S0_iiiiPKviS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int
+  - name: param7
+    type: int
+  - name: param8
+    type: int
+  - name: param9
+    type: int
+  - name: param10
+    type: void const*
+  - name: param11
+    type: int
+  - name: param12
+    type: int const*
+  - name: param13
+    type: int*
+  return_type: unknown
+  signature: clEnqueueWriteBufferRect_fn(int, int, int, int const*, int const*, int const*, int, int, int, int, void const*,
+    int, int const*, int*)
+- name: _Z27clGetKernelWorkGroupInfo_fniiiiPvPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: void*
+  - name: param5
+    type: int*
+  return_type: unknown
+  signature: clGetKernelWorkGroupInfo_fn(int, int, int, int, void*, int*)
+- name: _Z27clUnloadPlatformCompiler_fni
+  params:
+  - name: param0
+    type: int
+  return_type: unknown
+  signature: clUnloadPlatformCompiler_fn(int)
+- name: _Z28clCreateProgramWithBinary_fniiPKiS0_PPKhPiS4_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: int const*
+  - name: param4
+    type: unsigned char const**
+  - name: param5
+    type: int*
+  - name: param6
+    type: int*
+  return_type: unknown
+  signature: clCreateProgramWithBinary_fn(int, int, int const*, int const*, unsigned char const**, int*, int*)
+- name: _Z28clCreateProgramWithSource_fniiPPKcPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: char const**
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clCreateProgramWithSource_fn(int, int, char const**, int const*, int*)
+- name: _Z29clEnqueueCopyBufferToImage_fniiiiPKiS0_iS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueCopyBufferToImage_fn(int, int, int, int, int const*, int const*, int, int const*, int*)
+- name: _Z29clEnqueueCopyImageToBuffer_fniiiPKiS0_iiS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int const*
+  - name: param4
+    type: int const*
+  - name: param5
+    type: int
+  - name: param6
+    type: int
+  - name: param7
+    type: int const*
+  - name: param8
+    type: int*
+  return_type: unknown
+  signature: clEnqueueCopyImageToBuffer_fn(int, int, int, int const*, int const*, int, int, int const*, int*)
+- name: _Z29clEnqueueMigrateMemObjects_fniiPKiiiS0_Pi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: int
+  - name: param4
+    type: int
+  - name: param5
+    type: int const*
+  - name: param6
+    type: int*
+  return_type: unknown
+  signature: clEnqueueMigrateMemObjects_fn(int, int, int const*, int, int, int const*, int*)
+- name: _Z29clGetSupportedImageFormats_fniiiiPiS_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int
+  - name: param3
+    type: int
+  - name: param4
+    type: int*
+  - name: param5
+    type: int*
+  return_type: unknown
+  signature: clGetSupportedImageFormats_fn(int, int, int, int, int*, int*)
+- name: _Z30clEnqueueMarkerWithWaitList_fniiPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: int*
+  return_type: unknown
+  signature: clEnqueueMarkerWithWaitList_fn(int, int, int const*, int*)
+- name: _Z31clEnqueueBarrierWithWaitList_fniiPKiPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: int*
+  return_type: unknown
+  signature: clEnqueueBarrierWithWaitList_fn(int, int, int const*, int*)
+- name: _Z32clGetExtensionFunctionAddress_fnPKc
+  params:
+  - name: param0
+    type: char const*
+  return_type: unknown
+  signature: clGetExtensionFunctionAddress_fn(char const*)
+- name: _Z35clSetMemObjectDestructorCallback_fniPFviPvES_
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: void (*)(int, void*)
+  - name: param2
+    type: void*
+  return_type: unknown
+  signature: clSetMemObjectDestructorCallback_fn(int, void (*)(int, void*), void*)
+- name: _Z36clCreateProgramWithBuiltInKernels_fniiPKiPKcPi
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: int
+  - name: param2
+    type: int const*
+  - name: param3
+    type: char const*
+  - name: param4
+    type: int*
+  return_type: unknown
+  signature: clCreateProgramWithBuiltInKernels_fn(int, int, int const*, char const*, int*)
+- name: _Z43clGetExtensionFunctionAddressForPlatform_fniPKc
+  params:
+  - name: param0
+    type: int
+  - name: param1
+    type: char const*
+  return_type: unknown
+  signature: clGetExtensionFunctionAddressForPlatform_fn(int, char const*)
+- name: _Z6cl_intPi
+  params:
+  - name: param0
+    type: int*
+  return_type: unknown
+  signature: cl_int(int*)
+- name: _Z6cl_memPi
+  params:
+  - name: param0
+    type: int*
+  return_type: unknown
+  signature: cl_mem(int*)
+language: c++
+project: opencv
+target_name: core_fuzzer
+target_path: /src/core_fuzzer.cc

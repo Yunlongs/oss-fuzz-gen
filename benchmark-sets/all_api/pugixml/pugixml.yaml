@@ -1,0 +1,3456 @@
+functions:
+- name: _ZNK4pugi8xml_node5printERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEEPKcjNS_12xml_encodingEj
+  params:
+  - name: this
+    type: 'bool '
+  - name: stream
+    type: 'bool '
+  - name: indent
+    type: 'bool '
+  - name: flags
+    type: int
+  - name: encoding
+    type: int
+  - name: depth
+    type: int
+  return_type: void
+  signature: void pugi::xml_node::print(basic_ostream<char, std::__1::char_traits<char>
+    > &, const char_t *, unsigned int, DW_TAG_enumeration_typexml_encoding, unsigned
+    int)
+- name: _ZN4pugi14xpath_node_set4sortEb
+  params:
+  - name: this
+    type: 'bool '
+  - name: reverse
+    type: bool
+  return_type: void
+  signature: void pugi::xpath_node_set::sort(bool)
+- name: _ZN4pugi18xpath_variable_setaSERKS0_
+  params:
+  - name: this
+    type: 'bool '
+  - name: rhs
+    type: 'bool '
+  return_type: void
+  signature: xpath_variable_set & pugi::xpath_variable_set::operator=(const xpath_variable_set
+    &)
+- name: _ZNK4pugi8xml_node5printERNS_10xml_writerEPKcjNS_12xml_encodingEj
+  params:
+  - name: this
+    type: 'bool '
+  - name: writer
+    type: 'bool '
+  - name: indent
+    type: 'bool '
+  - name: flags
+    type: int
+  - name: encoding
+    type: int
+  - name: depth
+    type: int
+  return_type: void
+  signature: void pugi::xml_node::print(xml_writer &, const char_t *, unsigned int,
+    DW_TAG_enumeration_typexml_encoding, unsigned int)
+- name: _ZNK4pugi8xml_node5printERNSt3__113basic_ostreamIwNS1_11char_traitsIwEEEEPKcjj
+  params:
+  - name: this
+    type: 'bool '
+  - name: stream
+    type: 'bool '
+  - name: indent
+    type: 'bool '
+  - name: flags
+    type: int
+  - name: depth
+    type: int
+  return_type: void
+  signature: void pugi::xml_node::print(basic_ostream<wchar_t, std::__1::char_traits<wchar_t>
+    > &, const char_t *, unsigned int, unsigned int)
+- name: _ZNK4pugi8xml_node11select_nodeERKNS_11xpath_queryE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node pugi::xml_node::select_node(const xpath_query &)
+- name: _ZNK4pugi12xml_document9save_fileEPKwPKcjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_document::save_file(const wchar_t *, const char_t *, unsigned
+    int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi4impl12_GLOBAL__N_119strconv_pcdata_implINS1_8opt_trueES3_S3_E5parseEPc
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char_t * pugi::impl::(anonymous namespace)::strconv_pcdata_impl<pugi::impl::(anonymous
+    namespace)::opt_true, pugi::impl::(anonymous namespace)::opt_true, pugi::impl::(anonymous
+    namespace)::opt_true>::parse(char_t *)
+- name: _ZNK4pugi8xml_node12select_nodesEPKcPNS_18xpath_variable_setE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node_set pugi::xml_node::select_nodes(const char_t *, xpath_variable_set
+    *)
+- name: _ZN4pugi8xml_textaSEy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(unsigned long long)
+- name: _ZN4pugi4impl12_GLOBAL__N_122node_output_attributesERNS1_19xml_buffered_writerEPNS_15xml_node_structEPKcmjj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::node_output_attributes(xml_buffered_writer
+    &, struct xml_node_struct *, const char_t *, size_t, unsigned int, unsigned int)
+- name: _ZNK4pugi12xml_document4saveERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEEPKcjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::xml_document::save(basic_ostream<char, std::__1::char_traits<char>
+    > &, const char_t *, unsigned int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZNK4pugi8xml_node18select_single_nodeEPKcPNS_18xpath_variable_setE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node pugi::xml_node::select_single_node(const char_t *, xpath_variable_set
+    *)
+- name: _ZN4pugi4impl12_GLOBAL__N_111node_outputERNS1_19xml_buffered_writerEPNS_15xml_node_structEPKcjj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::node_output(xml_buffered_writer
+    &, struct xml_node_struct *, const char_t *, unsigned int, unsigned int)
+- name: _ZN4pugi4impl12_GLOBAL__N_116load_stream_implIcEENS_16xml_parse_resultEPNS1_19xml_document_structERNSt3__113basic_istreamIT_NS6_11char_traitsIS8_EEEEjNS_12xml_encodingEPPc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_parse_result pugi::impl::(anonymous
+    namespace)::load_stream_impl<char>(struct xml_document_struct *, basic_istream<char,
+    std::__1::char_traits<char> > &, unsigned int, DW_TAG_enumeration_typexml_encoding,
+    char_t **)
+- name: _ZNK4pugi8xml_node21first_element_by_pathEPKcc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  return_type: void
+  signature: xml_node pugi::xml_node::first_element_by_path(const char_t *, char_t)
+- name: _ZNK4pugi12xml_document4saveERNS_10xml_writerEPKcjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::xml_document::save(xml_writer &, const char_t *, unsigned
+    int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZNK4pugi8xml_node12select_nodesERKNS_11xpath_queryE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node_set pugi::xml_node::select_nodes(const xpath_query &)
+- name: _ZN4pugi12xml_document11load_stringEPKcj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load_string(const char_t
+    *, unsigned int)
+- name: _ZN4pugi4impl12_GLOBAL__N_114load_file_implEPNS1_19xml_document_structEP8_IO_FILEjNS_12xml_encodingEPPc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct xml_parse_result pugi::impl::(anonymous namespace)::load_file_impl(struct
+    xml_document_struct *, FILE *, unsigned int, DW_TAG_enumeration_typexml_encoding,
+    char_t **)
+- name: _ZN4pugi4impl12_GLOBAL__N_111text_outputERNS1_19xml_buffered_writerEPKcNS1_11chartypex_tEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::text_output(xml_buffered_writer
+    &, const char_t *, DW_TAG_enumeration_typechartypex_t, unsigned int)
+- name: _ZN4pugi12xml_document4loadERNSt3__113basic_istreamIwNS1_11char_traitsIwEEEEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load(basic_istream<wchar_t,
+    std::__1::char_traits<wchar_t> > &, unsigned int)
+- name: _ZNK4pugi8xml_node18select_single_nodeERKNS_11xpath_queryE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node pugi::xml_node::select_single_node(const xpath_query &)
+- name: _ZN4pugi4impl12_GLOBAL__N_118text_output_indentERNS1_19xml_buffered_writerEPKcmj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::text_output_indent(xml_buffered_writer
+    &, const char_t *, size_t, unsigned int)
+- name: _ZN4pugi4impl12_GLOBAL__N_117node_output_startERNS1_19xml_buffered_writerEPNS_15xml_node_structEPKcmjj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::node_output_start(xml_buffered_writer
+    &, struct xml_node_struct *, const char_t *, size_t, unsigned int, unsigned int)
+- name: _ZNK4pugi8xml_node11select_nodeEPKcPNS_18xpath_variable_setE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node pugi::xml_node::select_node(const char_t *, xpath_variable_set
+    *)
+- name: _ZNK4pugi12xml_document9save_fileEPKcS2_jNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_document::save_file(const char *, const char_t *, unsigned
+    int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi18xpath_variable_set7_assignERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_variable_set::_assign(const xpath_variable_set &)
+- name: _ZN4pugi7as_wideERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>
+    > pugi::as_wide(const string &)
+- name: _ZN4pugi18xpath_variable_setC2ERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_variable_set::xpath_variable_set(const xpath_variable_set
+    &)
+- name: _ZN4pugi12xml_document4loadEPKcj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load(const char_t *, unsigned
+    int)
+- name: _ZN4pugi4impl12_GLOBAL__N_119text_output_escapedERNS1_19xml_buffered_writerEPKcNS1_11chartypex_tEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::text_output_escaped(xml_buffered_writer
+    &, const char_t *, DW_TAG_enumeration_typechartypex_t, unsigned int)
+- name: _ZNK4pugi12xml_document4saveERNSt3__113basic_ostreamIwNS1_11char_traitsIwEEEEPKcj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::xml_document::save(basic_ostream<wchar_t, std::__1::char_traits<wchar_t>
+    > &, const char_t *, unsigned int)
+- name: _ZN4pugi12xml_document5resetERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::reset(const xml_document &)
+- name: _ZN4pugi8xml_textaSEf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(float)
+- name: _ZN4pugi8xml_textaSEd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(double)
+- name: _ZN4pugi8xml_textaSEx
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(long long)
+- name: _ZN4pugi8xml_textaSEm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(unsigned long)
+- name: _ZN4pugi8xml_textaSEl
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(long)
+- name: _ZN4pugi8xml_textaSEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(unsigned int)
+- name: _ZN4pugi8xml_textaSEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(int)
+- name: _ZN4pugi8xml_text3setEdi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_text::set(double, int)
+- name: _ZN4pugi8xml_text3setEfi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_text::set(float, int)
+- name: _ZN4pugi8xml_text3setEf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  return_type: bool
+  signature: bool pugi::xml_text::set(float)
+- name: _ZN4pugi8xml_text3setEd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: bool
+  signature: bool pugi::xml_text::set(double)
+- name: _ZN4pugi8xml_text3setEy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_text::set(unsigned long long)
+- name: _ZN4pugi8xml_text3setEx
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_text::set(long long)
+- name: _ZN4pugi8xml_text3setEm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_text::set(unsigned long)
+- name: _ZN4pugi8xml_text3setEl
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_text::set(long)
+- name: _ZN4pugi8xml_text3setEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_text::set(unsigned int)
+- name: _ZN4pugi8xml_text3setEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_text::set(int)
+- name: _ZN4pugi8xml_textaSEb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(bool)
+- name: _ZN4pugi8xml_textaSENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(string_view_t)
+- name: _ZN4pugi8xml_text3setEb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool pugi::xml_text::set(bool)
+- name: _ZN4pugi8xml_textaSEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_text & pugi::xml_text::operator=(const char_t *)
+- name: _ZN4pugi8xml_text3setENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_text::set(string_view_t)
+- name: _ZN4pugi8xml_text3setEPKcm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_text::set(const char_t *, size_t)
+- name: _ZN4pugi8xml_text3setEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_text::set(const char_t *)
+- name: _ZN4pugi8xml_text9_data_newEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct xml_node_struct * pugi::xml_text::_data_new()
+- name: _ZN4pugi4impl12_GLOBAL__N_119xml_buffered_writer5writeEcccccc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_buffered_writer::write(char_t,
+    char_t, char_t, char_t, char_t, char_t)
+- name: _ZN4pugi4impl12_GLOBAL__N_119xml_buffered_writer5writeEccccc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_buffered_writer::write(char_t,
+    char_t, char_t, char_t, char_t)
+- name: _ZN4pugi4impl12_GLOBAL__N_119xml_buffered_writer5writeEcccc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_buffered_writer::write(char_t,
+    char_t, char_t, char_t)
+- name: _ZN4pugi4impl12_GLOBAL__N_119xml_buffered_writer5writeEccc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_buffered_writer::write(char_t,
+    char_t, char_t)
+- name: _ZN4pugi4impl12_GLOBAL__N_119xml_buffered_writer5writeEcc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  - name: ''
+    type: char
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_buffered_writer::write(char_t,
+    char_t)
+- name: _ZN4pugi4impl12_GLOBAL__N_119xml_buffered_writer5writeEc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_buffered_writer::write(char_t)
+- name: _ZN4pugi8xml_node12append_childENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_node pugi::xml_node::append_child(string_view_t)
+- name: _ZN4pugi8xml_node13prepend_childENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_node pugi::xml_node::prepend_child(string_view_t)
+- name: _ZN4pugi18xpath_variable_set3setEPKcRKNS_14xpath_node_setE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_variable_set::set(const char_t *, const xpath_node_set
+    &)
+- name: _ZN4pugi8xml_node18insert_copy_beforeERKNS_13xml_attributeES3_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::insert_copy_before(const xml_attribute
+    &, const xml_attribute &)
+- name: _ZN4pugi8xml_node17insert_copy_afterERKNS_13xml_attributeES3_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::insert_copy_after(const xml_attribute &,
+    const xml_attribute &)
+- name: _ZN4pugi8xml_node12append_childEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::append_child(const char_t *)
+- name: _ZN4pugi8xml_node13prepend_childEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::prepend_child(const char_t *)
+- name: _ZN4pugi8xml_node11append_copyERKNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::append_copy(const xml_attribute &)
+- name: _ZN4pugi8xml_node12prepend_copyERKNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::prepend_copy(const xml_attribute &)
+- name: _ZN4pugi8xml_node23insert_attribute_beforeENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEERKNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::insert_attribute_before(string_view_t,
+    const xml_attribute &)
+- name: _ZN4pugi8xml_node22insert_attribute_afterENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEERKNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::insert_attribute_after(string_view_t, const
+    xml_attribute &)
+- name: _ZN4pugi8xml_node23insert_attribute_beforeEPKcRKNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::insert_attribute_before(const char_t *,
+    const xml_attribute &)
+- name: _ZN4pugi8xml_node22insert_attribute_afterEPKcRKNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::insert_attribute_after(const char_t *,
+    const xml_attribute &)
+- name: _ZN4pugi18xpath_variable_set3setEPKcS2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_variable_set::set(const char_t *, const char_t *)
+- name: _ZN4pugi8xml_node16append_attributeENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute pugi::xml_node::append_attribute(string_view_t)
+- name: _ZN4pugi8xml_node16append_attributeEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::append_attribute(const char_t *)
+- name: _ZN4pugi8xml_node17prepend_attributeENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute pugi::xml_node::prepend_attribute(string_view_t)
+- name: _ZN4pugi8xml_node17prepend_attributeEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::prepend_attribute(const char_t *)
+- name: _ZN4pugi18xpath_variable_set3setEPKcd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: bool
+  signature: bool pugi::xpath_variable_set::set(const char_t *, double)
+- name: _ZN4pugi18xpath_variable_set3setEPKcb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool pugi::xpath_variable_set::set(const char_t *, bool)
+- name: _ZN4pugi7as_wideEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>
+    > pugi::as_wide(const char *)
+- name: _ZN4pugi13xml_attributeaSEf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(float)
+- name: _ZN4pugi13xml_attributeaSEd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(double)
+- name: _ZN4pugi13xml_attributeaSEy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(unsigned long long)
+- name: _ZN4pugi13xml_attributeaSEx
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(long long)
+- name: _ZN4pugi13xml_attributeaSEm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(unsigned long)
+- name: _ZN4pugi13xml_attributeaSEl
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(long)
+- name: _ZN4pugi13xml_attributeaSEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(unsigned int)
+- name: _ZN4pugi13xml_attributeaSEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(int)
+- name: _ZN4pugi13xml_attribute9set_valueEfi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(float, int)
+- name: _ZN4pugi13xml_attribute9set_valueEdi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(double, int)
+- name: _ZN4pugi13xml_attribute9set_valueEf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(float)
+- name: _ZN4pugi13xml_attribute9set_valueEd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(double)
+- name: _ZN4pugi13xml_attribute9set_valueEy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(unsigned long long)
+- name: _ZN4pugi13xml_attribute9set_valueEx
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(long long)
+- name: _ZN4pugi13xml_attribute9set_valueEm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(unsigned long)
+- name: _ZN4pugi13xml_attribute9set_valueEl
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(long)
+- name: _ZN4pugi13xml_attribute9set_valueEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(unsigned int)
+- name: _ZN4pugi13xml_attribute9set_valueEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(int)
+- name: _ZN4pugi8xml_node9set_valueENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_node::set_value(string_view_t)
+- name: _ZN4pugi8xml_node9set_valueEPKcm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_node::set_value(const char_t *, size_t)
+- name: _ZN4pugi8xml_node9set_valueEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::set_value(const char_t *)
+- name: _ZN4pugi13xml_attributeaSEb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(bool)
+- name: _ZN4pugi8xml_node8set_nameENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_node::set_name(string_view_t)
+- name: _ZN4pugi8xml_node8set_nameEPKcm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_node::set_name(const char_t *, size_t)
+- name: _ZN4pugi8xml_node8set_nameEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::set_name(const char_t *)
+- name: _ZN4pugi13xml_attributeaSENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(string_view_t)
+- name: _ZN4pugi13xml_attribute9set_valueEb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(bool)
+- name: _ZN4pugi13xml_attributeaSEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute::operator=(const char_t *)
+- name: _ZN4pugi13xml_attribute8set_nameENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_name(string_view_t)
+- name: _ZN4pugi13xml_attribute9set_valueEPKcm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(const char_t *, size_t)
+- name: _ZN4pugi13xml_attribute8set_nameEPKcm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_name(const char_t *, size_t)
+- name: _ZN4pugi13xml_attribute9set_valueENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(string_view_t)
+- name: _ZN4pugi13xml_attribute8set_nameEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_name(const char_t *)
+- name: _ZN4pugi13xml_attribute9set_valueEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::set_value(const char_t *)
+- name: _ZN4pugi18xpath_variable_setaSEOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_variable_set & pugi::xpath_variable_set::operator=(DW_TAG_rvalue_reference_typexpath_variable_set)
+- name: _ZN4pugi8xml_node12remove_childENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_node::remove_child(string_view_t)
+- name: _ZN4pugi8xml_node12remove_childEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::remove_child(const char_t *)
+- name: _ZN4pugi8xml_node16remove_attributeENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: bool
+  signature: bool pugi::xml_node::remove_attribute(string_view_t)
+- name: _ZN4pugi8xml_node16remove_attributeEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::remove_attribute(const char_t *)
+- name: _ZN4pugi7as_utf8EPKw
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: string pugi::as_utf8(const wchar_t *)
+- name: _ZN4pugi12xml_documentaSEOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_document & pugi::xml_document::operator=(DW_TAG_rvalue_reference_typexml_document)
+- name: _ZN4pugi7as_utf8ERKNSt3__112basic_stringIwNS0_11char_traitsIwEENS0_9allocatorIwEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: string pugi::as_utf8(const basic_string<wchar_t, std::__1::char_traits<wchar_t>,
+    std::__1::allocator<wchar_t> > &)
+- name: _ZNK4pugi8xml_text9as_ullongEy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: unsigned long long pugi::xml_text::as_ullong(unsigned long long)
+- name: _ZNK4pugi8xml_text8as_llongEx
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: long long pugi::xml_text::as_llong(long long)
+- name: _ZNK4pugi8xml_text7as_uintEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: unsigned int pugi::xml_text::as_uint(unsigned int)
+- name: _ZNK4pugi8xml_text6as_intEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pugi::xml_text::as_int(int)
+- name: _ZN4pugi12xml_documentC2EOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::xml_document(DW_TAG_rvalue_reference_typexml_document)
+- name: _ZN4pugi8xml_node16remove_attributeERKNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::remove_attribute(const xml_attribute &)
+- name: _ZN4pugi8xml_node15remove_childrenEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::remove_children()
+- name: _ZN4pugi23xml_named_node_iteratormmEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_named_node_iterator pugi::xml_named_node_iterator::operator--(int)
+- name: _ZNK4pugi8xml_node11child_valueEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_node::child_value(const char_t *)
+- name: _ZN4pugi23xml_named_node_iteratormmEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_named_node_iterator & pugi::xml_named_node_iterator::operator--()
+- name: _ZNK4pugi8xml_node9attributeENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEERNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::attribute(string_view_t, xml_attribute
+    &)
+- name: _ZN4pugi11xpath_queryaSEOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_query & pugi::xpath_query::operator=(DW_TAG_rvalue_reference_typexpath_query)
+- name: _ZNK4pugi8xml_node9attributeEPKcRNS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::attribute(const char_t *, xml_attribute
+    &)
+- name: _ZN4pugi8xml_node17remove_attributesEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::remove_attributes()
+- name: _ZNK4pugi18xpath_variable_set3getEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const xpath_variable * pugi::xpath_variable_set::get(const char_t *)
+- name: _ZNK4pugi13xml_attribute9as_ullongEy
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: unsigned long long pugi::xml_attribute::as_ullong(unsigned long long)
+- name: _ZNK4pugi13xml_attribute8as_llongEx
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: size_t
+  signature: long long pugi::xml_attribute::as_llong(long long)
+- name: _ZNK4pugi13xml_attribute7as_uintEj
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: unsigned int pugi::xml_attribute::as_uint(unsigned int)
+- name: _ZNK4pugi13xml_attribute6as_intEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: int pugi::xml_attribute::as_int(int)
+- name: _ZN4pugi14xpath_node_setC2ERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node_set::xpath_node_set(const xpath_node_set &)
+- name: _ZNK4pugi8xml_node8childrenEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_object_range<pugi::xml_named_node_iterator> pugi::xml_node::children(const
+    char_t *)
+- name: _ZNK4pugi8xml_node23find_child_by_attributeEPKcS2_S2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::find_child_by_attribute(const char_t *, const
+    char_t *, const char_t *)
+- name: _ZN4pugi14xpath_variable3setERKNS_14xpath_node_setE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_variable::set(const xpath_node_set &)
+- name: _ZN4pugi12xml_document5_moveERS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::_move(xml_document &)
+- name: _ZN4pugi23xml_named_node_iteratorppEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_named_node_iterator pugi::xml_named_node_iterator::operator++(int)
+- name: _ZN4pugi14xpath_node_setC2EOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node_set::xpath_node_set(DW_TAG_rvalue_reference_typexpath_node_set)
+- name: _ZNK4pugi8xml_node23find_child_by_attributeEPKcS2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::find_child_by_attribute(const char_t *, const
+    char_t *)
+- name: _ZNK4pugi16xml_parse_result11descriptionEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char * pugi::xml_parse_result::description(const struct xml_parse_result
+    *)
+- name: _ZN4pugi23xml_named_node_iteratorppEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_named_node_iterator & pugi::xml_named_node_iterator::operator++()
+- name: _ZNK4pugi8xml_text7as_boolEb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool pugi::xml_text::as_bool(bool)
+- name: _ZN4pugi14xpath_node_setaSERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node_set & pugi::xpath_node_set::operator=(const xpath_node_set
+    &)
+- name: _ZNK4pugi8xml_node5childENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_node pugi::xml_node::child(string_view_t)
+- name: _ZNK4pugi8xml_node9attributeENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_attribute pugi::xml_node::attribute(string_view_t)
+- name: _ZNK4pugi8xml_node16previous_siblingENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_node pugi::xml_node::previous_sibling(string_view_t)
+- name: _ZNK4pugi8xml_node12next_siblingENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: xml_node pugi::xml_node::next_sibling(string_view_t)
+- name: _ZN4pugi8xml_node8traverseERNS_15xml_tree_walkerE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::traverse(xml_tree_walker &)
+- name: _ZNK4pugi8xml_text8as_floatEf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  return_type: float
+  signature: float pugi::xml_text::as_float(float)
+- name: _ZNK4pugi8xml_text9as_doubleEd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: double
+  signature: double pugi::xml_text::as_double(double)
+- name: _ZNK4pugi8xml_node16previous_siblingEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::previous_sibling(const char_t *)
+- name: _ZNK4pugi8xml_node12next_siblingEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::next_sibling(const char_t *)
+- name: _ZNK4pugi8xml_node5childEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::child(const char_t *)
+- name: _ZN4pugi22xml_attribute_iteratormmEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_attribute_iterator pugi::xml_attribute_iterator::operator--(int)
+- name: _ZN4pugi17xml_node_iteratormmEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_node_iterator pugi::xml_node_iterator::operator--(int)
+- name: _ZNK4pugi8xml_node10attributesEv
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_object_range<pugi::xml_attribute_iterator> pugi::xml_node::attributes()
+- name: _ZN4pugi22xml_attribute_iteratormmEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute_iterator & pugi::xml_attribute_iterator::operator--()
+- name: _ZN4pugi17xml_node_iteratormmEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node_iterator & pugi::xml_node_iterator::operator--()
+- name: _ZNK4pugi8xml_node12offset_debugEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: ptrdiff_t pugi::xml_node::offset_debug()
+- name: _ZNK4pugi8xml_text4dataEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_text::data()
+- name: _ZNK4pugi8xml_text9as_stringEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_text::as_string(const char_t *)
+- name: _ZNK4pugi8xml_text3getEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_text::get()
+- name: _ZNK4pugi8xml_node8childrenEv
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_object_range<pugi::xml_node_iterator> pugi::xml_node::children()
+- name: _ZNK4pugi8xml_node4pathEc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: char
+  return_type: void
+  signature: string_t pugi::xml_node::path(char_t)
+- name: _ZN4pugi14xpath_variable3setEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_variable::set(const char_t *)
+- name: _ZN4pugi11xpath_queryC2EOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_query::xpath_query(DW_TAG_rvalue_reference_typexpath_query)
+- name: _ZNK4pugi12xml_document16document_elementEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_document::document_element()
+- name: _ZNK4pugi8xml_node11child_valueEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_node::child_value()
+- name: _ZNK4pugi8xml_text5_dataEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct xml_node_struct * pugi::xml_text::_data()
+- name: _ZN4pugi23xml_named_node_iteratorC2ERKNS_8xml_nodeEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_named_node_iterator::xml_named_node_iterator(const xml_node
+    &, const char_t *)
+- name: _ZNK4pugi8xml_node16attributes_beginEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: attribute_iterator pugi::xml_node::attributes_begin()
+- name: _ZNK4pugi13xml_attribute7as_boolEb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool pugi::xml_attribute::as_bool(bool)
+- name: _ZN4pugi14xpath_node_setaSEOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node_set & pugi::xpath_node_set::operator=(DW_TAG_rvalue_reference_typexpath_node_set)
+- name: _ZNK4pugi8xml_node10last_childEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::last_child()
+- name: _ZNK4pugi13xml_attribute18previous_attributeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_attribute::previous_attribute()
+- name: _ZNK4pugi8xml_node14last_attributeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::last_attribute()
+- name: _ZNK4pugi8xml_node16previous_siblingEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::previous_sibling()
+- name: _ZNK4pugi8xml_node14attributes_endEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: attribute_iterator pugi::xml_node::attributes_end()
+- name: _ZNK4pugi13xml_attribute8as_floatEf
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: float
+  return_type: float
+  signature: float pugi::xml_attribute::as_float(float)
+- name: _ZNK4pugi13xml_attribute9as_doubleEd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: double
+  signature: double pugi::xml_attribute::as_double(double)
+- name: _ZN4pugi22xml_attribute_iteratorC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_attribute_iterator::xml_attribute_iterator()
+- name: _ZN4pugi22xml_attribute_iteratorppEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_attribute_iterator pugi::xml_attribute_iterator::operator++(int)
+- name: _ZN4pugi17xml_node_iteratorppEi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_node_iterator pugi::xml_node_iterator::operator++(int)
+- name: _ZNK4pugi14xpath_node_setixEm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: const xpath_node & pugi::xpath_node_set::operator[](size_t)
+- name: _ZN4pugi17xml_writer_stream5writeEPKvm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void pugi::xml_writer_stream::write(const void *, size_t)
+- name: _ZNK4pugi11xpath_query11return_typeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: DW_TAG_enumeration_typexpath_value_type pugi::xpath_query::return_type()
+- name: _ZN4pugi23xml_named_node_iteratorC2EPNS_15xml_node_structES2_PKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_named_node_iterator::xml_named_node_iterator(struct xml_node_struct
+    *, struct xml_node_struct *, const char_t *)
+- name: _ZN4pugi22xml_attribute_iteratorppEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute_iterator & pugi::xml_attribute_iterator::operator++()
+- name: _ZN4pugi17xml_node_iteratorppEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node_iterator & pugi::xml_node_iterator::operator++()
+- name: _ZNK4pugi23xml_named_node_iteratorptEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node * pugi::xml_named_node_iterator::operator->()
+- name: _ZNK4pugi23xml_named_node_iteratordeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node & pugi::xml_named_node_iterator::operator*()
+- name: _ZNK4pugi22xml_attribute_iteratorptEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute * pugi::xml_attribute_iterator::operator->()
+- name: _ZNK4pugi22xml_attribute_iteratordeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute & pugi::xml_attribute_iterator::operator*()
+- name: _ZNK4pugi17xml_node_iteratorptEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node * pugi::xml_node_iterator::operator->()
+- name: _ZNK4pugi17xml_node_iteratordeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node & pugi::xml_node_iterator::operator*()
+- name: _ZN4pugi23xml_named_node_iteratorC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_named_node_iterator::xml_named_node_iterator()
+- name: _ZN4pugi17xml_node_iteratorC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_node_iterator::xml_node_iterator()
+- name: _ZN4pugi15xml_writer_file5writeEPKvm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void pugi::xml_writer_file::write(const void *, size_t)
+- name: _ZN4pugi15xml_writer_fileC2EPv
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_writer_file::xml_writer_file(void *)
+- name: _ZN4pugi17xml_writer_streamC2ERNSt3__113basic_ostreamIwNS1_11char_traitsIwEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_writer_stream::xml_writer_stream(basic_ostream<wchar_t,
+    std::__1::char_traits<wchar_t> > &)
+- name: _ZN4pugi17xml_writer_streamC2ERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_writer_stream::xml_writer_stream(basic_ostream<char, std::__1::char_traits<char>
+    > &)
+- name: _ZNK4pugi8xml_node4textEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_text pugi::xml_node::text()
+- name: _ZNK4pugi13xml_attribute9as_stringEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_attribute::as_string(const char_t *)
+- name: _ZZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC1B8ne220000EOS5_ENKUlRS5_E_clES7_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: DW_TAG_rvalue_reference_typeDW_TAG_union_type__rep std::__1::basic_string<char,
+    std::__1::char_traits<char>, std::__1::allocator<char> >::operator()(const void
+    *, basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >
+    &)
+- name: _ZN4pugi4impl12_GLOBAL__N_116xml_stream_chunkIwE7destroyEPS3_
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_stream_chunk<wchar_t>::destroy(struct
+    xml_stream_chunk<char> *)
+- name: _ZN4pugi4impl12_GLOBAL__N_116xml_stream_chunkIcE7destroyEPS3_
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xml_stream_chunk<char>::destroy(struct
+    xml_stream_chunk<char> *)
+- name: _ZN4pugi16xml_object_rangeINS_22xml_attribute_iteratorEEC2ES1_S1_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_object_range<pugi::xml_attribute_iterator>::xml_object_range(xml_object_range<pugi::xml_node_iterator>
+    *, xml_node_iterator, xml_node_iterator)
+- name: _ZN4pugi16xml_object_rangeINS_17xml_node_iteratorEEC2ES1_S1_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_object_range<pugi::xml_node_iterator>::xml_object_range(xml_object_range<pugi::xml_node_iterator>
+    *, xml_node_iterator, xml_node_iterator)
+- name: _ZN4pugi16xml_object_rangeINS_23xml_named_node_iteratorEEC2ES1_S1_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_object_range<pugi::xml_named_node_iterator>::xml_object_range(xml_object_range<pugi::xml_node_iterator>
+    *, xml_node_iterator, xml_node_iterator)
+- name: _ZN4pugi14xpath_node_set5_moveERS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node_set::_move(xpath_node_set &)
+- name: _ZN4pugi18xpath_variable_set5_swapERS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_variable_set::_swap(xpath_variable_set &)
+- name: _ZN4pugi18xpath_variable_setC2EOS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_variable_set::xpath_variable_set(DW_TAG_rvalue_reference_typexpath_variable_set)
+- name: _ZN4pugi14xpath_variable3setEd
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: double
+  return_type: bool
+  signature: bool pugi::xpath_variable::set(double)
+- name: _ZN4pugi14xpath_variable3setEb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool pugi::xpath_variable::set(bool)
+- name: _ZN4pugi31set_memory_management_functionsEPFPvmEPFvS0_E
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::set_memory_management_functions(allocation_function, deallocation_function)
+- name: _ZNK4pugi23xml_named_node_iteratorneERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_named_node_iterator::operator!=(const xml_named_node_iterator
+    &)
+- name: _ZNK4pugi23xml_named_node_iteratoreqERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_named_node_iterator::operator==(const xml_named_node_iterator
+    &)
+- name: _ZNK4pugi22xml_attribute_iteratorneERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute_iterator::operator!=(const xml_attribute_iterator
+    &)
+- name: _ZNK4pugi22xml_attribute_iteratoreqERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute_iterator::operator==(const xml_attribute_iterator
+    &)
+- name: _ZNK4pugi17xml_node_iteratorneERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node_iterator::operator!=(const xml_node_iterator &)
+- name: _ZNK4pugi17xml_node_iteratoreqERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node_iterator::operator==(const xml_node_iterator &)
+- name: _ZN4pugi15xml_tree_walker3endERNS_8xml_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_tree_walker::end(xml_node &)
+- name: _ZN4pugi15xml_tree_walker5beginERNS_8xml_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_tree_walker::begin(xml_node &)
+- name: _ZNK4pugi11xpath_query6resultEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const struct xpath_parse_result & pugi::xpath_query::result()
+- name: _ZNK4pugi18xpath_parse_result11descriptionEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char * pugi::xpath_parse_result::description(const struct xpath_parse_result
+    *)
+- name: _ZN4pugi8xml_textC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_text::xml_text()
+- name: _ZNK4pugi8xml_node10hash_valueEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t pugi::xml_node::hash_value()
+- name: _ZNK4pugi13xml_attribute10hash_valueEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t pugi::xml_attribute::hash_value()
+- name: _ZNK4pugi15xml_tree_walker5depthEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pugi::xml_tree_walker::depth()
+- name: _ZN4pugi15xml_tree_walkerC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_tree_walker::xml_tree_walker()
+- name: _ZN4pugi10xml_writerD0Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_writer::~~xml_writer()
+- name: _ZN4pugi10xml_writerC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_writer::xml_writer()
+- name: _ZN4pugi15xml_tree_walkerD0Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_tree_walker::~~xml_tree_walker()
+- name: _ZNK4pugi11xpath_query15evaluate_stringEPcmRKNS_10xpath_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t pugi::xpath_query::evaluate_string(char_t *, size_t, const xpath_node
+    &)
+- name: _ZN4pugi12xml_document9load_fileEPKwjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load_file(const wchar_t *,
+    unsigned int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi12xml_document9load_fileEPKcjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load_file(const char *, unsigned
+    int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi12xml_document4loadERNSt3__113basic_istreamIcNS1_11char_traitsIcEEEEjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load(basic_istream<char,
+    std::__1::char_traits<char> > &, unsigned int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi8xml_node13append_bufferEPKvmjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_node::append_buffer(const void *, size_t,
+    unsigned int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi12xml_document23load_buffer_inplace_ownEPvmjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load_buffer_inplace_own(void
+    *, size_t, unsigned int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi12xml_document19load_buffer_inplaceEPvmjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load_buffer_inplace(void
+    *, size_t, unsigned int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZN4pugi8xml_node18insert_copy_beforeERKS0_S2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_copy_before(const xml_node &, const xml_node
+    &)
+- name: _ZN4pugi8xml_node17insert_copy_afterERKS0_S2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_copy_after(const xml_node &, const xml_node
+    &)
+- name: _ZN4pugi8xml_node12prepend_copyERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::prepend_copy(const xml_node &)
+- name: _ZN4pugi8xml_node11append_copyERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::append_copy(const xml_node &)
+- name: _ZNK4pugi14xpath_node_set5firstEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node pugi::xpath_node_set::first()
+- name: _ZN4pugi18xpath_variable_set6_cloneEPNS_14xpath_variableEPS2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_variable_set::_clone(xpath_variable *, xpath_variable
+    **)
+- name: _ZN4pugi8xml_node19insert_child_beforeENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_child_before(string_view_t, const xml_node
+    &)
+- name: _ZN4pugi8xml_node18insert_child_afterENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_child_after(string_view_t, const xml_node
+    &)
+- name: _ZN4pugi8xml_node19insert_child_beforeEPKcRKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_child_before(const char_t *, const xml_node
+    &)
+- name: _ZN4pugi8xml_node18insert_child_afterEPKcRKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_child_after(const char_t *, const xml_node
+    &)
+- name: _ZN4pugi8xml_node19insert_child_beforeENS_13xml_node_typeERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_child_before(DW_TAG_enumeration_typexml_node_type,
+    const xml_node &)
+- name: _ZN4pugi8xml_node18insert_child_afterENS_13xml_node_typeERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_child_after(DW_TAG_enumeration_typexml_node_type,
+    const xml_node &)
+- name: _ZN4pugi8xml_node12append_childENS_13xml_node_typeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_node pugi::xml_node::append_child(DW_TAG_enumeration_typexml_node_type)
+- name: _ZN4pugi8xml_node13prepend_childENS_13xml_node_typeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xml_node pugi::xml_node::prepend_child(DW_TAG_enumeration_typexml_node_type)
+- name: _ZN4pugi8xml_node18insert_move_beforeERKS0_S2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_move_before(const xml_node &, const xml_node
+    &)
+- name: _ZN4pugi8xml_node17insert_move_afterERKS0_S2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::insert_move_after(const xml_node &, const xml_node
+    &)
+- name: _ZN4pugi8xml_node11append_moveERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::append_move(const xml_node &)
+- name: _ZN4pugi8xml_node12prepend_moveERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::prepend_move(const xml_node &)
+- name: _ZN4pugi8xml_node12remove_childERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::remove_child(const xml_node &)
+- name: _ZNK4pugi8xml_text5emptyEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_text::empty()
+- name: _ZNK4pugi8xml_textntEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_text::operator!()
+- name: _ZN4pugi17xml_node_iteratorC2ERKNS_8xml_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_node_iterator::xml_node_iterator(const xml_node &)
+- name: _ZNK4pugi10xpath_nodentEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_node::operator!()
+- name: _ZNK4pugi8xml_node5beginEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: iterator pugi::xml_node::begin()
+- name: _ZN4pugi22xml_attribute_iteratorC2EPNS_20xml_attribute_structEPNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_attribute_iterator::xml_attribute_iterator(struct xml_attribute_struct
+    *, struct xml_node_struct *)
+- name: _ZNK4pugi8xml_node3endEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: iterator pugi::xml_node::end()
+- name: _ZN4pugi17xml_node_iteratorC2EPNS_15xml_node_structES2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_node_iterator::xml_node_iterator(struct xml_node_struct
+    *, struct xml_node_struct *)
+- name: _ZN4pugi11xpath_queryC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_query::xpath_query()
+- name: _ZN4pugi4impl12_GLOBAL__N_116remove_attributeEPNS_20xml_attribute_structEPNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::remove_attribute(struct xml_attribute_struct
+    *, struct xml_node_struct *)
+- name: _ZN4pugi4impl12_GLOBAL__N_123insert_attribute_beforeEPNS_20xml_attribute_structES3_PNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::insert_attribute_before(struct
+    xml_attribute_struct *, struct xml_attribute_struct *, struct xml_node_struct
+    *)
+- name: _ZN4pugi4impl12_GLOBAL__N_122insert_attribute_afterEPNS_20xml_attribute_structES3_PNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::insert_attribute_after(struct
+    xml_attribute_struct *, struct xml_attribute_struct *, struct xml_node_struct
+    *)
+- name: _ZN4pugi22xml_attribute_iteratorC2ERKNS_13xml_attributeERKNS_8xml_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_attribute_iterator::xml_attribute_iterator(const xml_attribute
+    &, const xml_node &)
+- name: _ZN4pugi4impl12_GLOBAL__N_117prepend_attributeEPNS_20xml_attribute_structEPNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::prepend_attribute(struct xml_attribute_struct
+    *, struct xml_node_struct *)
+- name: _ZN4pugi8xml_textC2EPNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_text::xml_text(struct xml_node_struct *)
+- name: _ZNK4pugi8xml_nodegeERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::operator>=(const xml_node &)
+- name: _ZNK4pugi8xml_nodeleERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::operator<=(const xml_node &)
+- name: _ZNK4pugi8xml_nodegtERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::operator>(const xml_node &)
+- name: _ZNK4pugi13xml_attributegeERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::operator>=(const xml_attribute &)
+- name: _ZNK4pugi13xml_attributeleERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::operator<=(const xml_attribute &)
+- name: _ZNK4pugi13xml_attributegtERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::operator>(const xml_attribute &)
+- name: _ZNK4pugi13xml_attributeltERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::operator<(const xml_attribute &)
+- name: _ZNK4pugi11xpath_queryntEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_query::operator!()
+- name: _ZNK4pugi18xpath_parse_resultcvbEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_parse_result::operator bool(const struct xpath_parse_result
+    *)
+- name: _ZNK4pugi14xpath_node_set4sizeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t pugi::xpath_node_set::size()
+- name: _ZNK4pugi14xpath_node_set5emptyEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_node_set::empty()
+- name: _ZNK4pugi13xml_attributentEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::operator!()
+- name: _ZNK4pugi8xml_node5emptyEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::empty()
+- name: _ZNK4pugi13xml_attribute5emptyEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::empty()
+- name: _ZNK4pugi4impl12_GLOBAL__N_125document_order_comparatorclERKNS_10xpath_nodeES5_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::document_order_comparator::operator()(const
+    struct document_order_comparator *, const xpath_node &, const xpath_node &)
+- name: _ZNK4pugi11xpath_query15evaluate_stringERKNS_10xpath_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: string_t pugi::xpath_query::evaluate_string(const xpath_node &)
+- name: _ZNK4pugi11xpath_query15evaluate_numberERKNS_10xpath_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: double
+  signature: double pugi::xpath_query::evaluate_number(const xpath_node &)
+- name: _ZNK4pugi11xpath_query16evaluate_booleanERKNS_10xpath_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_query::evaluate_boolean(const xpath_node &)
+- name: _ZNK4pugi14xpath_variable12get_node_setEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const xpath_node_set & pugi::xpath_variable::get_node_set()
+- name: _ZNK4pugi11xpath_query17evaluate_node_setERKNS_10xpath_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node_set pugi::xpath_query::evaluate_node_set(const xpath_node
+    &)
+- name: _ZNK4pugi11xpath_query13evaluate_nodeERKNS_10xpath_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node pugi::xpath_query::evaluate_node(const xpath_node &)
+- name: _ZN4pugi14xpath_node_set7_assignEPKNS_10xpath_nodeES3_NS0_6type_tE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::xpath_node_set::_assign(const_iterator, const_iterator, DW_TAG_enumeration_typetype_t)
+- name: _ZNK4pugi14xpath_variable4nameEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xpath_variable::name()
+- name: _ZN4pugi11xpath_queryC2EPKcPNS_18xpath_variable_setE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_query::xpath_query(const char_t *, xpath_variable_set
+    *)
+- name: _ZN4pugi4impl12_GLOBAL__N_115xpath_allocator8allocateEm
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void * pugi::impl::(anonymous namespace)::xpath_allocator::allocate(struct
+    xpath_allocator *, size_t)
+- name: _ZN4pugi12xml_document8_destroyEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::_destroy()
+- name: _ZN4pugi12xml_document11load_bufferEPKvmjNS_12xml_encodingE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: struct xml_parse_result pugi::xml_document::load_buffer(const void *,
+    size_t, unsigned int, DW_TAG_enumeration_typexml_encoding)
+- name: _ZNK4pugi4impl12_GLOBAL__N_118xpath_node_set_raw5firstEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node pugi::impl::(anonymous namespace)::xpath_node_set_raw::first()
+- name: _ZN4pugi18xpath_variable_set3addEPKcNS_16xpath_value_typeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: xpath_variable * pugi::xpath_variable_set::add(const char_t *, DW_TAG_enumeration_typexpath_value_type)
+- name: _ZN4pugi18xpath_variable_setD2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_variable_set::~~xpath_variable_set()
+- name: _ZN4pugi18xpath_variable_set8_destroyEPNS_14xpath_variableE
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_variable_set::_destroy(xpath_variable *)
+- name: _ZN4pugi4impl12_GLOBAL__N_112xpath_string6appendERKS2_PNS1_15xpath_allocatorE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xpath_string::append(const xpath_string
+    &, struct xpath_allocator *)
+- name: _ZN4pugi4impl12_GLOBAL__N_111xpath_lexer4nextEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xpath_lexer::next()
+- name: _ZN4pugi18xpath_variable_set3getEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_variable * pugi::xpath_variable_set::get(const char_t *)
+- name: _ZN4pugi12xml_document5resetEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::reset()
+- name: _ZN4pugi14xpath_node_setC2EPKNS_10xpath_nodeES3_NS0_6type_tE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::xpath_node_set::xpath_node_set(const_iterator, const_iterator,
+    DW_TAG_enumeration_typetype_t)
+- name: _ZN4pugi4impl12_GLOBAL__N_118xpath_node_set_raw9push_backERKNS_10xpath_nodeEPNS1_15xpath_allocatorE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xpath_node_set_raw::push_back(const
+    xpath_node &, struct xpath_allocator *)
+- name: _ZNK4pugi18xpath_variable_set5_findEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_variable * pugi::xpath_variable_set::_find(const char_t *)
+- name: _ZN4pugi4impl12_GLOBAL__N_118xpath_node_set_raw6appendEPKNS_10xpath_nodeES5_PNS1_15xpath_allocatorE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xpath_node_set_raw::append(const
+    xpath_node *, const xpath_node *, struct xpath_allocator *)
+- name: _ZN4pugi12xml_documentD2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::~~xml_document()
+- name: _ZN4pugi11xpath_queryD2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_query::~~xpath_query()
+- name: _ZN4pugi4impl12_GLOBAL__N_112xpath_string4dataEPNS1_15xpath_allocatorE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: char_t * pugi::impl::(anonymous namespace)::xpath_string::data(struct
+    xpath_allocator *)
+- name: _ZNK4pugi8xml_node9attributeEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::attribute(const char_t *)
+- name: _ZN4pugi12xml_documentC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::xml_document()
+- name: _ZNK4pugi4impl12_GLOBAL__N_123namespace_uri_predicateclENS_13xml_attributeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::namespace_uri_predicate::operator()(const
+    struct namespace_uri_predicate *, xml_attribute)
+- name: _ZN4pugi12xml_document7_createEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_document::_create()
+- name: _ZN4pugi14xpath_node_setD2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node_set::~~xpath_node_set()
+- name: _ZNK4pugi10xpath_node6parentEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xpath_node::parent()
+- name: _ZNK4pugi8xml_node4rootEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::root()
+- name: _ZNK4pugi4impl12_GLOBAL__N_112xpath_stringneERKS2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::xpath_string::operator!=(const
+    xpath_string &)
+- name: _ZNK4pugi4impl12_GLOBAL__N_112xpath_stringeqERKS2_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::xpath_string::operator==(const
+    xpath_string &)
+- name: _ZN4pugi14xpath_node_setC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node_set::xpath_node_set()
+- name: _ZNK4pugi4impl12_GLOBAL__N_112xpath_string6lengthEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t pugi::impl::(anonymous namespace)::xpath_string::length()
+- name: _ZN4pugi10xpath_nodeC2ERKNS_13xml_attributeERKNS_8xml_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node::xpath_node(const xml_attribute &, const xml_node
+    &)
+- name: _ZNK4pugi10xpath_nodeeqERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_node::operator==(const xpath_node &)
+- name: _ZNK4pugi10xpath_nodeneERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_node::operator!=(const xpath_node &)
+- name: _ZN4pugi4impl12_GLOBAL__N_116xpath_query_impl7destroyEPS2_
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::xpath_query_impl::destroy(struct
+    xpath_query_impl *)
+- name: _ZNK4pugi13xml_attribute14next_attributeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_attribute::next_attribute()
+- name: _ZNK4pugi8xml_node11first_childEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::first_child()
+- name: _ZNK4pugi8xml_node15first_attributeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xml_node::first_attribute()
+- name: _ZNK4pugi10xpath_node4nodeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xpath_node::node()
+- name: _ZNK4pugi8xml_node6parentEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::parent()
+- name: _ZNK4pugi8xml_node12next_siblingEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_node pugi::xml_node::next_sibling()
+- name: _ZN4pugi10xpath_nodeC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node::xpath_node()
+- name: _ZNK4pugi4impl12_GLOBAL__N_118xpath_lexer_stringeqEPKc
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::xpath_lexer_string::operator==(const
+    struct xpath_lexer_string *, const char_t *)
+- name: _ZNK4pugi14xpath_variable10get_numberEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: double
+  signature: double pugi::xpath_variable::get_number()
+- name: _ZN4pugi10xpath_nodeC2ERKNS_8xml_nodeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_node::xpath_node(const xml_node &)
+- name: _ZNK4pugi13xml_attribute5valueEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_attribute::value()
+- name: _ZNK4pugi13xml_attribute4nameEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_attribute::name()
+- name: _ZNK4pugi8xml_node5valueEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_node::value()
+- name: _ZNK4pugi8xml_node4nameEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xml_node::name()
+- name: _ZNK4pugi14xpath_variable10get_stringEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::xpath_variable::get_string()
+- name: _ZN4pugi4impl12_GLOBAL__N_116append_attributeEPNS_20xml_attribute_structEPNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::impl::(anonymous namespace)::append_attribute(struct xml_attribute_struct
+    *, struct xml_node_struct *)
+- name: _ZN4pugi8xml_nodeC2EPNS_15xml_node_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_node::xml_node(struct xml_node_struct *)
+- name: _ZN4pugi13xml_attributeC2EPNS_20xml_attribute_structE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_attribute::xml_attribute(struct xml_attribute_struct *)
+- name: _ZNK4pugi8xml_nodeeqERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::operator==(const xml_node &)
+- name: _ZNK4pugi13xml_attributeeqERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::operator==(const xml_attribute &)
+- name: _ZNK4pugi8xml_nodeltERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::operator<(const xml_node &)
+- name: _ZNK4pugi8xml_nodeneERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::operator!=(const xml_node &)
+- name: _ZNK4pugi13xml_attributeneERKS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_attribute::operator!=(const xml_attribute &)
+- name: _ZN4pugi14xpath_variableC2ENS_16xpath_value_typeE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void pugi::xpath_variable::xpath_variable(DW_TAG_enumeration_typexpath_value_type)
+- name: _ZN4pugi4impl12_GLOBAL__N_115xml_memory_page9constructEPv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct xml_memory_page * pugi::impl::(anonymous namespace)::xml_memory_page::construct(void
+    *)
+- name: _ZN4pugi4impl12_GLOBAL__N_113xml_allocator7reserveEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::xml_allocator::reserve(struct
+    xml_allocator *)
+- name: _ZN4pugi18xpath_variable_setC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_variable_set::xpath_variable_set()
+- name: _ZN4pugi13xml_attributeC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_attribute::xml_attribute()
+- name: _ZNK4pugi8xml_node15internal_objectEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct xml_node_struct * pugi::xml_node::internal_object()
+- name: _ZNK4pugi10xpath_node9attributeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xml_attribute pugi::xpath_node::attribute()
+- name: _ZNK4pugi13xml_attribute15internal_objectEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: struct xml_attribute_struct * pugi::xml_attribute::internal_object()
+- name: _ZNK4pugi4impl12_GLOBAL__N_118xpath_node_set_raw4sizeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: size_t
+  signature: size_t pugi::impl::(anonymous namespace)::xpath_node_set_raw::size()
+- name: _ZNK4pugi4impl12_GLOBAL__N_118xpath_node_set_raw4typeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: DW_TAG_enumeration_typetype_t pugi::impl::(anonymous namespace)::xpath_node_set_raw::type()
+- name: _ZNK4pugi4impl12_GLOBAL__N_118xpath_node_set_raw5beginEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node * pugi::impl::(anonymous namespace)::xpath_node_set_raw::begin()
+- name: _ZNK4pugi4impl12_GLOBAL__N_118xpath_node_set_raw3endEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: xpath_node * pugi::impl::(anonymous namespace)::xpath_node_set_raw::end()
+- name: _ZNK4pugi4impl12_GLOBAL__N_112xpath_string5c_strEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::impl::(anonymous namespace)::xpath_string::c_str()
+- name: _ZNK4pugi14xpath_variable4typeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: DW_TAG_enumeration_typexpath_value_type pugi::xpath_variable::type()
+- name: _ZNK4pugi14xpath_variable11get_booleanEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xpath_variable::get_boolean()
+- name: _ZNK4pugi4impl12_GLOBAL__N_112xpath_string5emptyEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::xpath_string::empty()
+- name: _ZNK4pugi4impl12_GLOBAL__N_118xpath_node_set_raw5emptyEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::impl::(anonymous namespace)::xpath_node_set_raw::empty()
+- name: _ZNK4pugi14xpath_node_set4typeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: DW_TAG_enumeration_typetype_t pugi::xpath_node_set::type()
+- name: _ZNK4pugi14xpath_node_set5beginEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const_iterator pugi::xpath_node_set::begin()
+- name: _ZNK4pugi14xpath_node_set3endEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const_iterator pugi::xpath_node_set::end()
+- name: _ZNK4pugi8xml_nodentEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_node::operator!()
+- name: _ZNK4pugi8xml_node4typeEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: DW_TAG_enumeration_typexml_node_type pugi::xml_node::type()
+- name: _ZNK4pugi4impl12_GLOBAL__N_111xpath_lexer5stateEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char_t * pugi::impl::(anonymous namespace)::xpath_lexer::state()
+- name: _ZN4pugi18xpath_parse_resultC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xpath_parse_result::xpath_parse_result(struct xpath_parse_result
+    *)
+- name: _ZN4pugi8xml_nodeC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_node::xml_node()
+- name: _ZNK4pugi16xml_parse_resultcvbEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool pugi::xml_parse_result::operator bool(const struct xml_parse_result
+    *)
+- name: _ZN4pugi16xml_parse_resultC2Ev
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void pugi::xml_parse_result::xml_parse_result(struct xml_parse_result
+    *)
+language: c++
+project: pugixml
+target_name: fuzz_parse
+target_path: /src/pugixml/tests/fuzz_parse.cpp

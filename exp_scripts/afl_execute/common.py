@@ -10,6 +10,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[2]
 AFL_EXECUTE_DIR = REPO_ROOT / "exp_scripts" / "afl_execute"
 BUILD_BASE = REPO_ROOT / "output" / "oss-fuzz" / "build"
+OSS_FUZZ_GEN_OUTPUT_DIR = REPO_ROOT / "output"
 BENCHMARK_ALL_API_DIR = REPO_ROOT / "benchmark-sets" / "all_api"
 
 BUILD_LOG_BASE = AFL_EXECUTE_DIR / "build_fuzzers_logs"

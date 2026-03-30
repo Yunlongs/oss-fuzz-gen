@@ -1,18 +1,17 @@
 #!/bin/bash
 # Execute fuzzer on corpus and export profdata
 
-set -ex
+set -e
 
 # Check if the correct number of arguments is provided
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <corpus_dir> <fuzzer>"
-    echo "  corpus_dir: Directory containing corpus files"
     echo "  fuzzer: Path to the fuzzer executable"
     exit 1
 fi
 
-CORPUS_DIR="$1"
-FUZZER="$2"
+CORPUS_DIR="/corpus"
+FUZZER="$1"
 SAVE_DIR=/cov
 
 # Validate inputs
@@ -20,6 +19,12 @@ if [ ! -d "$CORPUS_DIR" ]; then
     echo "Error: Corpus directory '$CORPUS_DIR' does not exist"
     exit 1
 fi
+
+if [ -z "$(ls -A "$CORPUS_DIR")" ]; then
+    echo "Error: Corpus directory '$CORPUS_DIR' is empty"
+    exit 1
+fi
+
 
 if [ ! -f "$FUZZER" ]; then
     echo "Error: Fuzzer '$FUZZER' does not exist"

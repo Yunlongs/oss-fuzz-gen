@@ -22,6 +22,7 @@ from common import (
     COVERAGE_LOG_BASE,
     COVERAGE_OUTPUT_BASE,
     REPO_ROOT,
+    OSS_FUZZ_GEN_OUTPUT_DIR,
     get_project_target_name,
     list_project_entries,
 )
@@ -34,9 +35,10 @@ RUN_COMMAND_TEMPLATE = (
     "docker run --rm --platform linux/amd64 "
     "-v {out_dir}:/out "
     "-v {scripts_dir}:/src "
+    "-v {corpus_dir}:/corpus "
     "-v {coverage_save_dir}:/cov "
     "gcr.io/oss-fuzz-base/base-runner:ubuntu-24-04 /bin/bash -lc "
-    "\"timeout {run_timeout}s /src/execute_fuzzer_corpus.sh {corpus} /out/{fuzzer}\""
+    "\"timeout {run_timeout}s /src/execute_fuzzer_corpus.sh /out/{fuzzer}\""
 )
 
 COLLECT_COMMAND_TEMPLATE = (
@@ -51,10 +53,15 @@ COLLECT_COMMAND_TEMPLATE = (
 )
 
 
-def get_fuzzer_corpus_dir(fuzzer: str) -> str:
+def get_fuzzer_corpus_dir(fuzzer: str, out_dir: str) -> str:
     """Return corpus queue path relative to /out in the container."""
-    return os.path.join("/out", f"{fuzzer}_afl_address_out", "default", "queue")
+    return os.path.join(out_dir, f"{fuzzer}_afl_address_out", "default", "queue")
 
+def get_oss_fuzz_gen_corpus_dir(project:str, project_entry_dir: str) -> str:
+    entry_name = os.path.basename(project_entry_dir)
+    trial_id = entry_name[-1:]
+    entry_dir = entry_name[:-2]
+    return os.path.join(OSS_FUZZ_GEN_OUTPUT_DIR, project, f"output-{entry_dir}", "corpora", f"0{trial_id}.fuzz_target")
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -134,12 +141,16 @@ def run_one(
     shutil.rmtree(coverage_save_dir, ignore_errors=True)
     os.makedirs(coverage_save_dir, exist_ok=True)
 
-    corpus = get_fuzzer_corpus_dir(fuzzer)
+    corpus = get_fuzzer_corpus_dir(fuzzer, out_dir)
+    #corpus = get_oss_fuzz_gen_corpus_dir(project, out_dir)
+    if not os.path.isdir(corpus):
+        print(f"[WARN] Corpus directory not found for {entry}: {corpus}")
+        return entry, 1
     run_cmd = RUN_COMMAND_TEMPLATE.format(
         out_dir=out_dir,
         scripts_dir=SCRIPTS_BASE,
         coverage_save_dir=coverage_save_dir,
-        corpus=corpus,
+        corpus_dir=corpus,
         fuzzer=fuzzer,
         run_timeout=run_timeout,
     )

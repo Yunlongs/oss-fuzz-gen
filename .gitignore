@@ -17,3 +17,8 @@ output/
 .env
 *.log
 .profdata
+exp_scripts/generation_coverage/
+exp_scripts/afl_execute/afl_coverage
+exp_scripts/afl_execute/afl_coverage_logs
+exp_scripts/afl_execute/afl_fuzzers_logs
+exp_scripts/afl_execute/build_fuzzers_logs/

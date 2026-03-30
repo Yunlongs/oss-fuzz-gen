@@ -1,0 +1,274 @@
+/* MIT License
+ *
+ * Copyright (c) The c-ares project and its contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice (including the next
+ * paragraph) shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * SPDX-License-Identifier: MIT
+ */
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include "ares.h"
+#include "include/ares_buf.h"
+#include "include/ares_mem.h"
+
+int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
+{
+  ares_dns_record_t *dnsrec    = NULL;
+  char              *printdata = NULL;
+  ares_buf_t        *printmsg  = NULL;
+  size_t             i;
+  unsigned char     *datadup     = NULL;
+  size_t             datadup_len = 0;
+
+  /* Test the function with NULL */
+  (void)ares_dns_record_get_opcode(NULL);
+
+  /* Test with a synthetic record if we have at least one byte */
+  if (size > 0) {
+    ares_dns_record_t *synth = NULL;
+    unsigned short id = 0;
+    unsigned short flags = 0;
+    ares_dns_opcode_t opcode = 0;
+    ares_dns_rcode_t rcode = ARES_RCODE_NOERROR;
+
+    if (size >= 1) id = data[0];
+    if (size >= 2) flags = data[1];
+    if (size >= 3) opcode = (ares_dns_opcode_t)data[2];
+    if (size >= 4) rcode = (ares_dns_rcode_t)data[3];
+
+    ares_status_t status = ares_dns_record_create(&synth, id, flags, opcode,
+                                                  rcode);
+    if (status == ARES_SUCCESS) {
+      (void)ares_dns_record_get_opcode(synth);
+      (void)ares_dns_record_get_id(synth);
+      (void)ares_dns_record_get_flags(synth);
+      (void)ares_dns_record_get_rcode(synth);
+
+      /* Test setter for id if we have at least one more byte */
+      if (size >= 5) {
+        unsigned short new_id = data[4];
+        (void)ares_dns_record_set_id(synth, new_id);
+        (void)ares_dns_record_get_id(synth);
+      }
+
+      /* Add a question if we have enough bytes for type and class */
+      if (size >= 7) {
+        ares_dns_rec_type_t qtype = (ares_dns_rec_type_t)data[5];
+        ares_dns_class_t qclass = (ares_dns_class_t)data[6];
+        (void)ares_dns_record_query_add(synth, "example.com", qtype, qclass);
+
+        /* Retrieve the question to exercise the getter */
+        size_t qcnt = ares_dns_record_query_cnt(synth);
+        if (qcnt > 0) {
+          const char *name;
+          ares_dns_rec_type_t ret_qtype;
+          ares_dns_class_t ret_qclass;
+          if (ares_dns_record_query_get(synth, 0, &name, &ret_qtype, &ret_qclass) == ARES_SUCCESS) {
+            /* Use the values to avoid unused variable warnings */
+            (void)name;
+            (void)ret_qtype;
+            (void)ret_qclass;
+          }
+        }
+      }
+
+      ares_dns_record_destroy(synth);
+    }
+  }
+
+  /* There is never a reason to have a size > 65535, it is immediately
+   * rejected by the parser */
+  if (size > 65535) {
+    return 0;
+  }
+
+  if (ares_dns_parse(data, size, 0, &dnsrec) != ARES_SUCCESS) {
+    goto done;
+  }
+
+  /* Lets test the message fetchers */
+  printmsg = ares_buf_create();
+  if (printmsg == NULL) {
+    goto done;
+  }
+
+  ares_buf_append_str(printmsg, ";; ->>HEADER<<- opcode: ");
+  ares_buf_append_str(
+    printmsg, ares_dns_opcode_tostr(ares_dns_record_get_opcode(dnsrec)));
+  ares_buf_append_str(printmsg, ", status: ");
+  ares_buf_append_str(printmsg,
+                      ares_dns_rcode_tostr(ares_dns_record_get_rcode(dnsrec)));
+  ares_buf_append_str(printmsg, ", id: ");
+  ares_buf_append_num_dec(printmsg, (size_t)ares_dns_record_get_id(dnsrec), 0);
+  ares_buf_append_str(printmsg, "\n;; flags: ");
+  ares_buf_append_num_hex(printmsg, (size_t)ares_dns_record_get_flags(dnsrec),
+                          0);
+  ares_buf_append_str(printmsg, "; QUERY: ");
+  ares_buf_append_num_dec(printmsg, ares_dns_record_query_cnt(dnsrec), 0);
+  ares_buf_append_str(printmsg, ", ANSWER: ");
+  ares_buf_append_num_dec(
+    printmsg, ares_dns_record_rr_cnt(dnsrec, ARES_SECTION_ANSWER), 0);
+  ares_buf_append_str(printmsg, ", AUTHORITY: ");
+  ares_buf_append_num_dec(
+    printmsg, ares_dns_record_rr_cnt(dnsrec, ARES_SECTION_AUTHORITY), 0);
+  ares_buf_append_str(printmsg, ", ADDITIONAL: ");
+  ares_buf_append_num_dec(
+    printmsg, ares_dns_record_rr_cnt(dnsrec, ARES_SECTION_ADDITIONAL), 0);
+  ares_buf_append_str(printmsg, "\n\n");
+  ares_buf_append_str(printmsg, ";; QUESTION SECTION:\n");
+  for (i = 0; i < ares_dns_record_query_cnt(dnsrec); i++) {
+    const char         *name;
+    ares_dns_rec_type_t qtype;
+    ares_dns_class_t    qclass;
+
+    if (ares_dns_record_query_get(dnsrec, i, &name, &qtype, &qclass) !=
+        ARES_SUCCESS) {
+      goto done;
+    }
+
+    ares_buf_append_str(printmsg, ";");
+    ares_buf_append_str(printmsg, name);
+    ares_buf_append_str(printmsg, ".\t\t\t");
+    ares_buf_append_str(printmsg, ares_dns_class_tostr(qclass));
+    ares_buf_append_str(printmsg, "\t");
+    ares_buf_append_str(printmsg, ares_dns_rec_type_tostr(qtype));
+    ares_buf_append_str(printmsg, "\n");
+  }
+  ares_buf_append_str(printmsg, "\n");
+  for (i = ARES_SECTION_ANSWER; i < ARES_SECTION_ADDITIONAL + 1; i++) {
+    size_t j;
+
+    ares_buf_append_str(printmsg, ";; ");
+    ares_buf_append_str(printmsg,
+                        ares_dns_section_tostr((ares_dns_section_t)i));
+    ares_buf_append_str(printmsg, " SECTION:\n");
+    for (j = 0; j < ares_dns_record_rr_cnt(dnsrec, (ares_dns_section_t)i);
+         j++) {
+      size_t                   keys_cnt = 0;
+      const ares_dns_rr_key_t *keys     = NULL;
+      ares_dns_rr_t           *rr       = NULL;
+      size_t                   k;
+
+      rr = ares_dns_record_rr_get(dnsrec, (ares_dns_section_t)i, j);
+      ares_buf_append_str(printmsg, ares_dns_rr_get_name(rr));
+      ares_buf_append_str(printmsg, ".\t\t\t");
+      ares_buf_append_str(printmsg,
+                          ares_dns_class_tostr(ares_dns_rr_get_class(rr)));
+      ares_buf_append_str(printmsg, "\t");
+      ares_buf_append_str(printmsg,
+                          ares_dns_rec_type_tostr(ares_dns_rr_get_type(rr)));
+      ares_buf_append_str(printmsg, "\t");
+      ares_buf_append_num_dec(printmsg, ares_dns_rr_get_ttl(rr), 0);
+      ares_buf_append_str(printmsg, "\t");
+
+      keys = ares_dns_rr_get_keys(ares_dns_rr_get_type(rr), &keys_cnt);
+      for (k = 0; k < keys_cnt; k++) {
+        char buf[256] = "";
+
+        ares_buf_append_str(printmsg, ares_dns_rr_key_tostr(keys[k]));
+        ares_buf_append_str(printmsg, "=");
+        switch (ares_dns_rr_key_datatype(keys[k])) {
+          case ARES_DATATYPE_INADDR:
+            ares_inet_ntop(AF_INET, ares_dns_rr_get_addr(rr, keys[k]), buf,
+                           sizeof(buf));
+            ares_buf_append_str(printmsg, buf);
+            break;
+          case ARES_DATATYPE_INADDR6:
+            ares_inet_ntop(AF_INET6, ares_dns_rr_get_addr6(rr, keys[k]), buf,
+                           sizeof(buf));
+            ares_buf_append_str(printmsg, buf);
+            break;
+          case ARES_DATATYPE_U8:
+            ares_buf_append_num_dec(printmsg, ares_dns_rr_get_u8(rr, keys[k]),
+                                    0);
+            break;
+          case ARES_DATATYPE_U16:
+            ares_buf_append_num_dec(printmsg, ares_dns_rr_get_u16(rr, keys[k]),
+                                    0);
+            break;
+          case ARES_DATATYPE_U32:
+            ares_buf_append_num_dec(printmsg, ares_dns_rr_get_u32(rr, keys[k]),
+                                    0);
+            break;
+          case ARES_DATATYPE_NAME:
+          case ARES_DATATYPE_STR:
+            ares_buf_append_byte(printmsg, '"');
+            ares_buf_append_str(printmsg, ares_dns_rr_get_str(rr, keys[k]));
+            ares_buf_append_byte(printmsg, '"');
+            break;
+          case ARES_DATATYPE_BIN:
+            /* TODO */
+            break;
+          case ARES_DATATYPE_BINP:
+            {
+              size_t templen;
+              ares_buf_append_byte(printmsg, '"');
+              ares_buf_append_str(printmsg, (const char *)ares_dns_rr_get_bin(
+                                              rr, keys[k], &templen));
+              ares_buf_append_byte(printmsg, '"');
+            }
+            break;
+          case ARES_DATATYPE_ABINP:
+            {
+              size_t a;
+              for (a = 0; a < ares_dns_rr_get_abin_cnt(rr, keys[k]); a++) {
+                size_t templen;
+
+                if (a != 0) {
+                  ares_buf_append_byte(printmsg, ' ');
+                }
+                ares_buf_append_byte(printmsg, '"');
+                ares_buf_append_str(
+                  printmsg,
+                  (const char *)ares_dns_rr_get_abin(rr, keys[k], a, &templen));
+                ares_buf_append_byte(printmsg, '"');
+              }
+            }
+            break;
+          case ARES_DATATYPE_OPT:
+            /* TODO */
+            break;
+        }
+        ares_buf_append_str(printmsg, " ");
+      }
+      ares_buf_append_str(printmsg, "\n");
+    }
+  }
+  ares_buf_append_str(printmsg, ";; SIZE: ");
+  ares_buf_append_num_dec(printmsg, size, 0);
+  ares_buf_append_str(printmsg, "\n\n");
+
+  printdata = ares_buf_finish_str(printmsg, NULL);
+  printmsg  = NULL;
+
+  /* Write it back out as a dns message to test writer */
+  if (ares_dns_write(dnsrec, &datadup, &datadup_len) != ARES_SUCCESS) {
+    goto done;
+  }
+
+done:
+  ares_dns_record_destroy(dnsrec);
+  ares_buf_destroy(printmsg);
+  ares_free(printdata);
+  ares_free(datadup);
+  return 0;
+}

@@ -160,7 +160,7 @@ class BaseAgent(ABC):
     for command in self._parse_tags(response, 'bash'):
       prompt_text += self._format_bash_execution_result(
           tool.execute(command), previous_prompt=prompt) + '\n'
-      prompt.append(prompt_text)
+      prompt.add_problem(prompt_text)
     return prompt
 
   def _container_handle_invalid_tool_usage(self,
@@ -178,10 +178,10 @@ class BaseAgent(ABC):
                    'interaction protocols for available tools:\n\n')
     for tool in tools:
       prompt_text += f'{tool.tutorial()}\n\n'
-    prompt.append(prompt_text)
+    prompt.add_problem(prompt_text)
     # We add any additional information to the prompt.
     if extra:
-      prompt.append(extra)
+      prompt.add_problem(extra)
     logger.info("----- Agent's reaction to invalid tool usage -----\n%s", prompt_text)
     return prompt
 
@@ -192,7 +192,7 @@ class BaseAgent(ABC):
     for command in self._parse_tags(response, 'bash'):
       prompt_text += self._format_bash_execution_result(
           tool.execute(command), previous_prompt=prompt) + '\n'
-      prompt.append(prompt_text)
+    prompt.add_problem(prompt_text)
     logger.info("----- Agent's reaction to container tool's feedback -----\n%s", prompt_text)
     return prompt
 

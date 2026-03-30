@@ -59,7 +59,7 @@ def setup_logger(
     log_file = os.path.join(log_dir, log_file_name)
     
     # 创建标准格式化器
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(pathname)s:%(lineno)d - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(process)d - %(thread)d - %(name)s - %(levelname)s - %(pathname)s:%(lineno)d - %(message)s')
     
     # 配置文件handler
     file_handler = logging.FileHandler(log_file)

@@ -178,16 +178,16 @@ def generate_from_func_file(func_file, output_file):
 
 
 # --- 配置参数 ---
-INPUT_PATH = '/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/benchmark-sets/all_api/zlib/zlib.yaml'       # 你的原始文件名
+INPUT_PATH = '/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/benchmark-sets/all_api/c-ares/c-ares.yaml'       # 你的原始文件名
 
-PRIOR_PATH = '/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/benchmark-sets/all/zlib.yaml'
+PRIOR_PATH = '/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/benchmark-sets/all/c-ares.yaml'
 
-FUNC_FILE = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/exp_scripts/libvpx.func"
+FUNC_FILE = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/exp_scripts/c-ares.func"
 
 TARGET_FUNCTIONs = parse_funcs(FUNC_FILE)
 
 if __name__ == "__main__":
     #filter_yaml_functions(INPUT_PATH, INPUT_PATH, TARGET_FUNCTIONs)
     #filter_yaml_tiff_functions(INPUT_PATH, INPUT_PATH)
-    merge_yaml_function(PRIOR_PATH, INPUT_PATH, INPUT_PATH)
-    #generate_from_func_file(FUNC_FILE, INPUT_PATH)
+    #merge_yaml_function(PRIOR_PATH, INPUT_PATH, INPUT_PATH)
+    generate_from_func_file(FUNC_FILE, INPUT_PATH)

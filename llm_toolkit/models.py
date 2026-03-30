@@ -169,7 +169,9 @@ class LLM:
   def _delay_for_retry(self, attempt_count: int) -> None:
     """Sleeps for a while based on the |attempt_count|, capped at 5 minutes."""
     # Exponentially increase with jitter, but cap at _max_retry_delay.
-    delay = min(5 * 2**attempt_count + random.randint(1, 5),
+    # delay = min(5 * 2**attempt_count + random.randint(1, 5),
+    #            self._max_retry_delay)
+    delay = min(random.randint(2 * 60, 5 * 60),
                 self._max_retry_delay)
     logging.warning('Retry in %d seconds...', delay)
     time.sleep(delay)
@@ -178,6 +180,12 @@ class LLM:
                           api_errors: list[Type[Exception]],
                           tb: traceback.StackSummary) -> bool:
     """Validates if |err| is worth retrying."""
+    # Context length exceeded errors are not retryable
+    if isinstance(err, openai.BadRequestError):
+      err_msg = str(err)
+      if 'context length' in err_msg or 'maximum input length' in err_msg:
+        return False
+
     if any(isinstance(err, api_error) for api_error in api_errors):
       return True
 
@@ -355,7 +363,12 @@ class GPT(LLM):
       if not content:
         llm_response = reasoning_content
       self.messages.append(completion.choices[0].message)
-
+    elif self.name == "deepseek-reasoner":
+      reasoning_content = completion.choices[0].message.reasoning_content
+      content = completion.choices[0].message.content
+      if not content:
+        llm_response = reasoning_content
+      self.messages.append(completion.choices[0].message)
     else:
       self.messages.append({'role': 'assistant', 'content': llm_response})
     self.log_token_usage(completion)
@@ -495,6 +508,11 @@ class DeepSeekV32(GPT):
   name = 'DeepSeek-V3.2'
   MAX_INPUT_TOKEN = 128000
 
+class DeepSeekReasoner(GPT):
+  """DeepSeek's Reasoner model."""
+
+  name = 'deepseek-reasoner'
+  MAX_INPUT_TOKEN = 128000
 
 class ChatGPT(GPT):
   """OpenAI's GPT model with chat session."""

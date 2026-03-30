@@ -183,16 +183,17 @@ class OpenAIPrompt(Prompt):
 
   def append(self, text: str, to_existing: bool = False) -> None:
     """Appends to the formatted prompt."""
-    if to_existing and self._prompt:
+    self.add_problem(text)
+    #if to_existing and self._prompt:
       # With to_existing flag, attach the string to the original content
       # of the existing prompt
-      self._prompt[-1]['content'] += text
-    elif self._prompt:
+    #  self._prompt[-1]['content'] += text
+    #elif self._prompt:
       # With no to_existing flag, append a new prompt with role user
-      self.add_problem(text)
-    else:
+    #  self.add_problem(text)
+    #else:
       # There are no prompt exists, append the text as priming prompt
-      self.add_priming(text)
+    #  self.add_priming(text)
 
 
 class ClaudePrompt(OpenAIPrompt):

@@ -59,7 +59,7 @@ NUM_EVA = int(os.getenv('LLM_NUM_EVA', '3'))
 # LLM's limit on query-per-second.
 NUM_SAMPLES = 2
 MAX_TOKENS: int = 4096
-RUN_TIMEOUT: int = 30
+RUN_TIMEOUT: int = 300
 TEMPERATURE: float = 0.4
 
 RESULTS_DIR = './results'

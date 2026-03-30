@@ -255,7 +255,7 @@ class Prototyper(BaseAgent):
           'When you have a solution later, make sure you output the FULL fuzz '
           'target. YOU MUST NOT OMIT ANY CODE even if it is the same as before.'
           '\n')
-      prompt.append(prompt_text)
+      prompt.add_problem(prompt_text)
       return build_result_alt, prompt
     if (build_result_ori and build_result_ori.binary_exists and
         not build_result_ori.build_script_source):
@@ -269,7 +269,7 @@ class Prototyper(BaseAgent):
           'When you have a solution later, make sure you output the FULL fuzz '
           'target. YOU MUST NOT OMIT ANY CODE even if it is the same as before.'
           '\n')
-      prompt.append(prompt_text)
+      prompt.add_problem(prompt_text)
       return build_result_ori, prompt
     if build_result_ori and build_result_ori.binary_exists:
       # Preference 4.2: New fuzz target + New build.sh can compile and save
@@ -283,7 +283,7 @@ class Prototyper(BaseAgent):
           'When you have a solution later, make sure you output the FULL fuzz '
           'target (and the FULL build script, if any). YOU MUST NOT OMIT ANY '
           'CODE even if it is the same as before.\n')
-      prompt.append(prompt_text)
+      prompt.add_problem(prompt_text)
       return build_result_ori, prompt
 
     # Case 3: Compiles, meaning the binary is not saved.
@@ -305,7 +305,7 @@ class Prototyper(BaseAgent):
           'When you have a solution later, make sure you output the FULL fuzz '
           'target (and the FULL build script, if any). YOU MUST NOT OMIT ANY '
           'CODE even if it is the same as before.\n')
-      prompt.append(prompt_text)
+      prompt.add_problem(prompt_text)
       return build_result_ori, prompt
     if (build_result_ori and build_result_ori.compiles and
         not build_result_ori.build_script_source):
@@ -327,7 +327,7 @@ class Prototyper(BaseAgent):
           'When you have a solution later, make sure you output the FULL fuzz '
           'target (and the FULL build script, if any). YOU MUST NOT OMIT ANY '
           'CODE even if it is the same as before.\n')
-      prompt.append(prompt_text)
+      prompt.add_problem(prompt_text)
       return build_result_ori, prompt
     if build_result_alt and build_result_alt.compiles:
       # Preference 6: New fuzz target + default build.sh can compile, but does
@@ -348,7 +348,7 @@ class Prototyper(BaseAgent):
           'When you have a solution later, make sure you output the FULL fuzz '
           'target (and the FULL build script, if any). YOU MUST NOT OMIT ANY '
           'CODE even if it is the same as before.\n')
-      prompt.append(prompt_text)
+      prompt.add_problem(prompt_text)
       return build_result_alt, prompt
 
     # Preference 7: New fuzz target + both `build.sh`s cannot compile. No need

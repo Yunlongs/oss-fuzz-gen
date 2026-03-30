@@ -23,6 +23,7 @@ import subprocess as sp
 import tempfile
 import uuid
 
+from click import command
 import yaml
 
 from experiment import benchmark as benchmarklib
@@ -390,24 +391,54 @@ def prepare_build(project_name, sanitizer, generated_project):
 
 def _build_image(project_name: str) -> str:
   """Builds project image in OSS-Fuzz"""
+  image_name = f'gcr.io/oss-fuzz/{project_name}'
+  # 如果镜像已存在，跳过构建
+  check = sp.run(
+      ['docker', 'image', 'inspect', image_name],
+      stdout=sp.DEVNULL,
+      stderr=sp.DEVNULL,
+  )
+  if check.returncode == 0:
+    logger.info('Image %s already exists, skipping build.', image_name)
+    return image_name
+
   adjusted_env = os.environ | {
       'FUZZING_LANGUAGE': get_project_language(project_name)
   }
   command = [
-      'python3', 'infra/helper.py', 'build_image', '--pull', project_name
+      'python3', 'infra/helper.py', 'build_image',  project_name
   ]
+  logger.info('Building project image for %s with command: %s', project_name, command)
   try:
-    sp.run(command,
-           cwd=OSS_FUZZ_DIR,
-           env=adjusted_env,
-           stdout=sp.PIPE,
-           stderr=sp.PIPE,
-           check=True)
+    with sp.Popen(
+            command,
+            cwd=OSS_FUZZ_DIR,
+            env=adjusted_env,
+            stdout=sp.PIPE,     # 捕获标准输出
+            stderr=sp.STDOUT,   # 将错误流合并到输出流，方便统一记录
+            stdin=sp.PIPE,       # 允许写入输入，自动回答交互式确认提示
+            text=True,           # 自动 decode 字符串
+            bufsize=1            # 行缓冲，确保实时性
+        ) as process:
+      # 自动回答所有交互式确认提示（如 "Are you sure? [y/N]"）
+      process.stdin.write('y\n' * 10)
+      process.stdin.close()
+      # 实时读取每一行并写入 logger
+      for line in process.stdout:
+          line = line.strip()
+          if line:
+              logger.info("[%s build] %s", project_name, line)
+      
+      # 等待进程结束并获取状态码
+      return_code = process.wait(timeout=1800)
+      
+      if return_code != 0:
+          raise sp.CalledProcessError(return_code, command)
     logger.debug('Successfully build project image for %s', project_name)
-    return f'gcr.io/oss-fuzz/{project_name}'
+    return image_name
   except sp.CalledProcessError as e:
     logger.error('Failed to build project image for %s: %s', project_name,
-                 e.stderr.decode('utf-8'))
+                 e.stderr)
     return ''
 
 

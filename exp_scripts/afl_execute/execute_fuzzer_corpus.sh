@@ -1,7 +1,7 @@
 #!/bin/bash
 # Execute fuzzer on corpus and export profdata
 
-set -e
+set -ex
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 2 ]; then
@@ -44,7 +44,9 @@ echo "Profdata will be saved to: $SAVE_DIR/$FUZZER_NAME.profdata"
 
 # Execute fuzzer on each corpus file
 # Use the fuzzer in a way that processes all corpus files
-"$FUZZER" "$CORPUS_DIR"/* -runs=0
+cd /out
+
+$FUZZER $CORPUS_DIR -runs=0
 
 echo "Merging profraw files to profdata..."
 # Merge all profraw files into a single profdata file

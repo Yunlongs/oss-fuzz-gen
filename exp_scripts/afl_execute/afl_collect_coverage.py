@@ -13,6 +13,7 @@ import argparse
 import os
 import subprocess
 import sys
+import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -20,6 +21,7 @@ from common import (
     AFL_EXECUTE_DIR,
     COVERAGE_LOG_BASE,
     COVERAGE_OUTPUT_BASE,
+    REPO_ROOT,
     get_project_target_name,
     list_project_entries,
 )
@@ -39,19 +41,19 @@ RUN_COMMAND_TEMPLATE = (
 
 COLLECT_COMMAND_TEMPLATE = (
     "docker run --rm --platform linux/amd64 "
-    "-v {out_dir}:/out "
-    "-v {coverage_save_dir}:/cov "
-    "gcr.io/oss-fuzz-base/base-clang:latest bash -lc "
-    "\"cd /cov && "
-    "ls *.profraw >/dev/null 2>&1 && "
-    "llvm-profdata merge -sparse *.profraw -o merge.profdata && "
-    "llvm-cov report /out/{fuzzer} -instr-profile=merge.profdata > coverage_report.txt\""
+    "-v {libs_dir}:/libs "
+    "-v {coverage_project_dir}:/cov "
+    "gcr.io/oss-fuzz-base/base-clang:latest bash -c "
+    "'cd /cov && rm -f merge.profdata && "
+    "prof_files=$(find . -type f -name \"*.profdata\") && "
+    "llvm-profdata merge -sparse $prof_files -o merge.profdata && "
+    "llvm-cov report /libs/{lib_name}.so -instr-profile=merge.profdata > coverage_report.txt'"
 )
 
 
 def get_fuzzer_corpus_dir(fuzzer: str) -> str:
     """Return corpus queue path relative to /out in the container."""
-    return os.path.join("out", f"{fuzzer}_afl_address_out", "default", "queue")
+    return os.path.join("/out", f"{fuzzer}_afl_address_out", "default", "queue")
 
 
 def parse_args() -> argparse.Namespace:
@@ -89,6 +91,23 @@ def parse_args() -> argparse.Namespace:
         default=24 * 3600,
         help="Coverage run timeout in seconds per target (default: 86400).",
     )
+    parser.add_argument(
+        "--libs-dir",
+        type=str,
+        default=str(REPO_ROOT / "exp_scripts" / "libs"),
+        help="Directory containing shared libraries for llvm-cov (default: exp_scripts/libs).",
+    )
+    parser.add_argument(
+        "--lib-name",
+        type=str,
+        default=None,
+        help="Library basename without .so for llvm-cov report (auto-resolved by default).",
+    )
+    parser.add_argument(
+        "--collect-only",
+        action="store_true",
+        help="Skip run stage and only merge/show coverage from existing *.profraw.",
+    )
     return parser.parse_args()
 
 
@@ -110,8 +129,9 @@ def run_one(
     run_timeout: int,
     dry_run: bool,
 ) -> tuple[str, int]:
-    """Run coverage then collect report for one target. Returns (entry, rc)."""
+    """Run coverage for one target. Returns (entry, rc)."""
     coverage_save_dir = os.path.join(str(COVERAGE_OUTPUT_BASE), f"round_{round_id}", project, entry)
+    shutil.rmtree(coverage_save_dir, ignore_errors=True)
     os.makedirs(coverage_save_dir, exist_ok=True)
 
     corpus = get_fuzzer_corpus_dir(fuzzer)
@@ -123,19 +143,13 @@ def run_one(
         fuzzer=fuzzer,
         run_timeout=run_timeout,
     )
-    collect_cmd = COLLECT_COMMAND_TEMPLATE.format(
-        out_dir=out_dir,
-        coverage_save_dir=coverage_save_dir,
-        fuzzer=fuzzer,
-    )
-
     log_path = os.path.join(log_dir, f"{entry}.log")
     print(f"[START] {entry}  ->  {log_path}")
+    print(f"        CORPUS: {corpus}")
 
     if dry_run:
         with open(log_path, "w") as f:
             f.write(f"[DRY-RUN][RUN] {run_cmd}\n")
-            f.write(f"[DRY-RUN][COLLECT] {collect_cmd}\n")
         return entry, 0
 
     with open(log_path, "w") as log_file:
@@ -150,8 +164,36 @@ def run_one(
         if run_ret.returncode != 0:
             log_file.write(f"\n[RUN FAILED] exit={run_ret.returncode}\n")
             return entry, run_ret.returncode
+        return entry, 0
 
-        log_file.write(f"\nCOLLECT CMD: {collect_cmd}\n\n")
+
+def collect_project_coverage(
+    project: str,
+    round_id: int,
+    libs_dir: str,
+    lib_name: str,
+    log_dir: str,
+    dry_run: bool,
+) -> int:
+    """Merge all profile files under project coverage dir and generate one report."""
+    coverage_project_dir = os.path.join(str(COVERAGE_OUTPUT_BASE), f"round_{round_id}", project)
+    os.makedirs(coverage_project_dir, exist_ok=True)
+
+    collect_cmd = COLLECT_COMMAND_TEMPLATE.format(
+        libs_dir=libs_dir,
+        coverage_project_dir=coverage_project_dir,
+        lib_name=lib_name,
+    )
+
+    collect_log_path = os.path.join(log_dir, f"{project}-collect.log")
+    if dry_run:
+        with open(collect_log_path, "w") as f:
+            f.write(f"[DRY-RUN][COLLECT] {collect_cmd}\n")
+        print(f"[OK]    {project}-collect")
+        return 0
+
+    with open(collect_log_path, "w") as log_file:
+        log_file.write(f"COLLECT CMD: {collect_cmd}\n\n")
         log_file.flush()
         collect_ret = subprocess.run(
             collect_cmd,
@@ -159,7 +201,7 @@ def run_one(
             stdout=log_file,
             stderr=subprocess.STDOUT,
         )
-        return entry, collect_ret.returncode
+        return collect_ret.returncode
 
 
 def main() -> None:
@@ -176,14 +218,30 @@ def main() -> None:
         print(f"No valid out directories found for project '{args.project}'.")
         sys.exit(1)
 
-    helper_script = os.path.join(str(SCRIPTS_BASE), "execute_fuzzer_corpus.sh")
-    if not os.path.isfile(helper_script):
-        print(f"[ERROR] helper script not found: {helper_script}", file=sys.stderr)
-        print("Please add exp_scripts/afl_execute/execute_fuzzer_corpus.sh first.", file=sys.stderr)
-        sys.exit(1)
+    if not args.collect_only:
+        helper_script = os.path.join(str(SCRIPTS_BASE), "execute_fuzzer_corpus.sh")
+        if not os.path.isfile(helper_script):
+            print(f"[ERROR] helper script not found: {helper_script}", file=sys.stderr)
+            print("Please add exp_scripts/afl_execute/execute_fuzzer_corpus.sh first.", file=sys.stderr)
+            sys.exit(1)
 
     log_dir = LOG_BASE / args.project
     log_dir.mkdir(parents=True, exist_ok=True)
+
+    libs_dir = args.libs_dir
+    if not os.path.isdir(libs_dir):
+        print(f"[ERROR] libs directory not found: {libs_dir}", file=sys.stderr)
+        sys.exit(1)
+
+    project_name = args.project.replace("-", "_")
+    lib_name = args.lib_name or (
+        project_name if project_name.startswith("lib") else f"lib{project_name}"
+    )
+    lib_so = os.path.join(libs_dir, f"{lib_name}.so")
+    if not os.path.isfile(lib_so):
+        print(f"[ERROR] shared library not found: {lib_so}", file=sys.stderr)
+        print("Use --lib-name to specify the correct library basename.", file=sys.stderr)
+        sys.exit(1)
 
     resolved: list[tuple[str, str]] = []
     for entry, out_dir in pairs:
@@ -196,35 +254,55 @@ def main() -> None:
     print(f"Found {len(resolved)} target(s) for project '{args.project}'.")
     print(f"Logs           -> {str(log_dir)}")
     print(f"Fuzzer         -> {target_name}")
+    print(f"Library        -> {lib_name}.so")
     print(f"Coverage output-> {str(COVERAGE_OUTPUT_BASE)}/round_{args.round}/")
-    print(f"Workflow       : run -> collect")
+    workflow = "collect-only" if args.collect_only else "run -> collect"
+    print(f"Workflow       : {workflow}")
     print(f"Workers        : {args.workers}\n")
 
     failed: list[str] = []
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = {
-            pool.submit(
-                run_one,
-                entry,
-                out_dir,
-                target_name,
-                args.project,
-                str(log_dir),
-                args.round,
-                args.run_timeout,
-                args.dry_run,
-            ): entry
-            for entry, out_dir in resolved
-        }
-        for future in as_completed(futures):
-            entry, rc = future.result()
-            if rc == 0:
-                print(f"[OK]    {entry}")
-            else:
-                print(f"[FAIL]  {entry}  (exit {rc})", file=sys.stderr)
-                failed.append(entry)
 
-    print(f"\nDone. {len(resolved) - len(failed)}/{len(resolved)} succeeded.")
+    if not args.collect_only:
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            futures = {
+                pool.submit(
+                    run_one,
+                    entry,
+                    out_dir,
+                    target_name,
+                    args.project,
+                    str(log_dir),
+                    args.round,
+                    args.run_timeout,
+                    args.dry_run,
+                ): entry
+                for entry, out_dir in resolved
+            }
+            for future in as_completed(futures):
+                entry, rc = future.result()
+                if rc == 0:
+                    print(f"[OK]    {entry}")
+                else:
+                    print(f"[FAIL]  {entry}  (exit {rc})", file=sys.stderr)
+                    failed.append(entry)
+
+    collect_rc = collect_project_coverage(
+        project=args.project,
+        round_id=args.round,
+        libs_dir=libs_dir,
+        lib_name=lib_name,
+        log_dir=str(log_dir),
+        dry_run=args.dry_run,
+    )
+    if collect_rc != 0:
+        print(f"[FAIL]  {args.project}-collect  (exit {collect_rc})", file=sys.stderr)
+        failed.append(f"{args.project}-collect")
+
+    succeeded = len(resolved) - len([name for name in failed if name != f"{args.project}-collect"])
+    if args.collect_only:
+        print(f"\nDone. collect stage {'succeeded' if collect_rc == 0 else 'failed'}.")
+    else:
+        print(f"\nDone. {succeeded}/{len(resolved)} run targets succeeded.")
     if failed:
         print("Failed targets:", file=sys.stderr)
         for name in sorted(failed):

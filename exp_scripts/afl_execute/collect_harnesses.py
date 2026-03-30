@@ -1,103 +1,75 @@
-"""Collect all .fuzz_target harnesses from an output directory,
-renumber them sequentially, and copy them to harnesses_dir."""
-
-import argparse
 import os
+import yaml
 import shutil
+import argparse
 
-from common import BUILD_BASE, HARNESS_OUTPUT_BASE
+# Settings
+OSS_FUZZ_OUT_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/output/oss-fuzz/build/out"
+BENCHMARK_API_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/benchmark-sets/all_api"
+OUTPUT_BASE_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/exp_scripts/afl_execute/harnesses"
 
-harnesses_dir = str(HARNESS_OUTPUT_BASE)
-out_root = str(BUILD_BASE / "out")
-
-
-def get_build_name(fpath: str) -> str | None:
-    """Derive the build directory name in *out_root* for a given .fuzz_target path.
-
-    Path convention: .../output-{project}-{func}/*/NN.fuzz_target
-    Build dir name:  {project}-{func}-{N}
-    Returns None if the path does not match the expected structure.
-    """
-    fname = os.path.basename(fpath)           # e.g. "01.fuzz_target"
-    stem = fname.replace(".fuzz_target", "")  # e.g. "01"
-    try:
-        variant = int(stem)
-    except ValueError:
+def get_target_path(project_name):
+    yaml_path = os.path.join(BENCHMARK_API_DIR, project_name, f"{project_name}.yaml")
+    if not os.path.exists(yaml_path):
+        print(f"[-] YAML not found for {project_name}: {yaml_path}")
         return None
+        
+    with open(yaml_path, 'r') as f:
+        try:
+            data = yaml.safe_load(f)
+            return data.get('target_path')
+        except yaml.YAMLError as e:
+            print(f"[-] YAML parsing error for {yaml_path}: {e}")
+            return None
 
-    # Go up two levels: .../experiment_dir/subdir/NN.fuzz_target
-    experiment_dir = os.path.basename(os.path.dirname(os.path.dirname(fpath)))
-    if not experiment_dir.startswith("output-"):
-        return None
+def process_project(project_name, round_num):
+    target_path = get_target_path(project_name)
+    if not target_path:
+        return
 
-    base = experiment_dir[len("output-"):]    # e.g. "file-magic_list"
-    return f"{base}-{variant}"                # e.g. "file-magic_list-1"
+    # Extract relative path (e.g., from "/src/checksum_fuzzer.c" -> "checksum_fuzzer.c")
+    if target_path.startswith('/src/'):
+        rel_path = target_path[5:] # remove '/src/'
+    else:
+        rel_path = target_path.lstrip('/')
+        
+    ext = os.path.splitext(rel_path)[1]
+    
+    # 按照项目和 round 分类存放，避免同名文件在不同 round 之间被覆盖
+    # 以满足把"harness文件重命名为对应的目录名"的精确需求：zlib-uncompress_z-1.c
+    output_dir = os.path.join(OUTPUT_BASE_DIR, f"round-{round_num}", project_name)
+    os.makedirs(output_dir, exist_ok=True)
+    
+    count = 0
+    
+    for item in os.listdir(OSS_FUZZ_OUT_DIR):
+        if item.startswith(f"{project_name}-"):
+            fuzzer_dir = os.path.join(OSS_FUZZ_OUT_DIR, item)
+            if not os.path.isdir(fuzzer_dir):
+                continue
+                
+            src_fuzzer_file = os.path.join(fuzzer_dir, "src", rel_path)
+            
+            if os.path.exists(src_fuzzer_file):
+                # 重命名为对应的目录名
+                new_filename = f"{item}{ext}"
+                dst_path = os.path.join(output_dir, new_filename)
+                
+                shutil.copy2(src_fuzzer_file, dst_path)
+                print(f"[+] Copied {src_fuzzer_file} to {dst_path}")
+                count += 1
+            else:
+                print(f"[-] Harness not found: {src_fuzzer_file}")
+                
+    print(f"[*] Project {project_name} (Round {round_num}): collected {count} harness files into {output_dir}")
 
-
-def has_profdata(build_dir: str) -> bool:
-    """Return True if the dumps/ subdirectory of *build_dir* contains any .profdata file."""
-    dumps_dir = os.path.join(build_dir, "dumps")
-    if not os.path.isdir(dumps_dir):
-        return False
-    return any(f.endswith(".profdata") for f in os.listdir(dumps_dir))
-
-
-def collect_harnesses(src_dir: str, dst_dir: str) -> None:
-    """Find every *.fuzz_target file under *src_dir*, renumber them
-    sequentially (01, 02, …) and write copies into *dst_dir*."""
-    os.makedirs(dst_dir, exist_ok=True)
-
-    harnesses = []
-    for root, _dirs, files in os.walk(src_dir):
-        for fname in sorted(files):
-            if fname.endswith(".fuzz_target"):
-                fpath = os.path.join(root, fname)
-                if os.path.getsize(fpath) == 0:
-                    print(f"[skip] empty file: {fpath}")
-                    continue
-
-                build_name = get_build_name(fpath)
-                if build_name is None:
-                    print(f"[skip] cannot derive build name: {fpath}")
-                    continue
-
-                build_dir = os.path.join(out_root, build_name)
-                if not os.path.isdir(build_dir):
-                    print(f"[skip] build dir not found ({build_name}): {fpath}")
-                    continue
-
-                if not has_profdata(build_dir):
-                    print(f"[skip] no profdata in dumps/ ({build_name}): {fpath}")
-                    continue
-
-                harnesses.append(fpath)
-
-    harnesses.sort()  # deterministic ordering by full path
-
-    pad = len(str(len(harnesses))) if harnesses else 1
-    for idx, src_path in enumerate(harnesses, start=1):
-        ext = ".fuzz_target"
-        new_name = f"{idx:0{pad}d}{ext}"
-        dst_path = os.path.join(dst_dir, new_name)
-        shutil.copy2(src_path, dst_path)
-        print(f"[{idx:0{pad}d}/{len(harnesses)}] {src_path} -> {dst_path}")
-
-    print(f"\nDone. {len(harnesses)} harness(es) collected into {dst_dir}")
-
+def main():
+    parser = argparse.ArgumentParser(description="Collect generated harnesses")
+    parser.add_argument("project", help="A single project to process (e.g., zlib)")
+    parser.add_argument("--round", "-r", required=True, type=int, help="Round number (e.g., 1)")
+    args = parser.parse_args()
+    
+    process_project(args.project, args.round)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Collect and renumber .fuzz_target harnesses from an output directory."
-    )
-    parser.add_argument(
-        "src_dir",
-        help="Root directory to search (e.g. /home/.../output/ffmpeg)",
-    )
-    args = parser.parse_args()
-    base_name = os.path.basename(os.path.normpath(args.src_dir))
-    save_dir = os.path.join(harnesses_dir, base_name)
-    os.makedirs(save_dir, exist_ok=True)
-    collect_harnesses(args.src_dir, save_dir)
-
-
-#  docker ps --filter "status=running" --format "{{.ID}} {{.Command}} {{.RunningFor}}" | grep "run_fuzzer" | grep "25 hours ago" | awk '{print $1}' | xargs -r docker rm -f
+    main()

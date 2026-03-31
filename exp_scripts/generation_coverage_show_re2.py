@@ -5,8 +5,8 @@ Script to filter out lines containing 'absl' from coverage report and recalculat
 
 import re
 import sys
+import argparse
 
-cov_report = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/exp_scripts/coverage/re2/coverage_report.txt"
 
 
 def parse_coverage_line(line):
@@ -119,10 +119,13 @@ def filter_and_calculate_coverage(report_file):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Filter out 'absl' lines from coverage report and recalculate coverage statistics.")
+    parser.add_argument('report', type=str, default="", help='Path to the coverage report file')
+    args = parser.parse_args()
     try:
-        stats = filter_and_calculate_coverage(cov_report)
+        stats = filter_and_calculate_coverage(args.report)
     except FileNotFoundError:
-        print(f"Error: Coverage report file not found: {cov_report}")
+        print(f"Error: Coverage report file not found: {args.report}")
         sys.exit(1)
     except Exception as e:
         print(f"Error processing coverage report: {e}")

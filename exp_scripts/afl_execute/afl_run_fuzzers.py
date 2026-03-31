@@ -22,8 +22,6 @@ from common import RUN_LOG_BASE, get_project_target_name, list_project_entries
 
 LOG_BASE = RUN_LOG_BASE
 
-WATCHDOG_INTERVAL = 10 * 60    # seconds between each scan
-MAX_CONTAINER_AGE = 24 * 3600  # containers older than this are reaped
 FUZZER_TIMEOUT    = 24 * 3600  # subprocess timeout (seconds)
 
 # Global process registry so cleanup helpers can find live subprocesses
@@ -43,87 +41,6 @@ COMMAND_TEMPLATE = (
     "-t gcr.io/oss-fuzz-base/base-runner:ubuntu-24-04 "
     "run_fuzzer {fuzzer}"
 )
-
-
-# ---------------------------------------------------------------------------
-# Watchdog: periodically kill containers that have exceeded the time limit
-# ---------------------------------------------------------------------------
-
-def _reap_stale_containers(fuzzer: str) -> None:
-    """Kill every running docker container whose command contains `fuzzer`
-    and that has been alive for more than MAX_CONTAINER_AGE seconds."""
-    try:
-        result = subprocess.run(
-            ["docker", "ps", "--no-trunc",
-             "--format", "{{.ID}}\t{{.CreatedAt}}\t{{.Command}}"],
-            capture_output=True, text=True, timeout=15,
-        )
-    except Exception as exc:
-        print(f"[WATCHDOG] docker ps failed: {exc}", file=sys.stderr)
-        return
-
-    now = datetime.now(timezone.utc)
-    for line in result.stdout.splitlines():
-        parts = line.split("\t", 2)
-        if len(parts) != 3:
-            continue
-        cid, created_at, command = parts
-        if fuzzer not in command:
-            continue
-        # CreatedAt format: "2024-01-15 10:30:00 +0000 UTC"
-        # Strip the redundant trailing timezone name before parsing.
-        try:
-            ts_str = created_at.rsplit(" ", 1)[0]  # "2024-01-15 10:30:00 +0000"
-            created = datetime.strptime(ts_str, "%Y-%m-%d %H:%M:%S %z")
-        except ValueError:
-            print(
-                f"[WATCHDOG] Cannot parse CreatedAt '{created_at}' "
-                f"for container {cid[:12]}",
-                file=sys.stderr,
-            )
-            continue
-        age_seconds = (now - created).total_seconds()
-        if age_seconds > MAX_CONTAINER_AGE:
-            print(
-                f"[WATCHDOG] Removing stale container {cid[:12]} "
-                f"(fuzzer={fuzzer}, age={age_seconds / 3600:.1f}h)"
-            )
-            try:
-                subprocess.run(
-                    ["docker", "rm", "-f", cid],
-                    timeout=30, capture_output=True,
-                )
-            except Exception as exc:
-                print(
-                    f"[WATCHDOG] Failed to remove {cid[:12]}: {exc}",
-                    file=sys.stderr,
-                )
-
-
-def _watchdog_loop(fuzzer: str, stop_event: threading.Event) -> None:
-    """Daemon loop: wait WATCHDOG_INTERVAL seconds, then reap stale containers.
-    Repeats until stop_event is set."""
-    print(
-        f"[WATCHDOG] Started – interval={WATCHDOG_INTERVAL // 60}min, "
-        f"max_age={MAX_CONTAINER_AGE // 3600}h, fuzzer={fuzzer}"
-    )
-    while not stop_event.wait(WATCHDOG_INTERVAL):
-        print("[WATCHDOG] Scanning for stale containers...")
-        _reap_stale_containers(fuzzer)
-    print("[WATCHDOG] Stopped.")
-
-
-def start_watchdog(fuzzer: str) -> tuple[threading.Thread, threading.Event]:
-    """Spawn the watchdog daemon thread and return (thread, stop_event)."""
-    stop_event = threading.Event()
-    t = threading.Thread(
-        target=_watchdog_loop,
-        args=(fuzzer, stop_event),
-        name="watchdog",
-        daemon=True,
-    )
-    t.start()
-    return t, stop_event
 
 
 # ---------------------------------------------------------------------------
@@ -323,6 +240,20 @@ def run_one(
         cpu_pool.put(cpu)
 
 
+def cleanup_stale_containers(fuzzer: str) -> None:
+    """Find and remove all docker containers for the given fuzzer that have been running for >= 24h."""
+    print(f"\n[CLEANUP] Removing stale fuzzer containers for '{fuzzer}' running >= 24h...")
+    cmd = (
+        f"docker ps | grep 'run_fuzzer {fuzzer}' | "
+        r"grep -E 'Up (2[4-9]|[3-9][0-9]|[0-9]{3,}) hours|days|weeks|months' | "
+        r"awk '{print $1}' | xargs -r docker rm -f"
+    )
+    try:
+        subprocess.run(cmd, shell=True, check=True)
+        print("[CLEANUP] Cleanup finished.")
+    except subprocess.CalledProcessError as e:
+        print(f"[CLEANUP] Error during cleanup: {e}")
+
 def main() -> None:
     args = parse_args()
     project = args.project
@@ -358,9 +289,6 @@ def main() -> None:
     effective_workers = min(args.workers, len(cores))
     cpu_pool = build_cpu_pool(cores)
 
-    # Start watchdog daemon with target_name to catch containers
-    _watchdog_thread, _stop_event = start_watchdog(target_name)
-
     print(f"Found {len(resolved)} target(s) for project '{project}'.")
     print(f"Logs   -> {str(log_dir)}")
     print(f"Fuzzer -> {target_name}")
@@ -382,9 +310,7 @@ def main() -> None:
                 print(f"[FAIL]  {entry}  (exit {rc})", file=sys.stderr)
                 failed.append(entry)
 
-    # All futures done – shut down watchdog
-    _stop_event.set()
-    _watchdog_thread.join(timeout=5)
+    cleanup_stale_containers(target_name)
 
     print(f"\nDone. {len(resolved) - len(failed)}/{len(resolved)} succeeded.")
     if failed:

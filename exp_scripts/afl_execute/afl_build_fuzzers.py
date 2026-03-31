@@ -24,8 +24,10 @@ COMMAND_TEMPLATE = (
     "-e PROJECT_NAME={project} "
     "-e HELPER=True "
     "-e FUZZING_LANGUAGE=c++ "
+    "-e SRC=/src "
     "-v {out_dir}:/out "
     "-v {work_dir}:/work "
+    "-v {out_dir}/src:/src "
     "gcr.io/oss-fuzz/{project}"
 )
 
@@ -37,8 +39,10 @@ COVERAGE_COMMAND_TEMPLATE = (
     "-e PROJECT_NAME={project} "
     "-e HELPER=True "
     "-e FUZZING_LANGUAGE=c++ "
+    "-e SRC=/src "
     "-v {out_dir}:/out "
     "-v {work_dir}:/work "
+    "-v {out_dir}/src:/src "
     "gcr.io/oss-fuzz/{project}"
 )
 

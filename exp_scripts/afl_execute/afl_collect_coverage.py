@@ -95,7 +95,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--run-timeout",
         type=int,
-        default=24 * 3600,
+        default=300,
         help="Coverage run timeout in seconds per target (default: 86400).",
     )
     parser.add_argument(

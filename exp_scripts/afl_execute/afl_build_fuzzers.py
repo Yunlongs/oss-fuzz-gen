@@ -8,6 +8,7 @@ Per-target stdout/stderr is written to:
 
 import argparse
 import os
+import shutil
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -98,6 +99,31 @@ def find_project_dirs(project: str):
 def run_one(entry: str, out_dir: str, work_dir: str, project: str,
             log_dir: str, dry_run: bool, coverage: bool) -> tuple[str, int]:
     """Build a single target. Returns (entry, returncode)."""
+    if not coverage and not dry_run:
+        # Cleanup out_dir but preserve 'src' directory
+        try:
+            for item in os.listdir(out_dir):
+                if item == 'src' or item == "dumps":
+                    continue
+                item_path = os.path.join(out_dir, item)
+                if os.path.isfile(item_path) or os.path.islink(item_path):
+                    os.unlink(item_path)
+                elif os.path.isdir(item_path):
+                    shutil.rmtree(item_path)
+        except Exception as e:
+            print(f"[WARN] Failed to cleanup {out_dir}: {e}", file=sys.stderr)
+
+        # Cleanup work_dir completely
+        try:
+            for item in os.listdir(work_dir):
+                item_path = os.path.join(work_dir, item)
+                if os.path.isfile(item_path) or os.path.islink(item_path):
+                    os.unlink(item_path)
+                elif os.path.isdir(item_path):
+                    shutil.rmtree(item_path)
+        except Exception as e:
+            print(f"[WARN] Failed to cleanup {work_dir}: {e}", file=sys.stderr)
+
     template = COVERAGE_COMMAND_TEMPLATE if coverage else COMMAND_TEMPLATE
     cmd = template.format(
         project=project,

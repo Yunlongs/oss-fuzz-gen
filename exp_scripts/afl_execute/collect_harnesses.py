@@ -5,9 +5,9 @@ import argparse
 import hashlib
 
 # Settings
-OSS_FUZZ_OUT_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/output/oss-fuzz/build/out"
-BENCHMARK_API_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/benchmark-sets/all_api"
-OUTPUT_BASE_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/exp_scripts/afl_execute/harnesses"
+OSS_FUZZ_OUT_DIR = "//home/lyuyunlong/work/oss-fuzz-gen/output/oss-fuzz/build/out"
+BENCHMARK_API_DIR = "//home/lyuyunlong/work/oss-fuzz-gen/benchmark-sets/all_api"
+OUTPUT_BASE_DIR = "//home/lyuyunlong/work/oss-fuzz-gen/exp_scripts/afl_execute/harnesses"
 
 def get_target_path(project_name):
     yaml_path = os.path.join(BENCHMARK_API_DIR, project_name, f"{project_name}.yaml")

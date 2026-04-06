@@ -223,7 +223,7 @@ class LLM:
             'LLM API Error when responding (attempt %d) [model=%s, base_url=%s]: %s',
             attempt, model_name, base_url, err, exc_info=True)
         tb = traceback.extract_tb(err.__traceback__)
-        if not self._is_retryable_error(err, api_errs, tb):
+        if not self._is_retryable_error(err, api_errs, tb) or attempt >= 5:
           logger.warning(
               'LLM API non-retryable error (attempt %d) [model=%s, base_url=%s] %s: %s',
               attempt, model_name, base_url, err, traceback.format_exc())
@@ -352,13 +352,22 @@ class GPT(LLM):
                                                #n=self.num_samples,
                                                temperature=self.temperature,
                                                tool_choice="none",
-                                               extra_body = {"chat_template_kwargs": {"thinking": True}}
+                                               extra_body = {
+                                                 "chat_template_kwargs": {"thinking": True},
+                                                 "thinking": {"type": "enabled"},
+                                                 "caching": {"type": "enabled"}
+                                                 }
                                                ),
         [openai.OpenAIError])
 
     llm_response = completion.choices[0].message.content
-    if self.name == "DeepSeek-V3.2":
-      reasoning_content = completion.choices[0].message.reasoning
+    if self.name == "DeepSeek-V3.2" or self.name == "deepseek-v3.2":
+      if hasattr(completion.choices[0].message, 'reasoning'):
+        reasoning_content = completion.choices[0].message.reasoning
+      elif hasattr(completion.choices[0].message, 'reasoning_content'):
+        reasoning_content = completion.choices[0].message.reasoning_content
+      else:
+        raise ValueError('DeepSeek-V3.2 response missing reasoning content.')
       content = completion.choices[0].message.content
       if not content:
         llm_response = reasoning_content
@@ -385,6 +394,9 @@ class GPT(LLM):
       if hasattr(usage, "prompt_tokens_details"):
         prompt_tokens_details = usage.prompt_tokens_details
         cached_tokens = getattr(prompt_tokens_details, 'cached_tokens', 0)
+      if hasattr(usage, "input_tokens_details"):
+        input_tokens_details = usage.input_tokens_details
+        cached_tokens += getattr(input_tokens_details, 'cached_tokens', 0)
       logger.info('Token usage - prompt: %d, completion: %d, total: %d, cached: %d',
                   prompt_tokens, completion_tokens,
                   total_tokens, cached_tokens)
@@ -505,7 +517,7 @@ class GPT4Turbo(GPT):
 class DeepSeekV32(GPT):
   """DeepSeek's v3.2 model."""
 
-  name = 'DeepSeek-V3.2'
+  name = os.getenv('OPENAI_MODEL_NAME', None)
   MAX_INPUT_TOKEN = 128000
 
 class DeepSeekReasoner(GPT):

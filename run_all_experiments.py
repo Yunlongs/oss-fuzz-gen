@@ -29,6 +29,7 @@ from typing import Any
 from google.cloud import logging as cloud_logging
 
 import run_one_experiment
+from checkpoint_manager import CheckpointManager
 from data_prep import introspector
 from experiment import benchmark as benchmarklib
 from experiment import evaluator, oss_fuzz_checkout, textcov
@@ -56,6 +57,7 @@ JSON_REPORT = 'report.json'
 TIME_STAMP_FMT = '%Y-%m-%d %H:%M:%S'
 
 WORK_DIR = ''
+CHECKPOINT_MANAGER: CheckpointManager = None  # Global checkpoint manager instance
 
 LOG_LEVELS = ['debug', 'info']
 LOG_FMT = ('%(asctime)s.%(msecs)03d %(levelname)s '
@@ -121,11 +123,24 @@ def prepare_experiment_targets(
 
 def run_experiments(benchmark: benchmarklib.Benchmark, args) -> Result:
   """Runs an experiment based on the |benchmark| config."""
+  global CHECKPOINT_MANAGER
+  
   try:
     logger.info('Running experiment on benchmark: %s, %s', benchmark.project,
                 benchmark.function_name)
-    work_dirs = WorkDirs(os.path.join(args.work_dir, f'output-{benchmark.id}'))
+    
+    # Determine if we should keep existing output (resume mode)
+    output_dir = os.path.join(args.work_dir, f'output-{benchmark.id}')
+    keep_existing = getattr(args, 'resume_mode', 'fresh') == 'resume'
+    
+    # Create work directories with keep flag
+    work_dirs = WorkDirs(output_dir, keep=keep_existing)
     args.work_dirs = work_dirs
+    
+    # Mark as started in checkpoint
+    if CHECKPOINT_MANAGER:
+      CHECKPOINT_MANAGER.mark_started(benchmark.id, os.path.basename(output_dir))
+    
     model = models.LLM.setup(
         ai_binary=args.ai_binary,
         name=args.model,
@@ -139,9 +154,24 @@ def run_experiments(benchmark: benchmarklib.Benchmark, args) -> Result:
                                     model=model,
                                     args=args,
                                     work_dirs=work_dirs)
+    
+    # Mark as completed in checkpoint
+    if CHECKPOINT_MANAGER:
+      if isinstance(result, str) or not result:
+        # Error occurred
+        CHECKPOINT_MANAGER.mark_error(benchmark.id, str(result))
+      else:
+        # Success
+        CHECKPOINT_MANAGER.mark_completed(benchmark.id)
+    
     return Result(benchmark, result)
   except Exception as e:
     logger.error('Exception while running experiment: %s', str(e), exc_info=True)
+    
+    # Mark error in checkpoint
+    if CHECKPOINT_MANAGER:
+      CHECKPOINT_MANAGER.mark_error(benchmark.id, str(e))
+    
     return Result(benchmark, f'Exception while running experiment: {e}')
 
 
@@ -260,6 +290,13 @@ def parse_args() -> argparse.Namespace:
                       type=int,
                       default=100,
                       help='Max trial round for agents.')
+  parser.add_argument('--resume-mode',
+                      type=str,
+                      default='fresh',
+                      choices=['fresh', 'resume', 'resume-only'],
+                      help=('Resumable run mode: fresh (clean start), '
+                            'resume (skip completed, continue others), '
+                            'resume-only (show status and exit).'))
 
   args = parser.parse_args()
   if args.num_samples:
@@ -526,7 +563,7 @@ def _process_total_coverage_gain() -> dict[str, dict[str, Any]]:
 
 
 def main():
-  global WORK_DIR
+  global WORK_DIR, CHECKPOINT_MANAGER
 
   args = parse_args()
   
@@ -535,6 +572,10 @@ def main():
   
   #_setup_logging(args.log_level, is_cloud=args.cloud_experiment_name != '')
   logger.info('Starting experiments on PR branch')
+  logger.info('Resume mode: %s', args.resume_mode)
+
+  # Initialize checkpoint manager
+  CHECKPOINT_MANAGER = CheckpointManager(args.work_dir)
 
   # Capture time at start
   start = time.time()
@@ -550,6 +591,35 @@ def main():
   run_one_experiment.prepare(args.oss_fuzz_dir)
 
   experiment_targets = prepare_experiment_targets(args)
+  
+  # Handle resume mode
+  if args.resume_mode == 'resume-only':
+    # Just print status and exit
+    logger.info('Resume-only mode: showing status and exiting.')
+    CHECKPOINT_MANAGER.print_status(verbose=True)
+    return 0
+  
+  if args.resume_mode == 'resume':
+    # Scan completed experiments and filter them out
+    resume_info = CHECKPOINT_MANAGER.get_resume_info()
+    completed_ids = resume_info['completed']
+    
+    if completed_ids:
+      logger.info(f'Resume mode: found {len(completed_ids)} completed experiments')
+      original_count = len(experiment_targets)
+      experiment_targets = [
+          t for t in experiment_targets 
+          if t.id not in completed_ids
+      ]
+      skipped_count = original_count - len(experiment_targets)
+      logger.info(f'Skipping {skipped_count} completed experiments, '
+                  f'continuing with {len(experiment_targets)} remaining.')
+    else:
+      logger.info('Resume mode: no previously completed experiments found, '
+                  'starting fresh.')
+  else:  # fresh mode
+    logger.info('Fresh mode: running all experiments from scratch.')
+  
   if oss_fuzz_checkout.ENABLE_CACHING:
     oss_fuzz_checkout.prepare_cached_images(experiment_targets)
 

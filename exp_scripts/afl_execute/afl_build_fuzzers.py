@@ -13,9 +13,12 @@ import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from common import BUILD_BASE, BUILD_LOG_BASE, list_project_entries
+from common import BUILD_BASE, BUILD_LOG_BASE, list_project_entries, OSS_FUZZ_PROJECTS_DIR
+from common import get_project_target_name
 
 LOG_BASE = BUILD_LOG_BASE
+
+BUILD_TEMPLATE = "docker build -t {image} {oss_project_dir}"
 
 COMMAND_TEMPLATE = (
     "docker run --privileged --shm-size=2g --platform linux/amd64 --rm "
@@ -25,11 +28,12 @@ COMMAND_TEMPLATE = (
     "-e PROJECT_NAME={project} "
     "-e HELPER=True "
     "-e FUZZING_LANGUAGE=c++ "
-    "-e SRC=/src "
+    #"-e SRC=/src "
     "-v {out_dir}:/out "
     "-v {work_dir}:/work "
-    "-v {out_dir}/src:/src "
-    "gcr.io/oss-fuzz/{project}"
+    #"-v {out_dir}/src:/src "
+    "{docker_image_name} "
+    "/bin/bash -c 'rm -rf /out/* /work/* && compile && chmod 777 -R /out/*' "
 )
 
 
@@ -43,8 +47,8 @@ COVERAGE_COMMAND_TEMPLATE = (
     "-e SRC=/src "
     "-v {out_dir}:/out "
     "-v {work_dir}:/work "
-    "-v {out_dir}/src:/src "
-    "gcr.io/oss-fuzz/{project}"
+    "{docker_image_name} "
+    "/bin/bash -c \"rm -rf /work/* && find /out/ -mindepth 1 -maxdepth 1 ! -regex '.*_afl_address_out' -exec rm -rf {{}} + && compile && chmod 777 -R /out/*\""
 )
 
 def parse_args() -> argparse.Namespace:
@@ -97,7 +101,7 @@ def find_project_dirs(project: str):
 
 
 def run_one(entry: str, out_dir: str, work_dir: str, project: str,
-            log_dir: str, dry_run: bool, coverage: bool) -> tuple[str, int]:
+            log_dir: str, dry_run: bool, coverage: bool, target_name: str) -> tuple[str, int]:
     """Build a single target. Returns (entry, returncode)."""
     if not coverage and not dry_run:
         # Cleanup out_dir but preserve 'src' directory
@@ -123,12 +127,19 @@ def run_one(entry: str, out_dir: str, work_dir: str, project: str,
                     shutil.rmtree(item_path)
         except Exception as e:
             print(f"[WARN] Failed to cleanup {work_dir}: {e}", file=sys.stderr)
+    
+    docker_image_name = f"gcr.io/oss-fuzz/{entry}"
+    
+    check_image_cmd = f"docker image inspect {docker_image_name} > /dev/null 2>&1"
+    image_exists = subprocess.run(check_image_cmd, shell=True).returncode == 0
 
     template = COVERAGE_COMMAND_TEMPLATE if coverage else COMMAND_TEMPLATE
     cmd = template.format(
         project=project,
+        docker_image_name=docker_image_name,
         out_dir=out_dir,
         work_dir=work_dir,
+        entry=entry,
     )
     log_path = os.path.join(log_dir, f"{entry}.log")
     print(f"[START] {entry}  ->  {log_path}")
@@ -141,6 +152,19 @@ def run_one(entry: str, out_dir: str, work_dir: str, project: str,
     with open(log_path, "w") as log_file:
         log_file.write(f"CMD: {cmd}\n\n")
         log_file.flush()
+        
+        if not image_exists:
+            build_cmd = BUILD_TEMPLATE.format(
+                image=docker_image_name,
+                oss_project_dir=os.path.join(OSS_FUZZ_PROJECTS_DIR, project)
+            )
+            log_file.write(f"BUILD CMD: {build_cmd}\n\n")
+            log_file.flush()
+            ret = subprocess.run(build_cmd, shell=True, stdout=log_file, stderr=subprocess.STDOUT)
+            if ret.returncode != 0:
+                print(f"[FAIL] Build failed for {entry} (exit {ret.returncode})", file=sys.stderr)
+                return entry, ret.returncode
+
         ret = subprocess.run(
             cmd,
             shell=True,
@@ -149,6 +173,7 @@ def run_one(entry: str, out_dir: str, work_dir: str, project: str,
         )
 
     return entry, ret.returncode
+
 
 
 def main():
@@ -160,6 +185,11 @@ def main():
     triples = find_project_dirs(project)
     if not triples:
         print(f"No valid out/work pairs found for project '{project}'.")
+        sys.exit(1)
+        
+    target_name = get_project_target_name(project)
+    if not target_name:
+        print(f"Failed to load target_name for project '{project}' from YAML.", file=sys.stderr)
         sys.exit(1)
 
     # Prepare log directory
@@ -175,7 +205,7 @@ def main():
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = {
             pool.submit(run_one, entry, out_dir, work_dir, project,
-                        str(log_dir), args.dry_run, args.coverage): entry
+                        str(log_dir), args.dry_run, args.coverage, target_name): entry
             for entry, out_dir, work_dir in triples
         }
         for future in as_completed(futures):

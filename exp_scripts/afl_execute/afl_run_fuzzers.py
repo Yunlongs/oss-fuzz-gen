@@ -244,7 +244,7 @@ def cleanup_stale_containers(fuzzer: str) -> None:
     """Find and remove all docker containers for the given fuzzer that have been running for >= 24h."""
     print(f"\n[CLEANUP] Removing stale fuzzer containers for '{fuzzer}' running >= 24h...")
     cmd = (
-        f"docker ps | grep 'run_fuzzer {fuzzer}' | "
+        f"docker ps --no-trunc | grep 'run_fuzzer {fuzzer}' | "
         r"grep -E 'Up (2[4-9]|[3-9][0-9]|[0-9]{3,}) hours|days|weeks|months' | "
         r"awk '{print $1}' | xargs -r docker rm -f"
     )
@@ -281,7 +281,7 @@ def main() -> None:
         print("No targets were found.", file=sys.stderr)
         sys.exit(1)
 
-    cores = pick_idle_cores(args.workers)
+    cores = pick_idle_cores(len(pairs))
     if not cores:
         print("No CPU cores available.", file=sys.stderr)
         sys.exit(1)

@@ -8,7 +8,10 @@ import sys
 from typing import Dict, List
 from pathlib import Path
 from datetime import datetime
+import os
 
+
+OUTPUT_DIR = "/home/lyuyunlong/work/oss-fuzz-gen/output"
 
 def parse_token_usage(log_file_path: str) -> List[Dict[str, int]]:
     """
@@ -178,13 +181,15 @@ def print_statistics(stats: Dict[str, float]):
 def main():
     """Main function."""
     if len(sys.argv) < 2:
-        print("Usage: python calculate_token_cost.py <log_file_path>")
+        print("Usage: python calculate_token_cost.py <project_name>")
         print("\nExample:")
-        print("  python calculate_token_cost.py myapp.log")
+        print("  python calculate_token_cost.py myproject")
         sys.exit(1)
     
-    log_file_path = sys.argv[1]
-    
+    project_name = sys.argv[1]
+    project_output_dir = os.path.join(OUTPUT_DIR, project_name)
+    log_file_path = os.path.join(project_output_dir, "run_all_experiments.log")
+
     if not Path(log_file_path).exists():
         print(f"Error: Log file '{log_file_path}' not found.")
         sys.exit(1)

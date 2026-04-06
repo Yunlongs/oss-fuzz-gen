@@ -5,9 +5,9 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # --- Settings ---
-OSS_FUZZ_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/output/oss-fuzz"
-COVERAGE_DIR = "/home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/exp_scripts/generation_coverage"
-COMMAND_TEMPLATE = "docker run --rm -v /home/lyuyunlong/work/source_code/oss-fuzz/experiments/libs:/libs -v /home/lyuyunlong/work/FuzzWork/oss-fuzz-gen/exp_scripts/generation_coverage/{project}:/cov gcr.io/oss-fuzz-base/base-clang:latest bash -c 'cd /cov && rm -f merge.profdata && llvm-profdata merge -sparse *.profdata -o merge.profdata && llvm-cov report /libs/{lib_name}.so -instr-profile=merge.profdata > coverage_report.txt'"
+OSS_FUZZ_DIR = "/home/lyuyunlong/work/oss-fuzz-gen/output/oss-fuzz"
+COVERAGE_DIR = "/home/lyuyunlong/work/oss-fuzz-gen/exp_scripts/generation_coverage"
+COMMAND_TEMPLATE = "docker run --rm -v /home/lyuyunlong/work/oss-fuzz-gen/exp_scripts/libs:/libs -v {coverage_dir}/{project}:/cov gcr.io/oss-fuzz-base/base-clang:latest bash -c 'cd /cov && rm -f merge.profdata && llvm-profdata merge -sparse *.profdata -o merge.profdata && llvm-cov report /libs/{lib_name}.so -instr-profile=merge.profdata > coverage_report.txt'"
 
 def get_project_fuzzers(project):
     """Find fuzzer directories for a project."""
@@ -23,9 +23,9 @@ def get_project_fuzzers(project):
             fuzzers.append(fuzzer_path)
     return fuzzers
 
-def copy_coverage_files(project):
+def copy_coverage_files(project, round):
     """Copy merged.profdata files from fuzzer directories to coverage dir."""
-    dst_dir = os.path.join(COVERAGE_DIR, project)
+    dst_dir = os.path.join(COVERAGE_DIR, f"round_{round}", project)
     os.makedirs(dst_dir, exist_ok=True)
     
     fuzzers = get_project_fuzzers(project)
@@ -44,10 +44,11 @@ def copy_coverage_files(project):
     print(f"[{project}] Copied {copied} profdata files.")
     return copied > 0
 
-def execute_coverage_command(project_name):
+def execute_coverage_command(project_name, round):
     """Execute docker command to merge and generate report."""
     lib_name = project_name if project_name.startswith("lib") else f"lib{project_name}"
-    command = COMMAND_TEMPLATE.format(project=project_name, lib_name=lib_name)
+    coverage_dir = os.path.join(COVERAGE_DIR, f"round_{round}")
+    command = COMMAND_TEMPLATE.format(coverage_dir=coverage_dir, project=project_name, lib_name=lib_name)
     
     print(f"[Starting Show] {project_name}")
     print(f"Command: {command}")
@@ -67,11 +68,11 @@ def execute_coverage_command(project_name):
         print(f"[Error Show] {project_name} - {str(e)}")
         return {'project': project_name, 'status': 'error', 'error': str(e)}
 
-def process_project(project):
+def process_project(project, round: int):
     """Collect then show for one project."""
     print(f"\n--- Processing {project} ---")
-    if copy_coverage_files(project):
-        return execute_coverage_command(project)
+    if copy_coverage_files(project, round):
+        return execute_coverage_command(project, round)
     else:
         print(f"[{project}] No profdata to process.")
         return {'project': project, 'status': 'no_data'}
@@ -80,15 +81,19 @@ def main():
     parser = argparse.ArgumentParser(description="Collect and show generation coverage.")
     parser.add_argument("projects", nargs="+", help="List of projects to process")
     parser.add_argument("--workers", type=int, default=100, help="Number of concurrent workers")
+    parser.add_argument("-r", "--round", type=int, default=None, help="Round number")
     args = parser.parse_args()
+    round = args.round
+    if round is None:
+        raise Exception("Round number must be specified with -r or --round")
 
     project_names = args.projects
-    print(f"Starting to process {len(project_names)} projects: {', '.join(project_names)}")
+    print(f"Starting to process {len(project_names)} projects: {', '.join(project_names)}, round: {round}")
     print(f"Using {args.workers} workers.")
 
     results = []
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        future_to_project = {executor.submit(process_project, project): project for project in project_names}
+        future_to_project = {executor.submit(process_project, project, round): project for project in project_names}
         for future in as_completed(future_to_project):
             try:
                 result = future.result()
